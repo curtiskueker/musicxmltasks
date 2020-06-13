@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.curtis</groupId>
+    <artifactId>musicxmltasks</artifactId>
+    <version>1.0</version>
+    <packaging>war</packaging>
+
+    <properties>
+        <jdk.version>1.12</jdk.version>
+        <org.slf4j.version>1.8.0</org.slf4j.version>
+        <org.apache.log4j.version>1.2.17</org.apache.log4j.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <web.dir>${project.basedir}/web</web.dir>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.2.7.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <warName>ROOT</warName>
+                    <webResources>
+                        <resource>
+                            <directory>${web.dir}/view/</directory>
+                            <targetPath>view</targetPath>
+                            <filtering>true</filtering>
+                        </resource>
+                        <resource>
+                            <directory>${web.dir}/resources/</directory>
+                            <targetPath>resources</targetPath>
+                            <filtering>true</filtering>
+                        </resource>
+                        <resource>
+                            <directory>${web.dir}/WEB-INF/</directory>
+                            <targetPath>WEB-INF</targetPath>
+                            <filtering>false</filtering>
+                        </resource>
+                    </webResources>
+                    <archive>
+                        <manifestEntries>
+                            <Specification-Title>musicxmltasks</Specification-Title>
+                            <Specification-Version>${project.version}</Specification-Version>
+                            <Implementation-Title>${project.groupId}.${project.artifactId}</Implementation-Title>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
