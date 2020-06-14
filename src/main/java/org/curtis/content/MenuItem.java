@@ -1,12 +1,30 @@
 package org.curtis.content;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MenuItem {
     private String title;
     private String pageName;
+    private String key;
+    private List<MenuItem> sublist = new ArrayList<>();
+
+    public MenuItem() {
+
+    }
 
     public MenuItem(String title, String pageName) {
         this.title = title;
         this.pageName = pageName;
+    }
+
+    public MenuItem(String title, String pageName, List<MenuItem> sublist) {
+        this(title, pageName);
+        this.sublist = sublist;
+    }
+
+    public MenuItem(List<MenuItem> sublist) {
+        this(null, null, sublist);
     }
 
     public String getTitle() {
@@ -23,5 +41,21 @@ public class MenuItem {
 
     public void setPageName(String pageName) {
         this.pageName = pageName;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public List<MenuItem> getSublist() {
+        return sublist;
+    }
+
+    public void setSublist(List<MenuItem> sublist) {
+        this.sublist = sublist;
     }
 }

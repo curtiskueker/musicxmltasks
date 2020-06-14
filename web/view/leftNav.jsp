@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="menu" class="org.curtis.content.MenuItem" scope="request"/>
+
 <div class="nav-header">MusicXML Tasks</div>
-<div class="nav-item"><a href="/1">Outline</a></div>
-<div class="nav-item"><a href="/2">The rest</a></div>
+<c:set var="menuSubitem" value="${menu}" scope="request"/>
+<jsp:include page="leftNavSublist.jsp"/>
