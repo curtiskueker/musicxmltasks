@@ -4,8 +4,9 @@
 <c:set var="pageName" value="content/${content.pageName}"/>
 <html>
   <head>
-    <title>${content.title}</title>
-    <link href="css/main.css" type="text/css" rel="stylesheet">
+      <title>${content.title}</title>
+      <link type="text/css" href="css/main.css" rel="stylesheet">
+      <link type="text/css" href="css/menu.css" rel="stylesheet">
   </head>
   <body>
     <div id="header"><jsp:include page="header.jsp"/></div>

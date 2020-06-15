@@ -1,0 +1,44 @@
+.nav-header {
+    font-weight: bold;
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+.nav-item {
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+
+ul, #tasks-nav {
+    list-style-type: none;
+}
+
+#tasks-nav {
+    margin: 0;
+    padding: 0;
+}
+
+.selection {
+    cursor: pointer;
+    user-select: none;
+}
+
+.selection::before {
+    content: "\1F8A5";
+    color: #00000D;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 4px;
+}
+
+.open-selection::before {
+    transform: rotate(90deg);
+}
+
+.hide-list {
+    display: none;
+}
+
+.show-list {
+    display: block;
+}

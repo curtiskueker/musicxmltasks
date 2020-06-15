@@ -51,6 +51,10 @@ public class MenuItem {
         this.key = key;
     }
 
+    public String getKeyDisplay() {
+        return key.replace('_', '.');
+    }
+
     public List<MenuItem> getSublist() {
         return sublist;
     }
