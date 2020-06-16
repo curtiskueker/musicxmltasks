@@ -1,6 +1,6 @@
 package org.curtis.content;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,19 +8,13 @@ import java.util.Map;
 public class ContentMenu {
     private static MenuItem MENU;
 
-    public static Map<String, MenuItem> MENU_MAP;
-    private static String DEFAULT_PAGE_NUMBER = "1";
+    private static Map<String, MenuItem> MENU_MAP;
+    private static final String DEFAULT_PAGE_NUMBER = "1";
 
     static {
         MENU = new MenuItem(
-                Arrays.asList(
-                        new MenuItem("Outline", "outline.jsp"),
-                        new MenuItem("Page 2", "page2.jsp",
-                                Arrays.asList(
-                                        new MenuItem("Subpage", "subpage.jsp"),
-                                        new MenuItem("Subpage 2", "subpage2.jsp")
-                                )
-                        )
+                Collections.singletonList(
+                        new MenuItem("Outline", "outline.jsp")
                 )
         );
     }

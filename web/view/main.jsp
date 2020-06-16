@@ -15,5 +15,6 @@
     <div id="header"><jsp:include page="header.jsp"/></div>
     <div id="nav"><jsp:include page="leftNav.jsp"/></div>
     <div id="content"><jsp:include page="${pageName}"/></div>
+    <div id="footer"></div>
   </body>
 </html>

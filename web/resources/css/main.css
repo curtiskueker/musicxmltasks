@@ -1,6 +1,6 @@
 * {
     background-color: #fffff2;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Verdana, sans-serif;
 }
 
 :root {
@@ -21,7 +21,6 @@
     width: 15%;
     height: var(--main-height);
     border-top: var(--border-size);
-    border-right: var(--border-size);
     padding-top: var(--cell-padding);
     padding-left: var(--cell-padding);
 }
@@ -29,10 +28,11 @@
 #content{
     float: left;
     width: 80%;
-    height: var(--main-height);
     border-top: var(--border-size);
-    padding-top: var(--cell-padding);
+    border-left: var(--border-size);
     padding-left: var(--cell-padding);
+    padding-top: var(--cell-padding);
+    padding-bottom: var(--cell-padding);
 }
 
 .header-text {
@@ -57,6 +57,30 @@
     padding-bottom: 10px;
 }
 
+#footer{
+    clear:both;
+    height: 50px;
+    width: 100%;
+    border-top: var(--border-size);
+}
+
 a, a:visited {
     color: blue;
+}
+
+table {
+    border: 0;
+    font-family: Georgia, sans-serif;
+}
+
+.task-outline-1 {
+    width: 10px;
+}
+
+.task-outline-2 {
+    width: 90px;
+}
+
+.task-outline-3 {
+    width: 30px;
 }
