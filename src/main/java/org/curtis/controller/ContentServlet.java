@@ -18,6 +18,7 @@ public class ContentServlet {
     public ModelAndView content(@PathVariable String pageNumber) {
         ModelAndView page = new ModelAndView("main");
 
+        page.addObject("pageNumber", pageNumber);
         page.addObject("menu", ContentMenu.getMenu());
         page.addObject("content", ContentMenu.getContentMenuItem(pageNumber));
 

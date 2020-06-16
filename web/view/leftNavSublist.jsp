@@ -3,9 +3,10 @@
 
 <li>
     <div class="nav-item">
-        <c:if test="${not empty menuSubitem.sublist}"><span class="selection"></c:if>
-        ${menuSubitem.keyDisplay} <a href="/${menuSubitem.key}">${menuSubitem.title}</a>
+        <c:if test="${not empty menuSubitem.sublist}"><span id="${menuSubitem.key}" class="selection"></c:if>
+        ${menuSubitem.keyDisplay}
         <c:if test="${not empty menuSubitem.sublist}"></span></c:if>
+        <a href="/${menuSubitem.key}">${menuSubitem.title}</a>
     </div>
     <c:if test="${not empty menuSubitem.sublist}">
         <ul class="hide-list">

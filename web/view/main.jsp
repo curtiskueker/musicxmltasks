@@ -7,6 +7,9 @@
       <title>${content.title}</title>
       <link type="text/css" href="css/main.css" rel="stylesheet">
       <link type="text/css" href="css/menu.css" rel="stylesheet">
+      <script type="text/javascript">
+          var pageNumber = '<%= request.getAttribute("pageNumber") %>';
+      </script>
   </head>
   <body>
     <div id="header"><jsp:include page="header.jsp"/></div>
