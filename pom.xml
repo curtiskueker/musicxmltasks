@@ -50,17 +50,17 @@
                         <resource>
                             <directory>${web.dir}/view/</directory>
                             <targetPath>view</targetPath>
-                            <filtering>true</filtering>
                         </resource>
                         <resource>
                             <directory>${web.dir}/resources/</directory>
+                            <excludes>
+                                <exclude>bundle/**</exclude>
+                            </excludes>
                             <targetPath>resources</targetPath>
-                            <filtering>true</filtering>
                         </resource>
                         <resource>
                             <directory>${web.dir}/WEB-INF/</directory>
                             <targetPath>WEB-INF</targetPath>
-                            <filtering>false</filtering>
                         </resource>
                     </webResources>
                     <archive>
