@@ -23,6 +23,10 @@ public class MenuItem {
         this.sublist = sublist;
     }
 
+    public MenuItem(String title, List<MenuItem> sublist) {
+        this(title, null, sublist);
+    }
+
     public MenuItem(List<MenuItem> sublist) {
         this(null, null, sublist);
     }

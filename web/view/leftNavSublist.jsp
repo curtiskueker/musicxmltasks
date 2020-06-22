@@ -6,7 +6,10 @@
         <c:if test="${not empty menuSubitem.sublist}"><span id="${menuSubitem.key}" class="selection"></c:if>
         ${menuSubitem.keyDisplay}
         <c:if test="${not empty menuSubitem.sublist}"></span></c:if>
-        <a href="/${menuSubitem.key}">${menuSubitem.title}</a>
+        <c:choose>
+            <c:when test="${empty menuSubitem.pageName}">${menuSubitem.title}</c:when>
+            <c:otherwise><a href="/${menuSubitem.key}">${menuSubitem.title}</a></c:otherwise>
+        </c:choose>
     </div>
     <c:if test="${not empty menuSubitem.sublist}">
         <ul class="hide-list">

@@ -5,7 +5,7 @@ MusicXML Tasks is a tool for validating MusicXML files, and for converting Music
 </div>
 
 <div class="content">
-The tool has a JavaFX interface, and is bundled with is own Java JRE, allowing it to act as a standalone application.  Users can configure the tool to connect to a database which is set up and configured separately.
+The tool has a JavaFX interface, and on Windows is bundled with is own Java JRE, allowing it to act as a standalone application.  Users can configure the tool to connect to a database which is set up and configured separately.
 </div>
 
 <div class="content">
@@ -74,15 +74,15 @@ MusicXML Tasks can:
 <div class="content-section">Relational Database</div>
 
 <div class="content">
-    The relational database takes its definition from the MusicXML schema.
+    The relational database takes its definition from the MusicXML 3.1 schema.
 </div>
 
 <div class="content">
-A database setup is required for any conversion to or from a database.  Users setup their own database separately.  The tool is configured to use MySQL, PostgreSQL, and Oracle XE (Express Edition).
+A database setup is required for any conversion to or from a database which users setup separately.  The tool is configured to use MySQL, PostgreSQL, and Oracle XE (Express Edition).
 </div>
 
 <div class="content">
-On the first successful database connection test or successful database conversion attempt, all of the MusicXML database tables are created in the schema as set in the tool's DB Settings tab.  Connection properties are also saved in a local Java properties file.
+On the first successful database connection test or successful database conversion attempt, all of the MusicXML database tables are created in the schema as set in the tool's DB Settings tab.  Connection properties are saved in a local Java properties file.
 </div>
 
 <div class="content">
@@ -92,7 +92,7 @@ A local Lilypond installation is required to convert to PDF, and a PDF reader in
 <div class="content-section">Task Output</div>
 
 <div class="content">
-Task output is displayed in a console area at the bottom of the tool.  Users can optionally redirect console output to a file for separate viewing.  Users can also output all of the SQL queries used in a database conversion for reference.
+Task output is displayed in the console area at the bottom of the tool.  Users can optionally redirect console output to a file for separate viewing.  Users can also output all of the SQL queries used in a database conversion for reference.
 </div>
 
 <div class="content-section">Lilypond File Output</div>
@@ -102,7 +102,7 @@ The Lilypond conversion code is my own.
 </div>
 
 <div class="content">
-The code is written to fail gracefully at the measure level, so that whenever a measure calculation fails, rather than having the entire script fail, a placeholder measure-length spacer will be put in that measure instead, which the user can then change manually.
+The code is written to fail gracefully at the measure level, so that whenever a measure calculation fails, rather than having the entire script fail, a placeholder measure-length spacer is put in that measure instead, which the user can then change manually.
 </div>
 
 <div class="content">

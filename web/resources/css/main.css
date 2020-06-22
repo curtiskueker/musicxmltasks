@@ -73,6 +73,12 @@ table {
     font-family: Georgia, sans-serif;
 }
 
+#abcd {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
 .task-outline-1 {
     width: 10px;
 }

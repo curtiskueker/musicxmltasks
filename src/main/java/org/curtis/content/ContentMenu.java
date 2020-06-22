@@ -1,6 +1,6 @@
 package org.curtis.content;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +13,17 @@ public class ContentMenu {
 
     static {
         MENU = new MenuItem(
-                Collections.singletonList(
-                        new MenuItem("Outline", "outline.jsp")
+                Arrays.asList(
+                        new MenuItem("Outline", "outline.jsp"),
+                        new MenuItem("Tasks Interface",
+                                Arrays.asList(
+                                        new MenuItem("Convert Files", "interface/convert.jsp"),
+                                        new MenuItem("Validate XML", "interface/validate.jsp"),
+                                        new MenuItem("DB Settings", "interface/dbSettings.jsp"),
+                                        new MenuItem("Lilypond/PDF", "interface/lilypondPdf.jsp"),
+                                        new MenuItem("Output", "interface/output.jsp"),
+                                        new MenuItem("DB Actions", "interface/dbActions.jsp")
+                                ))
                 )
         );
     }
