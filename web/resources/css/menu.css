@@ -1,7 +1,7 @@
 .nav-header {
     font-weight: bold;
     font-size: 16px;
-    padding-bottom: 10px;
+    padding-bottom: var(--bottom-padding);
 }
 
 .nav-item {
