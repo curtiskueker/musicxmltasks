@@ -24,20 +24,20 @@ Validation doesn't use the database, so no prior database setup is required to v
 
 <div class="content">
     To validate a MusicXML file:
-    <ul>
-        <li><span>Select the "Validate XML" tab at the top of the tool.</span></li>
+    <ul class="arrowed-list">
+        <li class="padded-li"><span>Select the "Validate XML" tab at the top of the tool.</span></li>
 
         <div class="image">
         [image of validate tab page]
         </div>
 
-        <li><span>Click on the "Choose MusicXML file" link, navigate to the MusicXML file you want to validate, and select it.</span></li>
+        <li class="padded-li"><span>Click on the "Choose MusicXML file" link, navigate to the MusicXML file you want to validate, and select it.</span></li>
 
         <div class="content">
             You can also enter the XML file name directly in the text box.  The file name must be fully-specified (i.e., the file name must include the full directory path where the file is located).
         </div>
 
-        <li><span>Press "Validate".</span></li>
+        <li class="padded-li"><span>Press "Validate".</span></li>
     </ul>
     Validation results will appear in the console area at the bottom of the tool.
 </div>

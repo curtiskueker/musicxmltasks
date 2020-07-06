@@ -81,11 +81,11 @@ table {
     font-family: Georgia, sans-serif;
 }
 
-ul {
+.arrowed-list {
     list-style-type: "\1F826";
 }
 
-li {
+.padded-li {
     padding-bottom: var(--bottom-padding);
 }
 

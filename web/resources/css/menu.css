@@ -34,8 +34,10 @@
 
 .hide-list {
     display: none;
+    list-style-type: none;
 }
 
 .show-list {
     display: block;
+    list-style-type: none;
 }
