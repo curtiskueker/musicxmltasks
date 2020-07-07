@@ -104,3 +104,12 @@ li span {
 .task-outline-3 {
     width: 30px;
 }
+
+.db-settings-1 {
+    width: 10px;
+}
+
+.db-settings-2 {
+    width: 150px;
+    font-weight: bold;
+}

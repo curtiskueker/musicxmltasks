@@ -3,9 +3,11 @@
 
 <li>
     <div class="nav-item">
-        <c:if test="${not empty menuSubitem.sublist}"><span id="${menuSubitem.key}" class="selection"></c:if>
-        ${menuSubitem.keyDisplay}
-        <c:if test="${not empty menuSubitem.sublist}"></span></c:if>
+        <c:choose>
+            <c:when test="${empty menuSubitem.sublist}"><c:set var="selectionClass" value="no-selection"/></c:when>
+            <c:otherwise><c:set var="selectionClass" value="selection"/></c:otherwise>
+        </c:choose>
+        <span id="${menuSubitem.key}" class="${selectionClass}">${menuSubitem.keyDisplay}</span>
         <c:choose>
             <c:when test="${empty menuSubitem.pageName}">${menuSubitem.title}</c:when>
             <c:otherwise><a href="/${menuSubitem.key}">${menuSubitem.title}</a></c:otherwise>
