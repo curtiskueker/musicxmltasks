@@ -17,7 +17,7 @@ public class ContentMenu {
                         new MenuItem("Outline", "outline.jsp"),
                         new MenuItem("Tasks",
                                 Arrays.asList(
-                                        new MenuItem("Convert Files", "interface/convert.jsp"),
+                                        new MenuItem("Convert", "interface/convert/convert.jsp"),
                                         new MenuItem("Validate XML", "interface/validate.jsp"),
                                         new MenuItem("DB Settings", "interface/dbSettings.jsp"),
                                         new MenuItem("Lilypond/PDF", "interface/lilypondPdf.jsp"),

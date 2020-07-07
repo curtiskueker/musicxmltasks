@@ -116,17 +116,5 @@ Most major LilyPond features are implemented, but for those not implemented, the
 <div class="content-section">Format Conversions</div>
 
 <div class="content">
-To convert from one format to another, the application uses Java beans based on the MusicXML schema as the common data structure.  Each bean maps to the relational database using the Hibernate framework for object-relational mapping.  All conversions at some point (other than LilyPond to PDF) load or create the Java objects which are then operated on by series of handlers, factories, and builders to perform each type of conversion.
-</div>
-
-<div class="content">
-For example, to convert from a MusicXML file to the relational database, the file is first converted to an XML Document.  All of the elements in the XML document tree are traversed, and in turn converted to Java objects using a Score Handler, Part Handlers, Measure Handlers and so on, each programmed to convert their own sections of the XML document to Java objects.  Once the Java object model is created, the Hibernate mappings configured within each Java object then save the objects to the database.
-</div>
-
-<div class="content">
-When converting from the database to a MusicXML file, the database is queried as defined by the Hibernate mappings, and the database records are loaded into Java objects.  A series of Builders then each traverse the Java objects that they are individually responsible for, and which are programmed to convert the Java objects to MusicXML output.
-</div>
-
-<div class="content">
-Similarly, Java objects are translated to a LilyPond file by using the application's LilyPond Builders which traverse the Java objects and output LilyPond format.
+The application uses Java beans based on the MusicXML schema as the common data structure.  Each bean maps to the relational database using the Hibernate framework for object-relational mapping.  All conversions at some point (other than LilyPond to PDF) load or create the Java objects which are then operated on by series of handlers, factories, and builders to perform each type of conversion.
 </div>

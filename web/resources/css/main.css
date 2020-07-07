@@ -54,6 +54,13 @@
     padding-bottom: var(--bottom-padding);
 }
 
+.content-subsection {
+    font-weight: bold;
+    font-size: 12px;
+    padding-top: 10px;
+    padding-bottom: var(--bottom-padding);
+}
+
 .content {
     font-size: 16px;
     padding-bottom: var(--bottom-padding);
