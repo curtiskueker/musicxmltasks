@@ -1,7 +1,7 @@
 <div class="content-header">MusicXML Tasks</div>
 
 <div class="content">
-MusicXML Tasks is a tool for validating MusicXML files, and for converting MusicXML files to and from a relational database.  It also converts to Lilypond and PDF.
+MusicXML Tasks is a tool for validating MusicXML files, and for converting MusicXML files to and from a relational database.  It also converts to LilyPond and PDF.
 </div>
 
 <div class="content">
@@ -36,7 +36,7 @@ MusicXML Tasks can:
             <td>&nbsp;</td>
             <td>MusicXML</td>
             <td>-></td>
-            <td>Lilypond</td>
+            <td>LilyPond</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
@@ -54,7 +54,7 @@ MusicXML Tasks can:
             <td>&nbsp;</td>
             <td>Database</td>
             <td>-></td>
-            <td>Lilypond</td>
+            <td>LilyPond</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
@@ -64,7 +64,7 @@ MusicXML Tasks can:
         </tr>
         <tr>
             <td>&nbsp;</td>
-            <td>Lilypond</td>
+            <td>LilyPond</td>
             <td>-></td>
             <td>PDF</td>
         </tr>
@@ -86,7 +86,7 @@ On the first successful database connection test or successful database conversi
 </div>
 
 <div class="content">
-A local Lilypond installation is required to convert to PDF, and a PDF reader installation is required if the user wants to open the PDF file when a conversion to PDF is completed.
+A local LilyPond installation is required to convert to PDF, and a PDF reader installation is required if the user wants to open the PDF file when a conversion to PDF is completed.
 </div>
 
 <div class="content-section">Task Output</div>
@@ -95,10 +95,14 @@ A local Lilypond installation is required to convert to PDF, and a PDF reader in
 Task output is displayed in the console area at the bottom of the tool.  Users can optionally redirect console output to a file for separate viewing.  Users can also output all of the SQL queries used in a database conversion for reference.
 </div>
 
-<div class="content-section">Lilypond File Output</div>
+<div class="content-section">LilyPond File Output</div>
 
 <div class="content">
-The Lilypond conversion code is my own.
+LilyPond is a computer program for creating engraved-quality music scores.  LilyPond files are stored in their own file format.
+</div>
+
+<div class="content">
+The LilyPond conversion code is my own.
 </div>
 
 <div class="content">
@@ -106,13 +110,13 @@ The code is written to fail gracefully at the measure level, so that whenever a 
 </div>
 
 <div class="content">
-Most major Lilypond features are implemented, but for those not implemented, the user will need to edit the file later.  Some unimplemented features are noted in the task output.
+Most major LilyPond features are implemented, but for those not implemented, the user will need to edit the file later.  Some unimplemented features are noted in the task output.
 </div>
 
 <div class="content-section">Format Conversions</div>
 
 <div class="content">
-To convert from one format to another, the application uses Java beans based on the MusicXML schema as the common data structure.  Each bean maps to the relational database using the Hibernate framework for object-relational mapping.  All conversions at some point (other than Lilypond to PDF) load or create the Java objects which are then operated on by series of handlers, factories, and builders to perform each type of conversion.
+To convert from one format to another, the application uses Java beans based on the MusicXML schema as the common data structure.  Each bean maps to the relational database using the Hibernate framework for object-relational mapping.  All conversions at some point (other than LilyPond to PDF) load or create the Java objects which are then operated on by series of handlers, factories, and builders to perform each type of conversion.
 </div>
 
 <div class="content">
@@ -124,5 +128,5 @@ When converting from the database to a MusicXML file, the database is queried as
 </div>
 
 <div class="content">
-Similarly, Java objects are translated to a Lilypond file by using the application's Lilypond Builders which traverse the Java objects and output Lilypond format.
+Similarly, Java objects are translated to a LilyPond file by using the application's LilyPond Builders which traverse the Java objects and output LilyPond format.
 </div>
