@@ -5,7 +5,7 @@ Use this tab to set the locations of the LilyPond and PDF reader (e.g., Adobe Re
 </div>
 
 <div class="content">
-Select the "choose location" links and navigate to the program's location, or enter the fully-specified location (location including folder/directory name) in the text box.
+Select the "choose location" links and navigate to the program's location, or enter the fully-specified location (file name including the folder/directory path) in the text box.
 </div>
 
 <div class="content">
