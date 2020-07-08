@@ -17,7 +17,17 @@ public class ContentMenu {
                         new MenuItem("Outline", "outline.jsp"),
                         new MenuItem("Tasks",
                                 Arrays.asList(
-                                        new MenuItem("Convert", "interface/convert/convert.jsp"),
+                                        new MenuItem("Convert", "interface/convert/convert.jsp",
+                                                Arrays.asList(
+                                                        new MenuItem("From MusicXML", "interface/convert/fromMusicXml.jsp"),
+                                                        new MenuItem("From Database", "interface/convert/fromDb.jsp"),
+                                                        new MenuItem("From LilyPond", "interface/convert/fromLy.jsp"),
+                                                        new MenuItem("To MusicXML", "interface/convert/toMusicXml.jsp"),
+                                                        new MenuItem("To Database", "interface/convert/toDb.jsp"),
+                                                        new MenuItem("To LilyPond", "interface/convert/toLy.jsp"),
+                                                        new MenuItem("To PDF", "interface/convert/toPdf.jsp")
+                                                )
+                                        ),
                                         new MenuItem("Validate XML", "interface/validate.jsp"),
                                         new MenuItem("DB Settings", "interface/dbSettings.jsp"),
                                         new MenuItem("Lilypond/PDF", "interface/lilypondPdf.jsp"),

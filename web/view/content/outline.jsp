@@ -5,11 +5,11 @@ MusicXML Tasks is a tool for validating MusicXML files, and for converting Music
 </div>
 
 <div class="content">
-The tool has a JavaFX interface, and on Windows is bundled with is own Java JRE, allowing it to act as a standalone application.  Users can configure the tool to connect to a database which is set up and configured separately.
+    The application is available for use on Windows or Linux.
 </div>
 
 <div class="content">
-The application is available for use on Windows or Linux.
+The tool has a JavaFX interface, and on Windows is bundled with is own Java JRE as a standalone application.  On Linux, users install their own Java JRE separately.  Users configure the tool to connect to a database which is set up and configured separately.
 </div>
 
 <div class="content-section">Tasks</div>

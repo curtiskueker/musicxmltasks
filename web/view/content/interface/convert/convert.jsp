@@ -5,7 +5,19 @@ Data conversion is the primary task of the MusicXML Tasks tool.  Conversion to a
 </div>
 
 <div class="content">
-Each conversion type converts data from one format to a central data structure, and from there to another format.  The layout of the Convert tab reflects this, with the from-conversion pane on the left and the to-conversion pane on the right.  The subpages of this page explain in more detail each from and to conversion pane.
+Each conversion type converts data from one format to a central data structure, and from there to another format.
+</div>
+
+<div class="content">
+The layout of the Convert tab panes reflects the conversion process, with the from-conversion pane on the left and the to-conversion pane on the right.  Select both a to- and from-conversion data type each select list to reveal the conversion pane where you enter the conversion information.  Press the "Select" button to perform the conversion.
+</div>
+
+<div class="content">
+To convert data, make a from-conversion selection, a to-conversion selection, enter the data for each pane, and then press the "Convert" button.
+</div>
+
+<div class="content">
+The subpages of this page explain in more detail each from- and to-conversion pane.
 </div>
 
 <div class="content-section">Conversion process</div>
@@ -23,7 +35,7 @@ Java beans, as defined by the MusicXML schema, are at the center of the conversi
 <div class="content-subsection">From XML</div>
 
 <div class="content">
-To convert from MusicXML, the XML file is first converted to an Java XML Document using Java DOM (Docunent Object Model).  Java Handler classes in the tasks application then navigate the Document and create the Java Beans.  Bean instantiations that are repetitive are handed off to Factory classes that return newly-created Java beans.
+To convert from MusicXML, the XML file is first converted to a Java XML Document using DOM (Docunent Object Model).  Java Handler classes in the tasks application then navigate the Document and create the Java beans.  Bean instantiations that are repetitive are handed off to Factory classes that return newly-created Java beans.
 </div>
 
 <div class="content-subsection">To XML and LilyPond</div>
