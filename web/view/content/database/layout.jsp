@@ -28,3 +28,19 @@ A prominent discriminator value example is the music_data table whose music_data
 Tables with a discriminator value have fields that only one or some of the subclasses use, since all of the subclass definitions are combined into a single table.
 For example, the duration field in the music_data table is used by the note, backup, forward, and figured bass records stored in the table, but not by direction and attribute records.
 </div>
+
+<div class="content">
+    The discriminator value stored in the column is the lower case element name with a space replacing any dash.
+</div>
+
+<div class="content-section">Ordering</div>
+
+<div class="content">
+    Several tables have an "ordering" column.  XML elements that have a list of subelements of the same name rely on preserving the order of the subelements to preserve the correct data
+    in the original MusicXML document.  Notes in a measure, for example, have a different meaning when placed in the document in a different order.
+</div>
+
+<div class="content">
+    When a MusicXML document is converted to database records, subelement lists are stored in table records using the ordering column by incrementing a list index, and then storing the index value
+    in the database record.  When a MusicXML score is retrieved from the database, these records are retrieved ordered by the ordering column.
+</div>

@@ -38,13 +38,13 @@ public class ContentMenu {
                         new MenuItem("Database Layout", "database/layout.jsp",
                                 Arrays.asList(
                                         new MenuItem("Score", "database/score.jsp"),
-                                        new MenuItem("Score Header"),
+                                        new MenuItem("Score Header", "database/scoreHeader.jsp"),
                                         new MenuItem("Music Data",
                                                 Arrays.asList(
                                                         new MenuItem("Note"),
                                                         new MenuItem("Backup"),
                                                         new MenuItem("Forward"),
-                                                        new MenuItem("Direction"),
+                                                        new MenuItem("Direction", "database/direction.jsp"),
                                                         new MenuItem("Attributes"),
                                                         new MenuItem("Harmony"),
                                                         new MenuItem("Figured Bass"),
@@ -56,7 +56,6 @@ public class ContentMenu {
                                                         new MenuItem("Bookmark")
                                                 )
                                         ),
-                                        new MenuItem("Direction"),
                                         new MenuItem("Notation"),
                                         new MenuItem("Other"),
                                         new MenuItem("Table Reference")
