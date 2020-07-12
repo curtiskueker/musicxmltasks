@@ -13,6 +13,10 @@ public class MenuItem {
 
     }
 
+    public MenuItem(String title) {
+        this.title = title;
+    }
+
     public MenuItem(String title, String pageName) {
         this.title = title;
         this.pageName = pageName;

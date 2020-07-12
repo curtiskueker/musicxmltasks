@@ -33,7 +33,35 @@ public class ContentMenu {
                                         new MenuItem("Lilypond/PDF", "interface/lilypondPdf.jsp"),
                                         new MenuItem("Output", "interface/output.jsp"),
                                         new MenuItem("DB Actions", "interface/dbActions.jsp")
-                                ))
+                                )
+                        ),
+                        new MenuItem("Database Layout", "database/layout.jsp",
+                                Arrays.asList(
+                                        new MenuItem("Score", "database/score.jsp"),
+                                        new MenuItem("Score Header"),
+                                        new MenuItem("Music Data",
+                                                Arrays.asList(
+                                                        new MenuItem("Note"),
+                                                        new MenuItem("Backup"),
+                                                        new MenuItem("Forward"),
+                                                        new MenuItem("Direction"),
+                                                        new MenuItem("Attributes"),
+                                                        new MenuItem("Harmony"),
+                                                        new MenuItem("Figured Bass"),
+                                                        new MenuItem("Print"),
+                                                        new MenuItem("Sound"),
+                                                        new MenuItem("Barline"),
+                                                        new MenuItem("Grouping"),
+                                                        new MenuItem("Link"),
+                                                        new MenuItem("Bookmark")
+                                                )
+                                        ),
+                                        new MenuItem("Direction"),
+                                        new MenuItem("Notation"),
+                                        new MenuItem("Other"),
+                                        new MenuItem("Table Reference")
+                                )
+                        )
                 )
         );
     }

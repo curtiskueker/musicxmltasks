@@ -78,7 +78,7 @@ MusicXML Tasks can:
 </div>
 
 <div class="content">
-A database setup is required for any conversion to or from a database which users setup separately.  The tool is configured to use MySQL, PostgreSQL, and Oracle XE (Express Edition).
+A database setup is required for any conversion to or from a database which users install separately.  The tool is configured to use MySQL, PostgreSQL, and Oracle XE (Express Edition).
 </div>
 
 <div class="content">
