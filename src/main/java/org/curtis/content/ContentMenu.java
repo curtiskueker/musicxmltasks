@@ -42,8 +42,7 @@ public class ContentMenu {
                                         new MenuItem("Music Data",
                                                 Arrays.asList(
                                                         new MenuItem("Note"),
-                                                        new MenuItem("Backup"),
-                                                        new MenuItem("Forward"),
+                                                        new MenuItem("Backup/Forward", "database/backupForward.jsp"),
                                                         new MenuItem("Direction", "database/direction.jsp"),
                                                         new MenuItem("Attributes"),
                                                         new MenuItem("Harmony"),
@@ -57,7 +56,7 @@ public class ContentMenu {
                                                 )
                                         ),
                                         new MenuItem("Notation"),
-                                        new MenuItem("Other"),
+                                        new MenuItem("Display"),
                                         new MenuItem("Table Reference")
                                 )
                         )
