@@ -41,7 +41,7 @@ public class ContentMenu {
                                         new MenuItem("Score Header", "database/scoreHeader.jsp"),
                                         new MenuItem("Music Data",
                                                 Arrays.asList(
-                                                        new MenuItem("Note"),
+                                                        new MenuItem("Note", "database/note.jsp"),
                                                         new MenuItem("Backup/Forward", "database/backupForward.jsp"),
                                                         new MenuItem("Direction", "database/direction.jsp"),
                                                         new MenuItem("Attributes", "database/attributes.jsp"),
