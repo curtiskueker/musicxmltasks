@@ -44,15 +44,14 @@ public class ContentMenu {
                                                         new MenuItem("Note"),
                                                         new MenuItem("Backup/Forward", "database/backupForward.jsp"),
                                                         new MenuItem("Direction", "database/direction.jsp"),
-                                                        new MenuItem("Attributes"),
-                                                        new MenuItem("Harmony"),
-                                                        new MenuItem("Figured Bass"),
-                                                        new MenuItem("Print"),
-                                                        new MenuItem("Sound"),
-                                                        new MenuItem("Barline"),
-                                                        new MenuItem("Grouping"),
-                                                        new MenuItem("Link"),
-                                                        new MenuItem("Bookmark")
+                                                        new MenuItem("Attributes", "database/attributes.jsp"),
+                                                        new MenuItem("Harmony", "database/harmony.jsp"),
+                                                        new MenuItem("Figured Bass", "database/figuredBass.jsp"),
+                                                        new MenuItem("Print", "database/print.jsp"),
+                                                        new MenuItem("Sound", "database/sound.jsp"),
+                                                        new MenuItem("Barline", "database/barline.jsp"),
+                                                        new MenuItem("Grouping", "database/grouping.jsp"),
+                                                        new MenuItem("Link/Bookmark", "database/linkBookmark.jsp")
                                                 )
                                         ),
                                         new MenuItem("Notation"),
