@@ -58,7 +58,7 @@ public class ContentMenu {
                                                         new MenuItem("Link/Bookmark", "database/linkBookmark.jsp")
                                                 )
                                         ),
-                                        new MenuItem("Notation"),
+                                        new MenuItem("Notation", "database/notation.jsp"),
                                         new MenuItem("Display"),
                                         new MenuItem(TABLE_REFERENCE_MENU_ITEM,
                                                 Tables.TABLE_NAMES.stream().map(table -> new MenuItem(new TableReference(table))).collect(Collectors.toList())
