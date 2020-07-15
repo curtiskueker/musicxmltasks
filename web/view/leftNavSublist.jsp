@@ -9,7 +9,7 @@
         </c:choose>
         <span id="${menuSubitem.key}" class="${selectionClass}"></span>
         <c:choose>
-            <c:when test="${empty menuSubitem.pageName}">${menuSubitem.title}</c:when>
+            <c:when test="${empty menuSubitem.pageName && empty menuSubitem.tableReference}">${menuSubitem.title}</c:when>
             <c:otherwise><a href="/${menuSubitem.key}">${menuSubitem.title}</a></c:otherwise>
         </c:choose>
     </div>

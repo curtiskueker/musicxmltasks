@@ -19,7 +19,7 @@
 
 #nav{
     float: left;
-    width: 15%;
+    width: 18%;
     height: var(--main-height);
     border-top: var(--border-size);
     padding-top: var(--cell-padding);
@@ -28,7 +28,7 @@
 
 #content{
     float: left;
-    width: 80%;
+    width: 77%;
     border-top: var(--border-size);
     border-left: var(--border-size);
     padding-left: var(--cell-padding);

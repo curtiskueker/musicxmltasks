@@ -1,7 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="content" class="org.curtis.content.MenuItem" scope="request"/>
-<c:set var="pageName" value="content/${content.pageName}"/>
+<c:choose>
+    <c:when test="${empty content.tableReference}"><c:set var="pageName" value="content/${content.pageName}"/></c:when>
+    <c:otherwise><c:set var="pageName" value="content/${content.tableReference.pageName}"/></c:otherwise>
+</c:choose>
+
 <html>
   <head>
       <title>${content.title}</title>

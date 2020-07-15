@@ -8,6 +8,7 @@ public class MenuItem {
     private String pageName;
     private String key;
     private List<MenuItem> sublist = new ArrayList<>();
+    private TableReference tableReference;
 
     public MenuItem() {
 
@@ -25,6 +26,11 @@ public class MenuItem {
     public MenuItem(String title, String pageName, List<MenuItem> sublist) {
         this(title, pageName);
         this.sublist = sublist;
+    }
+
+    public MenuItem(TableReference tableReference) {
+        this.tableReference = tableReference;
+        this.title = tableReference.getTableName();
     }
 
     public MenuItem(String title, List<MenuItem> sublist) {
@@ -65,5 +71,13 @@ public class MenuItem {
 
     public void setSublist(List<MenuItem> sublist) {
         this.sublist = sublist;
+    }
+
+    public TableReference getTableReference() {
+        return tableReference;
+    }
+
+    public void setTableReference(TableReference tableReference) {
+        this.tableReference = tableReference;
     }
 }

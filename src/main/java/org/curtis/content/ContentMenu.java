@@ -4,12 +4,16 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ContentMenu {
-    private static MenuItem MENU;
+    private static final MenuItem MENU;
 
     private static Map<String, MenuItem> MENU_MAP;
     private static final String DEFAULT_PAGE_NUMBER = "1";
+
+    private static final String TABLE_REFERENCE_MENU_ITEM = "Table Reference";
+    public static String TABLE_REFERENCE_PAGE_NUMBER;
 
     static {
         MENU = new MenuItem(
@@ -56,7 +60,9 @@ public class ContentMenu {
                                         ),
                                         new MenuItem("Notation"),
                                         new MenuItem("Display"),
-                                        new MenuItem("Table Reference")
+                                        new MenuItem(TABLE_REFERENCE_MENU_ITEM,
+                                                Tables.TABLE_NAMES.stream().map(table -> new MenuItem(new TableReference(table))).collect(Collectors.toList())
+                                        )
                                 )
                         )
                 )
@@ -91,6 +97,7 @@ public class ContentMenu {
 
     private static void addMenuItem(String label, MenuItem menuItem) {
         menuItem.setKey(label);
+        if (menuItem.getTitle() != null && menuItem.getTitle().equals(TABLE_REFERENCE_MENU_ITEM)) TABLE_REFERENCE_PAGE_NUMBER = label;
         MENU_MAP.put(label, menuItem);
     }
 
