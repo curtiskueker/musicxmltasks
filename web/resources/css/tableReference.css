@@ -1,0 +1,9 @@
+#table-reference-pane {
+    float: left;
+    width: 40%;
+}
+
+#table-reference-content {
+    float: left;
+    width: 55%;
+}

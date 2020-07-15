@@ -36,16 +36,6 @@
     padding-bottom: var(--cell-padding);
 }
 
-#convert-pane {
-    float: left;
-    width: 30%;
-}
-
-#convert-content {
-    float: left;
-    width: 65%;
-}
-
 .header-text {
     font-weight: bold;
     font-size: 36px;
@@ -129,4 +119,14 @@ li span {
 .db-settings-2 {
     width: 150px;
     font-weight: bold;
+}
+
+#convert-pane {
+    float: left;
+    width: 30%;
+}
+
+#convert-content {
+    float: left;
+    width: 65%;
 }

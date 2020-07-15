@@ -9,4 +9,4 @@
     </c:forEach>
 </ul>
 
-<script type="text/javascript" src="/js/menu.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
