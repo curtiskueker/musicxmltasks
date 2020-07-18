@@ -66,12 +66,6 @@
     padding-bottom: var(--bottom-padding);
 }
 
-.image {
-    padding-left: 20px;
-    padding-top: 10px;
-    padding-bottom: 20px;
-}
-
 #footer{
     clear:both;
     height: 50px;

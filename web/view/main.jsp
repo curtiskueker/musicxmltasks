@@ -11,7 +11,8 @@
       <title>${content.title}</title>
       <link type="text/css" href="css/main.css" rel="stylesheet">
       <link type="text/css" href="css/menu.css" rel="stylesheet">
-      <link type="text/css" href="css/tableReference.css" rel="stylesheet">
+      <link type="text/css" href="css/tables.css" rel="stylesheet">
+      <link type="text/css" href="css/image.css" rel="stylesheet">
       <script type="text/javascript">
           var pageNumber = '<%= request.getAttribute("pageNumber") %>';
       </script>
