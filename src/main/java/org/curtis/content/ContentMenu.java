@@ -65,7 +65,7 @@ public class ContentMenu {
                                                         new MenuItem("Articulations", "database/articulations.jsp")
                                                 )
                                         ),
-                                        new MenuItem("Display"),
+                                        new MenuItem("Display/Formatting", "database/displayFormatting.jsp"),
                                         new MenuItem(TABLE_REFERENCE_MENU_ITEM,
                                                 Tables.TABLE_NAMES.stream().map(table -> new MenuItem(new TableReference(table))).collect(Collectors.toList())
                                         )
