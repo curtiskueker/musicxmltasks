@@ -20,17 +20,14 @@ The XML parser is included in the application, and validation error messages are
 Validation doesn't use the database, so no prior database setup is required to validate a MusicXML file.
 </div>
 
+<img class="interface-box-image" src="images/interface/validate_box.png" alt="validate box"/>
+
 <div class="content-section">Validation Steps</div>
 
 <div class="content">
     To validate a MusicXML file:
     <ul class="arrowed-list">
         <li class="padded-li"><span>Select the "Validate XML" tab at the top of the tool.</span></li>
-
-        <div class="image">
-        [image of validate tab page]
-        </div>
-
         <li class="padded-li"><span>Click on the "Choose MusicXML file" link, navigate to the MusicXML file you want to validate, and select it.</span></li>
 
         <div class="content">

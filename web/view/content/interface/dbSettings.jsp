@@ -12,9 +12,7 @@ Once you have set up the database, select the DB Settings tab, and enter the con
 You can optionally test the database connection by selecting the "Test Database Connection" checkbox before pressing the "Save Settings" button.
 </div>
 
-<div class="image">
-[db settings tab image]
-</div>
+<img class="interface-box-image" src="images/interface/settings_box.png" alt="db settings box"/>
 
 <div class="content">
 The tasks tool is configured to use MySQL, PostgreSQL, and Oracle XE (Express Edition).  For information on installing a database, see the installation instructions for the database type you have chosen.  More infomation on the MusicXML database is provided in the "Database Setup" and "Using the Database" sections in this guide.

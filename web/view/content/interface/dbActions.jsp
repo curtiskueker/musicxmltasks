@@ -8,9 +8,7 @@ There are two optional miscellaneous selections under the DB Actions tab, one fo
 These actions aren't required for tool operation, and are included for convenience.
 </div>
 
-<div class="image">
-[image of DB Actions tab]
-</div>
+<img class="interface-box-image" src="images/interface/tables_box.png" alt="tables box"/>
 
 <div class="content-section">Create Database Tables</div>
 

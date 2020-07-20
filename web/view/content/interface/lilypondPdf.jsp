@@ -12,9 +12,7 @@ Select the "choose location" links and navigate to the program's location, or en
 Select the executable program itself as the location, rather than just the folder/directory the program resides in.
 </div>
 
-<div class="image">
-[image of tab]
-</div>
+<img class="interface-box-image" src="images/interface/ly_pdf_box.png" alt="ly pdf box"/>
 
 <div class="content">
 These values are required for some conversion operations:
