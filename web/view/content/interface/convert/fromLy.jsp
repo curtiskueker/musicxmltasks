@@ -1,5 +1,5 @@
-<div id="convert-pane" class="image">
-[pane image]
+<div id="convert-pane">
+    <img class="convert-pane-image" src="images/interface/ly_from_box.png" alt="ly from box"/>
 </div>
 
 <div id="convert-content">

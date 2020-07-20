@@ -28,6 +28,6 @@ A PDF reader must be installed on the local machine and its location set under t
     </ul>
 </div>
 
-<div id="convert-pane" class="image">
-[page image]
+<div id="convert-pane">
+    <img class="convert-pane-image" src="images/interface/pdf_to_box.png" alt="pdf to box"/>
 </div>

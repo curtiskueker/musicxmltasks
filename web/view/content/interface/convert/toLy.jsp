@@ -24,6 +24,6 @@ If the output filename doesn't have an .ly file extension, the .ly file extensio
     </ul>
 </div>
 
-<div id="convert-pane" class="image">
-[pane image]
+<div id="convert-pane">
+    <img class="convert-pane-image" src="images/interface/ly_to_box.png" alt="ly to box"/>
 </div>

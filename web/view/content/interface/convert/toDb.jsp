@@ -28,6 +28,6 @@ It's recommended that that SQL output be redirected to a file, or the amount of 
     </ul>
 </div>
 
-<div id="convert-pane" class="image">
-[pane image]
+<div id="convert-pane">
+    <img class="convert-pane-image" src="images/interface/db_to_box.png" alt="db to box"/>
 </div>

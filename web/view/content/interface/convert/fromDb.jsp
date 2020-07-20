@@ -1,5 +1,5 @@
-<div id="convert-pane" class="image">
-[pane image]
+<div id="convert-pane">
+    <img class="convert-pane-image" src="images/interface/db_from_box.png" alt="db from box"/>
 </div>
 
 <div id="convert-content">

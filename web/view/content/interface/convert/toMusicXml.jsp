@@ -26,6 +26,6 @@ If XML comments are included in the output, it will take longer to generate the 
     </ul>
 </div>
 
-<div id="convert-pane" class="image">
-[pane image]
+<div id="convert-pane">
+    <img class="convert-pane-image" src="images/interface/musicxml_to_box.png" alt="musicxml to box"/>
 </div>

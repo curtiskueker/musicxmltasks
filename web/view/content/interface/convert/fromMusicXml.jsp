@@ -1,5 +1,5 @@
-<div id="convert-pane" class="image">
-    [pane image]
+<div id="convert-pane">
+    <img class="convert-pane-image" src="images/interface/musicxml_from_box.png" alt="musicxml from box"/>
 </div>
 
 <div id="convert-content">
