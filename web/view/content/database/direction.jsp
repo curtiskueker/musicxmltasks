@@ -8,9 +8,7 @@ A direction is a music_data record with a discrminator value of "direction".
 A direction consists of one or more direction type lists, each having its own direction_type_list record joined to the music_data table.
 </div>
 
-<div class="image">
-[direction image]
-</div>
+<img class="table-layout-image" src="images/table_layout/direction.png" alt="direction"/>
 
 <div class="content-section">Direction Type</div>
 
@@ -50,6 +48,4 @@ Note metronomes consist of a music_data record with discrminator value "note met
     Beams, tuplet, and time modification relations are shown in the diagram below.
 </div>
 
-<div class="image">
-[direction type image]
-</div>
+<img class="table-layout-image" src="images/table_layout/direction_type.png" alt="direction type"/>

@@ -9,6 +9,4 @@ Individual ornament records are stored in the ornament table, and joined on its 
 The "ornaments" record in the notation also has a one-to-many self-join on notation.ornaments_id for the list of accidental marks (which are a type of notation) belonging to the ornaments list.
 </div>
 
-<div class="image">
-[ornaments image]
-</div>
+<img class="table-layout-image" src="images/table_layout/ornament.png" alt="ornament"/>

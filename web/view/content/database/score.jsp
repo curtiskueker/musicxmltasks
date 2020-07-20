@@ -12,6 +12,4 @@
     <li class="padded-li"><span>A list of records in the music_data table, each joined to a measure record</span></li>
 </ul>
 
-<div class="image">
-    [score layout image]
-</div>
+<img class="table-layout-image" src="images/table_layout/score.png" alt="score"/>

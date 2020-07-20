@@ -16,9 +16,7 @@ When the notation type is a list of articulations, technicals, or ornaments, the
 These notation types are lists, with the individual articulations, technicals, and ornaments in the list stored as records in the joined articulation, technical, and ornament tables, respectively.
 </div>
 
-<div class="image">
-[basic note image]
-</div>
+<img class="table-layout-image" src="images/table_layout/note_basic.png" alt="note basic"/>
 
 <div class="content-section">Lyrics</div>
 
@@ -37,6 +35,6 @@ Table lyric_item is a single-inheritance table with its discriminator value in t
 A lyric text record may have its own extend value, which is a self-join on the lyric_item table whose record is an "extend" type.
 </div>
 
-<div class="image">
-[full note image]
-</div>
+<div class="content-section">Fuller note layout</div>
+
+<img class="table-layout-image" src="images/table_layout/note.png" alt="note"/>

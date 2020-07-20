@@ -9,6 +9,4 @@ Its of figures are in the figure table, and have figure_part records for prefix,
 Its extend value is a lyric_item record with discrminator value "extend".
 </div>
 
-<div class="image">
-[figured bass image]
-</div>
+<img class="table-layout-image" src="images/table_layout/figured_bass.png" alt="figured bass"/>

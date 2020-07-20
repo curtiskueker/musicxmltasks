@@ -36,6 +36,4 @@ The time table has a discriminator value of "time signature" or "senza misura".
 The "time signature" record joins to a list of time_signature_type records and an interchangeable record.  The interchangeable record has its own list of time_signature_type records.
 </div>
 
-<div class="image">
-[attributes image]
-</div>
+<img class="table-layout-image" src="images/table_layout/attributes.png" alt="attributes"/>

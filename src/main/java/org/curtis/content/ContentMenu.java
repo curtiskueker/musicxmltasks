@@ -43,7 +43,7 @@ public class ContentMenu {
                                 Arrays.asList(
                                         new MenuItem("Score", "database/score.jsp"),
                                         new MenuItem("Score Header", "database/scoreHeader.jsp"),
-                                        new MenuItem("Music Data",
+                                        new MenuItem("Music Data", "database/musicData.jsp",
                                                 Arrays.asList(
                                                         new MenuItem("Note", "database/note.jsp"),
                                                         new MenuItem("Backup/Forward", "database/backupForward.jsp"),

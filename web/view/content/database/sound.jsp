@@ -13,6 +13,4 @@ Column play.play_id contains the id attribute of the play element.
 The subelements of the play element are stored in the single-inheritance table play_type whose discriminator values are "ipa", "mute", "other play", and "semi pitched".
 </div>
 
-<div class="image">
-[sound image]
-</div>
+<img class="table-layout-image" src="images/table_layout/sound.png" alt="sound"/>

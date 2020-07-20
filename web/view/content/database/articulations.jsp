@@ -9,6 +9,4 @@
 Lined articulations (discriminator values "doit", "falloff", "plop", "scoop" in the articulation table) have their line information in the line table using foreign key line_id.
 </div>
 
-<div class="image">
-    [technicals image]
-</div>
+<img class="table-layout-image" src="images/table_layout/articulation.png" alt="articulation"/>

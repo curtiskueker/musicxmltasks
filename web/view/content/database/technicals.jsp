@@ -5,6 +5,4 @@ A list of technicals is a type of notation record with discriminator value "tech
 Individual technical records are in the technical table, joined to the list on field technicals_id.
 </div>
 
-<div class="image">
-[technicals image]
-</div>
+<img class="table-layout-image" src="images/table_layout/technical.png" alt="technical"/>

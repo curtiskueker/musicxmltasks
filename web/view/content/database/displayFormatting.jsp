@@ -20,9 +20,7 @@ The display record is created if any of these values are present.
     <li class="padded-li"><span>valign</span></li>
 </ul>
 
-<div class="image">
-[display table image]
-</div>
+<img class="table-layout-image" src="images/table_layout/display.png" alt="display"/>
 
 <div class="content-section">Text formatting</div>
 
@@ -36,6 +34,4 @@ The other fields in the formatting record are shown in the diagram below.
 The text_format record is created if a text value or any other formatting value is present.
 </div>
 
-<div class="image">
-[text_format table image]
-</div>
+<img class="table-layout-image" src="images/table_layout/text_format.png" alt="text format"/>

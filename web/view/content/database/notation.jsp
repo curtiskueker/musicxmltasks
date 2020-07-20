@@ -27,6 +27,4 @@ A dynamics defined as a notation is stored as a notation record with discriminat
 and a joined record in the direction_type table (discriminator value "dynamics") containing the dynamics information.
 </div>
 
-<div class="image">
-[notation image]
-</div>
+<img class="table-layout-image" src="images/table_layout/notation.png" alt="notation"/>

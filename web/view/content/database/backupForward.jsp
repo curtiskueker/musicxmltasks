@@ -12,6 +12,4 @@
     The image below shows the music_data columns that forward uses.
 </div>
 
-<div class="image">
-    [forward image]
-</div>
+<img class="table-layout-image" src="images/table_layout/forward.png" alt="forward"/>

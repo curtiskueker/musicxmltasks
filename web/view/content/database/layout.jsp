@@ -24,13 +24,15 @@ All discriminator value fields have a column name beginning with the table name 
 </div>
 
 <div class="content">
-A prominent discriminator value example is the music_data table whose music_data_type field has values such as "note", "direction", "barline" indicating that bean subclass for that record is Note, Direction, or Barline, respectively.
-Tables with a discriminator value have fields that only one or some of the subclasses use, since all of the subclass definitions are combined into a single table.
-For example, the duration field in the music_data table is used by the note, backup, forward, and figured bass records stored in the table, but not by direction and attribute records.
+    The discriminator value stored in the column is the lower case element name with a space replacing any dash.
 </div>
 
+<div class="content-subsection">Music Data</div>
+
 <div class="content">
-    The discriminator value stored in the column is the lower case element name with a space replacing any dash.
+A prominent discriminator value example is the music_data table whose music_data_type field has values such as "note", "direction", "barline" for bean subclasses Note, Direction, or Barline, respectively.
+Tables with a discriminator value have fields that only one or some of the subclasses use, since all of the subclass definitions are combined into a single table.
+For example, the duration field in the music_data table is used by the note, backup, forward, and figured bass records stored in the table, but not by direction and attribute records.
 </div>
 
 <div class="content-section">Ordering</div>
