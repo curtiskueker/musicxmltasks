@@ -1,6 +1,8 @@
+<div class="content-section">Table name: ${param.tableName}</div>
+
 <div id="accidental" class="table-content">
     <div class="content">
-    Description of accidental table.
+    Joins to the music_data record for the accidental's note.
     </div>
 </div>
 
@@ -17,6 +19,6 @@
 </div>
 
 <script type="text/javascript">
-    var includeSection = '${param.includeSection}';
+    var includeSection = '${param.tableName}';
 </script>
 <script type="text/javascript" src="js/tableContent.js"></script>

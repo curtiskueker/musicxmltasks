@@ -1,7 +1,7 @@
 package org.curtis.content;
 
 public class TableReference {
-    private final String pageName = "database/tableReference.jsp";
+    private final String pageName = "database/reference/tableReference.jsp";
     private String tableName;
 
     public TableReference(String tableName) {
