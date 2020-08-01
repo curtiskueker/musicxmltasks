@@ -42,45 +42,31 @@ Validation doesn't use the database, so no prior database setup is required to v
 <div class="content-section">Output examples</div>
 
 <div class="content">
-Here a some common examples of validation output:
-</div>
-
-<div class="content">
 Successful validation:
 </div>
 
-<div class="image">
-[image of output]
-</div>
+<img class="image" src="images/interface/validate_success.png" alt="validate success"/>
 
 <div class="content">
 Ill-formed XML document:
 </div>
 
-<div class="image">
-[image of sample error output]
-</div>
+<img class="image" src="images/interface/validate_ill_formed.png" alt="validate ill formed"/>
 
 <div class="content">
 Missing a required element:
 </div>
 
-<div class="image">
-[image of sample output]
-</div>
+<img class="image" src="images/interface/validate_missing_element.png" alt="validate missing element"/>
 
 <div class="content">
 Missing a required attribute:
 </div>
 
-<div class="image">
-[output image]
-</div>
+<img class="image" src="images/interface/validate_missing_attribute.png" alt="validate missing attribute"/>
 
 <div class="content">
 Extraneous or misspelled element:
 </div>
 
-<div class="image">
-[output]
-</div>
+<img class="image" src="images/interface/validate_bad_attribute.png" alt="validate bad attribute"/>
