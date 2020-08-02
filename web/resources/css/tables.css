@@ -1,9 +1,22 @@
-#table-reference-image {
+#table-reference-image-pane {
     float: left;
     width: 60%;
 }
 
-#table-reference-content {
+#table-reference-content-pane {
     float: left;
     width: 35%;
+}
+
+.table-info {
+    font-size: 14px;
+    padding-bottom: var(--cell-padding);
+}
+
+.discriminator-values {
+    list-style-type: none;
+}
+
+.discriminator-value {
+    font-family: monospace;
 }

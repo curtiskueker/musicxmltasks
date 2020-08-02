@@ -4,8 +4,8 @@
 <c:set var="imageSrc" value="images/table_reference/${tableName}.png"/>
 <c:set var="imageAlt" value="[${tableName} image]"/>
 
-<div id="table-reference-image"><img src="${imageSrc}" alt="${imageAlt}"/></div>
-<div id="table-reference-content">
+<div id="table-reference-image-pane"><img src="${imageSrc}" alt="${imageAlt}"/></div>
+<div id="table-reference-content-pane">
     <jsp:include page="tableContent.jsp">
         <jsp:param name="tableName" value="${tableName}"/>
     </jsp:include>

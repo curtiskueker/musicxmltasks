@@ -46,3 +46,17 @@ For example, the duration field in the music_data table is used by the note, bac
     When a MusicXML document is converted to database records, subelement lists are stored in table records using the ordering column by incrementing a list index, and then storing the index value
     in the database record.  When a MusicXML score is retrieved from the database, these records are retrieved ordered by the ordering column.
 </div>
+
+<div class="content-section">Datatypes</div>
+
+<div class="content-subsection">Enumerations</div>
+
+<div class="content">
+    Enumeration values in the MusicXML schema are stored as upper-case strings with dashes and spaces replaced by undescores.  Example "double-sharp" is stored as "DOUBLE_SHARP".
+</div>
+
+<div class="content-subsection">Booleans</div>
+
+<div class="content">
+    Boolean values are stored in char(1) fields with values 'Y' or 'N'.
+</div>
