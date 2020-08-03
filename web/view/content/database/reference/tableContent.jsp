@@ -181,6 +181,137 @@ The bend record is in the technical table, technical_type "bend".
     </div>
 </div>
 
+<div id="dashed_formatting" class="table-content">
+    <div class="table-info">
+        Direction types and notations that have dashed formatting attributes join to the dashed_formatting table using foreign key dashed_formatting_id.
+    </div>
+    <div class="table-info">
+        Lined articulations (scoop, plop, doit, falloff) join to the line table, foreign key line_id, which in turn joins to the dashed_formatting table, foreign key dashed_formatting_id.
+    </div>
+    <div class="table-info">
+        All direction types, notations, and articulations stored their display information in the display table, joined directly using foreign key display_id.
+    </div>
+</div>
+
+<div id="defaults" class="table-content">
+    <div class="table-info">
+        Defaults belongs to a score header, foreign key defaults_id.
+    </div>
+    <div class="table-info">
+        music-font and word-font subelements are in table font, foreign keys music_font_id and word_font_id.
+    </div>
+    <div class="table-info">
+        One-to-many lyric-font and lyric-language subelements are in tables lyric_font and lyric_language, foreign key defaults_id.
+        The lyric font's font information is in table font, foreign key font_id.
+    </div>
+    <div class="table-info">
+        scaling sublement values are in fields scaling_millimeters and scaling_tenths.
+    </div>
+    <div class="table-info">
+        Subelements of appearance all have a one-to-many relationship and each of its subelement values are stored in tables line_width, note_size, distance, glyph, and other_appearance.
+        Each table's foreign key to the defaults table is defaults_id.
+    </div>
+</div>
+
+<div id="direction_offset" class="table-content">
+    <div class="table-info">
+        Stores "offset" subelement data for music data types sound, direction, and harmony.  Foreign key offset_id.
+    </div>
+</div>
+
+<div id="direction_type" class="table-content">
+    <div class="table-info">
+        The direction_type table stores every kind of direction type as defined by the MusicXML schema's complexType "direction-type".
+        Direction type records correspond to subelements of element "direction-type".
+    </div>
+    <div class="table-info">
+        A direction-type element may have more than one subelement, so each direction_type record belongs to a direction_type_list record using foreign key direction_type_list_id.
+    </div>
+    <div class="content-subsection">Discriminator values</div>
+    <div class="table-info">
+        direction_type_type is the discriminator value field that distinguishes the type of direction type.
+        Values are:
+        <ul class="discriminator-values">
+            <li class="discriminator-value">rehearsal</li>
+            <li class="discriminator-value">segno</li>
+            <li class="discriminator-value">coda</li>
+            <li class="discriminator-value">words</li>
+            <li class="discriminator-value">symbol</li>
+            <li class="discriminator-value">wedge</li>
+            <li class="discriminator-value">dynamics</li>
+            <li class="discriminator-value">dashes</li>
+            <li class="discriminator-value">bracket</li>
+            <li class="discriminator-value">pedal</li>
+            <li class="discriminator-value">beat metronome</li>
+            <li class="discriminator-value">note metronome</li>
+            <li class="discriminator-value">octave shift</li>
+            <li class="discriminator-value">harp pedals</li>
+            <li class="discriminator-value">damp</li>
+            <li class="discriminator-value">damp all</li>
+            <li class="discriminator-value">eyeglasses</li>
+            <li class="discriminator-value">string mute</li>
+            <li class="discriminator-value">scordatura</li>
+            <li class="discriminator-value">image</li>
+            <li class="discriminator-value">principal voice</li>
+            <li class="discriminator-value">accordion registration</li>
+            <li class="discriminator-value">staff divide</li>
+            <li class="discriminator-value">other direction</li>
+        </ul>
+    </div>
+    <div class="table-info">
+        Additionally, all percussion element subelements are treated as direction types.
+        Their discriminator values are:
+        <ul class="discriminator-values">
+            <li class="discriminator-value">glass</li>
+            <li class="discriminator-value">metal</li>
+            <li class="discriminator-value">wood</li>
+            <li class="discriminator-value">pitched</li>
+            <li class="discriminator-value">membrane</li>
+            <li class="discriminator-value">effect</li>
+            <li class="discriminator-value">timpani</li>
+            <li class="discriminator-value">beater</li>
+            <li class="discriminator-value">stick</li>
+            <li class="discriminator-value">stick location</li>
+            <li class="discriminator-value">other percussion</li>
+        </ul>
+    </div>
+    <div class="content-subsection">Fields</div>
+    <div class="table-info">
+        As with any other table that uses single inheritance and a discriminator value, any particular type of direction type will only use some of the fields in the table.
+    </div>
+    <div class="table-info">
+        All direction types join to display, foreign key display_id.  Direction types with text values join to text_format, foreign key text_format_id.
+    </div>
+    <div class="table-info">
+        The "type" attribute value is stored in field direction_type.
+    </div>
+    <div class="table-info">
+        The "number" attribute value is stored in field direction_type_number.
+    </div>
+    <div class="table-info">
+        Dynamics markings for dynamics are in table dynamics_marking, one-to-many foreign key join on dynamics_id.
+    </div>
+    <div class="table-info">
+        A beat metronome has two foreign keys to metronome_mark, metronome_mark_1_id and metronome_mark_2_id.
+    </div>
+    <div class="table-info">
+        A note metronome has two lists of metronome_note records.  The foreign keys in metronome_note to distinguish these two lists are note_metronome_1_id and note_metronome_2_id.
+    </div>
+    <div class="table-info">
+        Pedal tunings for harp pedals are in pedal_tuning, foreign key harp_pedals_id.
+    </div>
+    <div class="table-info">
+        Accords for scordatura are in table accord, foreign key scordatura_id.
+    </div>
+    <div class="table-info">
+        The text element value for the other-direction and other-percussion elements is stored in field "value".
+    </div>
+    <div class="table-info">
+        Percussion elements that have their text element value defined in the MusicXML schema as an enumeration value store that value in the direction_type field:
+        glass, metal, wood, pitched, membrane, effect, beater, and stick location.
+    </div>
+</div>
+
 <script type="text/javascript">
     var includeSection = '${param.tableName}';
 </script>
