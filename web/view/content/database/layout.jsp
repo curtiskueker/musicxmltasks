@@ -44,7 +44,14 @@ For example, the duration field in the music_data table is used by the note, bac
 
 <div class="content">
     When a MusicXML document is converted to database records, subelement lists are stored in table records using the ordering column by incrementing a list index, and then storing the index value
-    in the database record.  When a MusicXML score is retrieved from the database, these records are retrieved ordered by the ordering column.
+    in the database record.  When a MusicXML score is retrieved from the database, these records are retrieved ordered by the ordering column value.
+</div>
+
+<div class="content-section">element_id field</div>
+
+<div class="content">
+    Many MusicXml elements are defined with the optional-unique-id attribute group that defines a unique id attribute for the element.
+    These values are stored in the associated table's element_id field.
 </div>
 
 <div class="content-section">Datatypes</div>
