@@ -312,6 +312,106 @@ The bend record is in the technical table, technical_type "bend".
     </div>
 </div>
 
+<div id="direction_type_list" class="table-content">
+    <div class="table-info">
+        A direction_type_list record corresponds to the direction-type element.
+        Individual direction-type subelements are stored in the direction_type table, referenced by foreign key direction_type_list_id.
+    </div>
+    <div class="table-info">
+        Its direction element parent is a music_data record with music_data_type value "direction".
+    </div>
+</div>
+
+<div id="directive" class="table-content">
+    <div class="table-info">
+        The directive element is a list of subelenents of attributes.
+    </div>
+    <div class="table-info">
+        The attributes record is stored in music_data, music_data_type value "attributes".  Foreign key in the directive table is attributes_id.
+    </div>
+    <div class="table-info">
+        The directive element's text data is stored in field "value".
+    </div>
+</div>
+
+<div id="display" class="table-content">
+    <div class="table-info">
+        Several commonly-occurring display values are aggregated and stored in the display table and its companion font table.
+        These display values are:
+        <ul class="discriminator-values">
+            <li class="discriminator-value">position, x-position, and y-position values: default-x, default-y, relative-x, relative-y</li>
+            <li class="discriminator-value">placement</li>
+            <li class="discriminator-value">font</li>
+            <li class="discriminator-value">color</li>
+            <li class="discriminator-value">halign</li>
+            <li class="discriminator-value">valign and valign-image</li>
+        </ul>
+        Exception: Defaults element fonts (music-font, word-font, lyric-font) are not directly displayed, so their font table records join directly to the defaults table.
+    </div>
+    <div class="table-info">
+        If any of the values above are defined for a displayed element, a display record will be created for that displayed element.
+        If none of the values above are defined, then no display record will be created for that displayed element.
+    </div>
+    <div class="table-info">
+        All displayed element table definitions are identical:
+        a foreign key display_id in the displayed element's table that joins to table "display" if any display field is defined,
+        which itself joins to table "font" on foreign key font_id if any font field is defined.
+    </div>
+    <div class="table-info">
+        The affected displayed element tables are:
+        <ul class="discriminator-values">
+            <li class="discriminator-value">accidental</li>
+            <li class="discriminator-value">articulation</li>
+            <li class="discriminator-value">barline_ending</li>
+            <li class="discriminator-value">barre</li>
+            <li class="discriminator-value">bass_alter</li>
+            <li class="discriminator-value">bass_step</li>
+            <li class="discriminator-value">beam</li>
+            <li class="discriminator-value">bend_with_bar</li>
+            <li class="discriminator-value">clef</li>
+            <li class="discriminator-value">credit_display</li>
+            <li class="discriminator-value">degree_alter</li>
+            <li class="discriminator-value">degree_type</li>
+            <li class="discriminator-value">degree_value</li>
+            <li class="discriminator-value">direction_type</li>
+            <li class="discriminator-value">directive</li>
+            <li class="discriminator-value">dot</li>
+            <li class="discriminator-value">elision</li>
+            <li class="discriminator-value">figure_part</li>
+            <li class="discriminator-value">footnote</li>
+            <li class="discriminator-value">frame</li>
+            <li class="discriminator-value">group_barline</li>
+            <li class="discriminator-value">group_name</li>
+            <li class="discriminator-value">group_symbol</li>
+            <li class="discriminator-value">harmony_chord</li>
+            <li class="discriminator-value">inversion</li>
+            <li class="discriminator-value">key_signature</li>
+            <li class="discriminator-value">kind</li>
+            <li class="discriminator-value">lyric</li>
+            <li class="discriminator-value">lyric_item</li>
+            <li class="discriminator-value">lyric_text_data</li>
+            <li class="discriminator-value">measure_style</li>
+            <li class="discriminator-value">metronome_mark</li>
+            <li class="discriminator-value">music_data</li>
+            <li class="discriminator-value">notation</li>
+            <li class="discriminator-value">notehead</li>
+            <li class="discriminator-value">ornament</li>
+            <li class="discriminator-value">part_name</li>
+            <li class="discriminator-value">part_symbol</li>
+            <li class="discriminator-value">root_alter</li>
+            <li class="discriminator-value">root_step</li>
+            <li class="discriminator-value">stem</li>
+            <li class="discriminator-value">system_divider</li>
+            <li class="discriminator-value">technical</li>
+            <li class="discriminator-value">text_display</li>
+            <li class="discriminator-value">time</li>
+            <li class="discriminator-value">tuplet_dot</li>
+            <li class="discriminator-value">tuplet_number</li>
+            <li class="discriminator-value">tuplet_type</li>
+        </ul>
+    </div>
+</div>
+
 <script type="text/javascript">
     var includeSection = '${param.tableName}';
 </script>
