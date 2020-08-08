@@ -34,4 +34,11 @@ The other fields in the formatting record are shown in the diagram below.
 The text_format record is created if a text value or any other formatting value is present.
 </div>
 
+<div class="content-section">Formatted Display</div>
+
+<div class="content">
+    Some elements have both display and text formatting.  These elements are implemented as a FormattedDisplay class in the Java code.
+    A FormattedDisplay is also implemented as an ordered element, so a mapped database table for a FormattedDisplay class will have an ordering column, whether or not it is used.
+</div>
+
 <img class="table-layout-image" src="images/table_layout/text_format.png" alt="text format"/>

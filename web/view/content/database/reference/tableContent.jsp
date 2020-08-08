@@ -412,6 +412,395 @@ The bend record is in the technical table, technical_type "bend".
     </div>
 </div>
 
+<div id="distance" class="table-content">
+    <div class="table-info">
+        All subelements of the appearance element have a one-to-many relationship to the defaults table, foreign key defaults_id.
+    </div>
+</div>
+
+<div id="dot" class="table-content">
+    <div class="table-info">
+        Dots belong to a note in the music_data table, and have their own display data.
+    </div>
+</div>
+
+<div id="dynamics_marking" class="table-content">
+    <div class="table-info">
+        All of the subelements of a "dynamics" element are stored in the dynamics_marking table, one record per subelement.
+        The element name (e.g., "p", "ff") is in the dynamics_type field.
+        The element text for the "other-dynamics" type is in field "value".
+    </div>
+    <div class="table-info">
+        The enclosing "dynamics" element data is in table direction_type, and its one-to-many foreign key is dynamics_id.
+    </div>
+</div>
+
+<div id="editorial" class="table-content">
+    <div class="table-info">
+        Editorial info can be attached to a wide variety of items:
+    </div>
+    <div class="table-info">
+        music_data table records, music_data_type values "attributes", "barline", "harmony", "figured bass", and "backup"
+    </div>
+    <div class="table-info">
+        part-group element data is found in table part_list_item, part_list_item_type value "part group".
+    </div>
+</div>
+
+<div id="editorial_level" class="table-content">
+    <div class="table-info">
+    Table editorial_level corresponds to the "editorial" element's "level" subelement.
+    </div>
+</div>
+
+<div id="elision" class="table-content">
+    <div class="table-info">
+        A lyric syllable consists of an elision/syllabic/text combination.  The elision table contains the elision element data.
+    </div>
+</div>
+
+<div id="encoding" class="table-content">
+    <div class="table-info">
+        encoding is a single-table inheritance table with the discriminator value in field encoding_type.
+        Each record corresponds to an "encoding" subelement.
+    </div>
+    <div class="table-info">
+        Depending upon the subelement name, the value in field encoding_type is one of the following:
+        <ul class="discriminator-values">
+            <li class="discriminator-value">encoding data</li>
+            <li class="discriminator-value">encoder</li>
+            <li class="discriminator-value">software</li>
+            <li class="discriminator-value">encoding description</li>
+            <li class="discriminator-value">supports</li>
+        </ul>
+    </div>
+    <div class="table-info">
+        If the encoding_type is "encoder", the record has a joined identification_type record, foreign key encoder_id.
+        Its id_name value is "encoder", id_value is the element text, and id_type is the "type" attribute value.
+    </div>
+</div>
+
+<div id="except_voice" class="table-content">
+    <div class="table-info">
+        A slash_group record stores the data for the MusicXML schema's "slash" group,
+        which is a combination of "slash-type", "slash-dot", and "except-voice" elements.
+        Each "except-voice" element has a separate record, with the element text in the value field.
+    </div>
+</div>
+
+<div id="feature" class="table-content">
+    <div class="table-info">
+        The "grouping" element's "feature" subelements, one record per feature element.
+        Foreign key for the grouping record in music_data is grouping_id.
+    </div>
+</div>
+
+<div id="figure" class="table-content">
+    <div class="table-info">
+        Represents the MusicXML "figure" element.
+        The figured bass record that a list of figures belongs to is in the music_data table, music_data_type "figured bass", foreign key figured_bass_id.
+    </div>
+    <div class="table-info">
+        Subelements prefix, figure-number, and suffix are all figure_part records.
+    </div>
+    <div class="table-info">
+        Subelement "extend" is a lyric_item record, lyric_item_type "extend", foreign key extend_id.
+    </div>
+</div>
+
+<div id="figure_part" class="table-content">
+    <div class="table-info">
+        Holds the data for the prefix, figure-number, and suffix subelements of the figure element.
+    </div>
+</div>
+
+<div id="font" class="table-content">
+    <div class="table-info">
+        For displayed items, a font record is created at the same time as the display record it belongs to, using foreign key font_id, when the displayed item has any font field defined.
+    </div>
+    <div class="table-info">
+        Fonts defined in the defaults element of a score header (music-font and word-font) join directly to the font table.
+        The list of lyric-font subelements of defaults are joined separately through the lyric_font table.
+    </div>
+</div>
+
+<div id="footnote" class="table-content">
+    <div class="table-info">
+        The footnote type has both display and text format attribute definitions.  Those values are stored in the corresponding joined tables.
+    </div>
+</div>
+
+<div id="frame" class="table-content">
+    <div class="table-info">
+        A frame belongs to a harmony object in the music_data table, music_data_type value "harmony".
+    </div>
+</div>
+
+<div id="frame_note" class="table-content">
+    <div class="table-info">
+        Three subelements of frame-note are defined in the MusicXML schema as technical types.
+        Data for these subelements are in the technical table as follows:
+    </div>
+    <div class="table-info">
+        string: technical_type "string number", value in field string_number.
+    </div>
+    <div class="table-info">
+        fret: technical_type "fret", value in field value.
+    </div>
+    <div class="table-info">
+        fingering: technical_type "fingering", data in fields value, substitution, and alternate.
+    </div>
+</div>
+
+<div id="glyph" class="table-content">
+    <div class="table-info">
+        glyph is a subelement of appearance, part of the defaults structure.
+        All subelements of the appearance element have a one-to-many relationship to the defaults table, foreign key defaults_id.
+    </div>
+</div>
+
+<div id="grace" class="table-content">
+    <div class="table-info">
+        A grace belongs to a note in the music_data table.
+    </div>
+</div>
+
+<div id="group_barline" class="table-content">
+    <div class="table-info">
+        Belongs to a part group that is in the part_list_item table, foreign key group_barline_id.
+    </div>
+</div>
+
+<div id="group_name" class="table-content">
+    <div class="table-info">
+        Stores both the group name and group abbreviation of a part group.  The part group record is in the part_list_item table.
+        Foreign keys in part_list_item are group_name_id and group_abbreviation_id.
+    </div>
+</div>
+
+<div id="group_symbol" class="table-content">
+    <div class="table-info">
+        Stores the group symbol of a part group.  The part group record is in the part_list_item table.
+        Foreign key in part_list_item is group_symbol_id.
+    </div>
+</div>
+
+<div id="harmony_chord" class="table-content">
+    <div class="table-info">
+        A list of harmony_chord records belongs to a harmony record in the music_data table, music_data_type "harmony", foreign key in harmony_chord is harmony_id.
+    </div>
+    <div class="table-info">
+        The harmony_chord table is a single-inheritance table with discriminator field harmony_chord_type.
+        harmony_chord_type values are:
+        <ul class="discriminator-values">
+            <li class="discriminator-value">root</li>
+            <li class="discriminator-value">function</li>
+        </ul>
+    </div>
+    <div class="table-info">
+        A harmony_chord_type "root" record has root_step and root_alter records, foreign keys root_step_id and root_alter_id.
+    </div>
+    <div class="table-info">
+        A harmony_chord_type "function" record stores its element text data in the "value" field and its display info in the display table.
+    </div>
+</div>
+
+<div id="identification" class="table-content">
+    <div class="table-info">
+        An identification belongs to either a score_header, or a "score part" part_list_item_type in table part_list_item.  Foreign key identification_id.
+    </div>
+    <div class="table-info">
+        Subelements creator, rights, and relation are stored in table identification_type.
+        Field id_name is the subelement name, field id_type is the "type" attribute of the subelement, and field id_value is the subelement text value.
+    </div>
+</div>
+
+<div id="identification_type" class="table-content">
+    <div class="table-info">
+        An identification_type record can be either:
+    </div>
+    <div class="table-info">
+        An identification element's creator, rights, and relation subelements.
+    </div>
+    <div class="table-info">
+        An encoding element's encoder subelement.
+    </div>
+    <div class="table-info">
+        In either case, the id_name is the subelement name, id_type is the subelement's "type" attribute value, and id_value is the subelement's text data.
+    </div>
+</div>
+
+<div id="instrument_type" class="table-content">
+    <div class="table-info">
+        instrument_type is a single-inheritance table with discriminator field instrument_type, and stores the solo or ensemble subelement data of element score-instrument.
+        Possible values of field instrument type are:
+        <ul class="discriminator-values">
+            <li class="discriminator-value">solo</li>
+            <li class="discriminator-value">ensemble</li>
+        </ul>
+    </div>
+</div>
+
+<div id="interchangeable" class="table-content">
+    <div class="table-info">
+        Stores the interchangeable element data that is a subelement of the time element.  Foreign key interchangeable_id.
+    </div>
+    <div class="table-info">
+        Any iterations of an interchangeable element's beats and beat-type subelements (group time-signature) are stored in table time_signature_type, foreign key interchangeable_id.
+    </div>
+</div>
+
+<div id="key_octave" class="table-content">
+    <div class="table-info">
+        Stores the data of all key-octave subelements of a key element, one record per key-octave element, foreign key key_id.
+    </div>
+</div>
+
+<div id="key_signature" class="table-content">
+    <div class="table-info">
+        A key_signature record represents the data of a MusicXML "key" element.
+        One or more key elements may appear within an attributes element.
+        All of the key_signature records within an attributes element join to table music_data, music_data_type "attributes", foreign key attributes_id.
+    </div>
+    <div class="table-info">
+        The key_signature table is single-inheritance with discriminator column key_type.
+        Possible values of key_type are:
+        <ul class="discriminator-values">
+            <li class="discriminator-value">traditional key</li>
+            <li class="discriminator-value">non-traditional key</li>
+        </ul>
+        The key_type value depends on the presence of traditional-key or non-traditional-key elements.
+    </div>
+    <div class="table-info">
+        Each key-octave subelement is a record in table key_octave, foreign key key_id.
+    </div>
+    <div class="table-info">
+        A traditional key stores its element values in fields cancel_fifths, fifths, and key_mode for elements cancel, fifths, and mode, respectively.
+    </div>
+    <div class="table-info">
+        Multiple non-traditional key element groups store their values in the non_traditional_key_type table.
+        The key-step, key-alter, key-accidental element text values are stored in fields key_step, key_alter, and key_accidental, respectively.
+        The key-accidental element's smufl attribute is stored in field key_accidental_smufl.
+    </div>
+</div>
+
+<div id="layout" class="table-content">
+    <div class="table-info">
+        A layout consists of a page_layout record, a system_layout record, and a list of staff_layout records.
+    </div>
+    <div class="table-info">
+        A layout can belong to a defaults record, or to a print record in the music_data table, music_data_type "print".
+    </div>
+</div>
+
+<div id="level_display" class="table-content">
+    <div class="table-info">
+        The join to the notation table is for an accidental-mark which is a notation record, notation_type "accidental mark".
+    </div>
+</div>
+
+<div id="line" class="table-content">
+    <div class="table-info">
+        The line table is used for lined articulations (doit, falloff, plop, scoop), MusicXML schema complexType empty-line.
+    </div>
+</div>
+
+<div id="line_width" class="table-content">
+    <div class="table-info">
+        All subelements of the appearance element have a one-to-many relationship to the defaults table, foreign key defaults_id.
+    </div>
+</div>
+
+<div id="link_attributes" class="table-content">
+    A link_attributes record stores the data for a work element's opus subelement,
+    or for a link element which is a music_data record, music_data_type "link".
+</div>
+
+<div id="lyric" class="table-content">
+    <div class="table-info">
+        A list of lyric records belongs to a note whose record is in the music_data table, foreign key note_id for each lyric in the list.
+    </div>
+    <div class="table-info">
+        The lyric_item record for a lyric has the data for the xs:choice section of the lyric complexType in the MusicXML schema.
+        See lyric_item for details.
+    </div>
+</div>
+
+<div id="lyric_font" class="table-content">
+    <div class="table-info">
+        One-to-many relationship to defaults, foreign key defaults_id.
+    </div>
+</div>
+
+<div id="lyric_item" class="table-content">
+    <div class="table-info">
+        A lyric_item record encapsulates the data definition of the xs:choice section of the lyric complexType in the MusicXML schema.
+    </div>
+    <div class="table-info">
+        The lyric_item table is single-inheritance, discriminator value field lyric_item_type.
+        Disciminator values are:
+        <ul class="discriminator-values">
+            <li class="discriminator-value">lyric text</li>
+            <li class="discriminator-value">extend</li>
+            <li class="discriminator-value">laughing</li>
+            <li class="discriminator-value">humming</li>
+        </ul>
+    </div>
+    <div class="content-subsection">lyric text</div>
+    <div class="table-info">
+        A lyric text record has a list of lyric syllables stored in the lyric_syllable table, foreign key lyric_text_id.
+    </div>
+    <div class="table-info">
+        When the first subelement of a lyric element is either "syllabic" or "text", the lyric element's subelements are iterated,
+        and when a "text" element is reached, the "elision", "syllabic", and "text" elements up to that point are aggregated into a lyric_syllable record.
+        The iteration then continues, creating any other lyric syllable records until the lyric element's subelements are exhausted.
+    </div>
+    <div class="table-info">
+        Finally, if there is a trailing extend element, an extend record is added to the lyric_item table, and self-joined to the lyric text using foreign key extend_id
+        (both the extend and the lyric text are stored in the lyric_item table).
+    </div>
+    <div class="content-subsection">Display</div>
+    <div class="table-info">
+        Display info for an extend lyric item type is joined directly from the lyric_item table using foreign key display_id.
+        Display info for a text is handled via the lyric_syllable table where the text data is stored.
+    </div>
+    <div class="content-subsection">figure</div>
+    <div class="table-info">
+        An extend record can also belong to a figure record.  The foreign key in the figure table is extend_id.
+    </div>
+</div>
+
+<div id="lyric_syllable" class="table-content">
+    <div class="table-info">
+        A lyric_syllable record consists of a lyric element's subelement combination of syllabic/elision/text.
+    </div>
+    <div class="table-info">
+        The record's encompassing structure is a lyric text record in table lyric_item, lyric_item_type value "lyric text".
+        Foreign key to the lyric_item table is lyric_text_id.
+        A lyric may have multiple syllabic/elision/text combinations, so the relation to the lyric_item table is many-to-one.
+        See lyric_item for more information on a lyric text record.
+    </div>
+    <div class="table-info">
+        elision and text element data are in separate elision and lyric_text_data tables because the two types have separate display values.
+        Foreign keys to these two tables are elision_id and lyric_text_data_id.
+    </div>
+</div>
+
+<div id="lyric_text_data" class="table-content">
+    <div class="table-info">
+        A lyric_text_data record stores a lyric element's "text" element data.
+    </div>
+    <div class="table-info">
+        Lyric text data is part of a lyric syllable.
+        The foreign key to lyric_text_data in lyric_syllable is lyric_text_data_id.
+    </div>
+    <div class="table-info">
+        Lyric text data is a Formatted Display (has both a display and text_format record),
+        and so the text value is stored in the text_format table's value column,
+        and has an ordering column, even though it is unused because the lyric_text_data/lyric_syllable relation is one-to-one.
+    </div>
+</div>
+
 <script type="text/javascript">
     var includeSection = '${param.tableName}';
 </script>
