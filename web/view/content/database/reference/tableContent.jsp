@@ -801,6 +801,159 @@ The bend record is in the technical table, technical_type "bend".
     </div>
 </div>
 
+<div id="measure" class="table-content">
+    <div class="table-info">
+        A basic data relation in a score, a list of measure records belong to a part, foreign key part_id,
+        and contains a list of music_data records, foreign key measure_id.
+    </div>
+</div>
+
+<div id="measure_style" class="table-content">
+    <div class="table-info">
+        A list of measure_style records are part of an attributes record found in the music_data table, music_data_type "attributes".
+        The foreign key to music_data is attributes_id.
+    </div>
+    <div class="table-info">
+        The measure_style table is single-inheritance with discriminator value field measure_style_type.
+        Discriminator values are:
+        <ul class="discriminator-values">
+            <li class="discriminator-value">multiple rest</li>
+            <li class="discriminator-value">measure repeat</li>
+            <li class="discriminator-value">beat repeat</li>
+            <li class="discriminator-value">slash</li>
+        </ul>
+    </div>
+    <div class="table-info">
+    For measure_style_type multiple rest and measure repeat, the element text in the value field.
+    </div>
+    <div class="table-info">
+    measure_style_type beat repeat and slash join to a slash_group record whose data structure corresponds to the MusicXML schema's xs:group "slash".
+    </div>
+</div>
+
+<div id="metronome_beam" class="table-content">
+    <div class="table-info">
+        One-to-many relationship to table metronome_note, foreign key metronome_note_id.
+        Element text in field beam_type.
+        Attribute number in field metronome_beam_number.
+    </div>
+</div>
+
+<div id="metronome_mark" class="table-content">
+    <div class="table-info">
+        The metronome_mark table represents the data structure of the first xs:sequence of the xs:choice in the metronome complexType definition in the MusicXML schema.
+        This sequence includes the "beat-unit" group, and the "beat-unit-tied" and "per-minute" elements.
+        The sequence as a whole defines a beat metronome.
+    </div>
+    <div class="table-info">
+        The metronome_mark table is a single-inheritance table with the discriminator field metronome_mark_type.
+        The values for the discriminator field are:
+        <ul class="discriminator-values">
+            <li class="discriminator-value">beat unit</li>
+            <li class="discriminator-value">per minute</li>
+        </ul>
+    </div>
+    <div class="content-subsection">beat unit</div>
+    <div class="table-info">
+        The "beat unit" type is the combination of the "beat-unit" group and its following list of "beat-unit-tied" elements, and is persisted as follows:
+    </div>
+    <div class="table-info">
+        The element text (type "note-type-value") is in field beat_unit.
+    </div>
+    <div class="table-info">
+        The count of the number of "beat-unit-dot" subelements is in field beat_unit_dots.
+    </div>
+    <div class="table-info">
+        The list of "beat-unit-tied" elements are themselves of type "beat unit", and so are stored in table metronome_mark, metronome_mark_type "beat unit".
+        The foreign key for the self-join from the beat-unit-tied subelements to the main "beat unit' record in table metronome_mark is beat_unit_tied_id.
+    </div>
+    <div class="content-subsection">per minute</div>
+    <div class="table-info">
+        The "per minute" type stores its element text value in the per_minute field, and has a joined display table record for the font info.
+    </div>
+    <div class="content-subsection">Beat metronome structure</div>
+    <div class="table-info">
+        A beat metronome is a direction type in table direction_type, direction_type_type "beat metronome", and has two metronome mark parts:
+        <ul>
+            <li>A "beat unit" record in metronome_mark, and its adjoining list of beat-unit-tied records in metronome_mark.</li>
+            <li>A second "beat unit" type as above, or a "per minute" metronome_mark record type.</li>
+        </ul>
+        The two records are joined from the beat metronome record in direction type by foreign keys metronome_mark_1_id and metronome_mark_2_id, respectively.
+    </div>
+</div>
+
+<div id="metronome_note" class="table-content">
+    <div class="table-info">
+        The metronome_note table represents the data structure of the second xs:sequence of the xs:choice in the metronome complexType definition in the MusicXML schema.
+        This sequence includes the "metronome-arrows", "metronome-note", and "metronome-relation" elements.
+        The sequence as a whole defines a note metronome.
+    </div>
+    <div class="content-subsection">Note metronome structure</div>
+    <div class="table-info">
+        A note metronome is a direction type in table direction_type, direction_type_type "note metronome", and persists as follows:
+        <ul>
+            <li>The presence or absence of the "metronome-arrows" element in boolean field metronome_arrows.</li>
+            <li>The text value of element "metronome-relation" in field metronome_relation.</li>
+            <li>
+                Two lists of metronome_note records, corresponding to the two lists of "metronome-note" elements that are separated by the "metronome-relation" element.
+                A metronome_note record in the first list joins to the note metronome in the direction_type table using foreign key note_metronome_1_id.
+                A metronome_note record in the second list joins to the note metronome in the direction_type table using foreign key note_metronome_2_id.
+            </li>
+        </ul>
+    </div>
+    <div class="content-subsection">metronome_note record</div>
+    <div class="table-info">
+        A metronome_note record persists as follows:
+        <ul>
+            <li>The text value of subelement metronome-type in field metronome_type.</li>
+            <li>The count of metronome-dot subelements in field metronome_dots.</li>
+            <li>The list of metronome-beat subelements in table metronoe_beam, foreign key metronome_note_id.</li>
+            <li>The type attribute value of subelement metronome-tied in field metronome_tied.</li>
+            <li>The metronome-tuplet subelement in table metronome_tuplet.</li>
+        </ul>
+    </div>
+</div>
+
+<div id="metronome_tuplet" class="table-content">
+    <div class="table-info">
+        Belongs to a metronome_note, foreign key metronome_tuplet_id.
+    </div>
+    <div class="table-info">
+        Time modification data is in a separate time_modification table record, time_modification_id.
+    </div>
+</div>
+
+<div id="midi_device" class="table-content">
+    <div class="table-info">
+        midi-device element data:
+        <ul>
+            <li>element text in field "value"</li>
+            <li>"port" attribute value in field port</li>
+            <li>"id" attribute value in field midi_device_id</li>
+        </ul>
+    </div>
+    <div class="table-info">
+        Table joins:
+        <ul>
+            <li>score_midi table, representing the midi-device/midi-instrument sequence in complexType score-part</li>
+            <li>sound_midi table, representing the midi-device/midi-instrument/play sequence in complexType sound</li>
+        </ul>
+    </div>
+</div>
+
+<div id="midi_instrument" class="table-content">
+    <div class="table-info">
+        midi-instrument element's "id" attribute is in field midi_instrument_id.
+    </div>
+    <div class="table-info">
+        Table joins:
+        <ul>
+            <li>score_midi table, representing the midi-device/midi-instrument sequence in complexType score-part</li>
+            <li>sound_midi table, representing the midi-device/midi-instrument/play sequence in complexType sound</li>
+        </ul>
+    </div>
+</div>
+
 <script type="text/javascript">
     var includeSection = '${param.tableName}';
 </script>
