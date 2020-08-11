@@ -1,4 +1,4 @@
-<div class="content-section">Table name: ${param.tableName}</div>
+<div class="content-section">${param.tableName}</div>
 
 <div id="accidental" class="table-content">
     <div class="table-info">
@@ -951,6 +951,277 @@ The bend record is in the technical table, technical_type "bend".
             <li>score_midi table, representing the midi-device/midi-instrument sequence in complexType score-part</li>
             <li>sound_midi table, representing the midi-device/midi-instrument/play sequence in complexType sound</li>
         </ul>
+    </div>
+</div>
+
+<div id="music_data" class="table-content">
+    <div class="table-info">
+        The music_data table is single-inheritance with the discriminator value field "music_data_type".
+    </div>
+    <div class="table-info">
+        All music data types are stored in the music_data table, and given the number and variety of music data types, the table has a large number of columns,
+        although individual music data types use only a subset of the columns.
+    </div>
+    <div class="table-info">
+        Music data records are ordered items, so all records use the ordering field.
+        All music data items use the measure_id field, because they're all associated with a measure.
+    </div>
+    <div class="table-info">
+        Each music data type is outlined individually on subpages of this page, showing only those fields used by that type.
+    </div>
+    <div class="table-info">
+        Music data discriminator values are:
+        <ul class="discriminator-values">
+            <li class="discriminator-value">note</li>
+            <li class="discriminator-value">backup</li>
+            <li class="discriminator-value">forward</li>
+            <li class="discriminator-value">direction</li>
+            <li class="discriminator-value">attributes</li>
+            <li class="discriminator-value">harmony</li>
+            <li class="discriminator-value">figured bass</li>
+            <li class="discriminator-value">print</li>
+            <li class="discriminator-value">sound</li>
+            <li class="discriminator-value">barline</li>
+            <li class="discriminator-value">grouping</li>
+            <li class="discriminator-value">link</li>
+            <li class="discriminator-value">bookmark</li>
+        </ul>
+    </div>
+</div>
+
+<div id="note" class="table-content">
+    <div class="table-info">
+        music_data record, music_data_type "note'.
+    </div>
+    <div class="table-info">
+        One-to-one relationships:
+        <ul>
+            <li>note_type</li>
+            <li>accidental</li>
+            <li>grace</li>
+            <li>notehead</li>
+            <li>stem</li>
+            <li>time_modification</li>
+            <li>play</li>
+            <li>display</li>
+            <li>editorial</li>
+            <li>printout</li>
+        </ul>
+        One-to-many relationships:
+        <ul>
+            <li>tie</li>
+            <li>beam</li>
+            <li>dot</li>
+            <li>notations</li>
+            <li>lyric</li>
+            <li>text_display</li>
+        </ul>
+    </div>
+</div>
+
+<div id="backup" class="table-content">
+    <div class="table-info">
+        music_data record, music_data_type "backup".
+    </div>
+</div>
+
+<div id="forward" class="table-content">
+    <div class="table-info">
+        music_data record, music_data_type "forward".
+    </div>
+</div>
+
+<div id="direction" class="table-content">
+    <div class="table-info">
+        music_data record, music_data_type "direction".
+    </div>
+    <div class="table-info">
+        Many-to-one join to direction_type_list, foreign key direction_id.
+        Each direction_type_list record joins to a list of direction_type objects.
+    </div>
+    <div class="table-info">
+        Thus, a "direction" music_data_type record in music_data represents a "direction" element,
+        and a direction_type_list record represents a "direction-type" element.
+        Individual subelements of direction-type are stored in the direction_type table.
+    </div>
+    <div class="table-info">
+        Field sound_id is a join to a sound record, which is itself in the music_data table.
+    </div>
+</div>
+
+<div id="attributes" class="table-content">
+    <div class="table-info">
+        music_data record, music_data_type "attributes".
+    </div>
+    <div class="table-info">
+        Scalar values in the music_data table;
+        <ul>
+            <li>divisions</li>
+            <li>instruments</li>
+            <li>staves</li>
+        </ul>
+        One-to-one relationships to records in other tables:
+        <ul>
+            <li>editorial</li>
+            <li>part_symbol</li>
+        </ul>
+        Many-to-one relationships, with foreign key attributes_id:
+        <ul>
+            <li>time</li>
+            <li>key_signature</li>
+            <li>clef</li>
+            <li>staff_details</li>
+            <li>directive</li>
+            <li>transpose</li>
+            <li>measure_style</li>
+        </ul>
+    </div>
+</div>
+
+<div id="harmony" class="table-content">
+    <div class="table-info">
+        music_data record, music_data_type "harmony".
+    </div>
+    <div class="table-info">
+        Scalar values in music_data table:
+        <ul>
+            <li>staff</li>
+            <li>type</li>
+            <li>print_object</li>
+            <li>print_frame</li>
+        </ul>
+        One-to-one relationships to records in other tables:
+        <ul>
+            <li>frame</li>
+            <li>direction_offset, foreign key offset_id.  Corresponds to "offset" element.</li>
+            <li>editorial</li>
+            <li>display</li>
+        </ul>
+        Many-to-one relationship, with foreign key harmony_id:
+        <ul>
+            <li>harmony_chord</li>
+        </ul>
+    </div>
+</div>
+
+<div id="figured-bass" class="table-content">
+    <div class="table-info">
+        music_data record, music_data_type "figured bass".
+    </div>
+    <div class="table-info">
+        Scalar values in music_data table:
+        <ul>
+            <li>duration</li>
+            <li>parentheses</li>
+        </ul>
+        One-to-one relationships to records in other tables:
+        <ul>
+            <li>editorial</li>
+            <li>display</li>
+            <li>printout</li>
+        </ul>
+        Many-to-one relationship, with foreign key figured_bass_id:
+        <ul>
+            <li>figure</li>
+        </ul>
+    </div>
+</div>
+
+<div id="print" class="table-content">
+    <div class="table-info">
+        music_data record, music_data_type "print".
+    </div>
+    <div class="table-info">
+        The measure-layout and measure-numbering types, and the print-attributes attributeGroup are unique to the print complexType,
+        and so their values are folded into the print record, and included in the music_data table,
+        rather than using separate tables using table joins.
+    </div>
+    <div class="table-info">
+        These values are handled as follows:
+        <ul>
+            <li>measure-layout element's measure-distance subelement text: field measure_distance</li>
+            <li>measure-numbering element text: field measure_numbering_value</li>
+            <li>measure-numbering element's display attributes: display table, foreign key display_id</li>
+            <li>print-attributes attributeGroup values: fields staff_spacing, new_system, new_page, blank_page, page_number</li>
+        </ul>
+    </div>
+    <div class="table-info">
+        layout group values in layout table, foreign key layout_id.
+    </div>
+    <div class="table-info">
+        part-name-display and part-abbreviation-display element data are in table name_display,
+        foreign keys part_name_display_id and part_abbreviation_display_id.
+    </div>
+</div>
+
+<div id="sound" class="table-content">
+    <div class="table-info">
+        music_data record, music_data_type "sound".
+    </div>
+    <div class="table-info">
+        The sequence of midi-device, midi-instrument, and play elements are combined into a Sound Midi object,
+        and the each appearance of the this sequence is stored in the sound_midi table, foreign key sound_id.
+    </div>
+    <div class="table-info">
+        The offset element data is in the direction_offset table, foreign key offset_id.
+    </div>
+    <div class="table-info">
+        Attribute values are stored as part of the sound record in the music_data table.
+    </div>
+</div>
+
+<div id="barline" class="table-content">
+    <div class="table-info">
+        music_data record, music_data_type "barline"
+    </div>
+    <div class="table-info">
+        The bar-style element text is in field bar_style.
+        Its color info is stored in a display table record.
+    </div>
+    <div class="table-info">
+        The "location" attribute is in field barline_location.
+    </div>
+    <div class="table-info">
+        The segno and coda attributes are music_data fields segno and coda.
+    </div>
+    <div class="table-info">
+        Other notable table associations are:
+        <ul>
+            <li>wavy-line is a record in table ornament, ornament_type "wavy line".</li>
+            <li>segno and coda element data are in table direction_type, direction_type_type "segno" and "coda", respectively.</li>
+            <li>The list of fermata elements are in the notation table, notation_type "fermata", foreign key barline_id.</li>
+            <li>ending and repeat elements are in tables barline_ending and barline_repeat.</li>
+        </ul>
+    </div>
+</div>
+
+<div id="grouping" class="table-content">
+    <div class="table-info">
+        music_data record, music_data_type "grouping"
+    </div>
+    <div class="table-info">
+        "number" attribute value is in field grouping_number.
+    </div>
+</div>
+
+<div id="link" class="table-content">
+    <div class="table-info">
+        music_data record, music_data_type "link"
+    </div>
+    <div class="table-info">
+        The "position" attribute scalar value is in music_data field "position".
+    </div>
+    <div class="table-info">
+        The "position" attributeGroup values are display table fields, as with all other elements that have the position attributeGroup as part of their definition.
+    </div>
+</div>
+
+<div id="bookmark" class="table-content">
+    <div class="table-info">
+        music_data record, music_data_type "bookmark"
+    </div>
+    <div class="table-info">
+        id attribute value is in music_data field bookmark_id.
     </div>
 </div>
 

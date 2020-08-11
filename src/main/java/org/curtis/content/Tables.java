@@ -2,6 +2,7 @@ package org.curtis.content;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Tables {
     public static final List<String> TABLE_NAMES = Arrays.asList(
@@ -138,4 +139,31 @@ public class Tables {
             "work",
             "xml_comment"
             );
+
+    private static final List<String> MUSIC_DATA_TYPES = Arrays.asList(
+            "note",
+            "backup",
+            "forward",
+            "direction",
+            "attributes",
+            "harmony",
+            "figured-bass",
+            "print",
+            "sound",
+            "barline",
+            "grouping",
+            "link",
+            "bookmark"
+    );
+
+    public static MenuItem getTableReference() {
+        return new MenuItem("Table Reference", Tables.TABLE_NAMES.stream().map(Tables::getTableReferenceMenuItem).collect(Collectors.toList()));
+    }
+
+    private static MenuItem getTableReferenceMenuItem(String tableName) {
+        MenuItem menuItem = new MenuItem(new TableReference(tableName));
+        if (tableName.equals("music_data")) menuItem.setSublist(MUSIC_DATA_TYPES.stream().map(Tables::getTableReferenceMenuItem).collect(Collectors.toList()));
+
+        return menuItem;
+    }
 }
