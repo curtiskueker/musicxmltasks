@@ -61,7 +61,7 @@ public class ContentMenu {
                                                         new MenuItem("Articulations", "database/articulations.jsp")
                                                 )
                                         ),
-                                        new MenuItem("Display/Formatting", "database/displayFormatting.jsp"),
+                                        new MenuItem("Formatted Display", "database/formattedDisplay.jsp"),
                                         Tables.getTableReference()
                                 )
                         )

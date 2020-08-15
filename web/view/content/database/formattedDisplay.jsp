@@ -1,4 +1,4 @@
-<div class="content-header">Display and Formatting</div>
+<div class="content-header">Formatted Display</div>
 
 <div class="content">
 Many MusicXML elements have sets of attributes or element values referring to display and/or text formatting.
@@ -20,6 +20,10 @@ The display record is created if any of these values are present.
     <li class="padded-li"><span>valign</span></li>
 </ul>
 
+<div class="content">
+    If any font attributes are present, a font table record is created, and joined from foreign key font_id in the display table.
+</div>
+
 <img class="table-layout-image" src="images/table_layout/display.png" alt="display"/>
 
 <div class="content-section">Text formatting</div>
@@ -34,11 +38,22 @@ The other fields in the formatting record are shown in the diagram below.
 The text_format record is created if a text value or any other formatting value is present.
 </div>
 
+<img class="table-layout-image" src="images/table_layout/text_format.png" alt="text format"/>
+
 <div class="content-section">Formatted Display</div>
 
 <div class="content">
     Some elements have both display and text formatting.  These elements are implemented as a FormattedDisplay class in the Java code.
-    A FormattedDisplay is also implemented as an ordered element, so a mapped database table for a FormattedDisplay class will have an ordering column, whether or not it is used.
+    FormattedDisplay classes are also implemented as an ordered item, so any mapped database table for a FormattedDisplay class will have an ordering column, whether or not it is used.
 </div>
 
-<img class="table-layout-image" src="images/table_layout/text_format.png" alt="text format"/>
+<div class="content">
+    The FormattedDisplay tables are:
+</div>
+
+<ul class="arrowed-list">
+    <li class="padded-li">tootnote</li>
+    <li class="padded-li">text_display</li>
+    <li class="padded-li">lyric_text_data</li>
+    <li class="padded-li">credit_display</li>
+</ul>
