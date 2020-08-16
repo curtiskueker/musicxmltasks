@@ -1963,6 +1963,245 @@ The bend record is in the technical table, technical_type "bend".
     </div>
 </div>
 
+<div id="time" class="table-content">
+    <div class="table-info">
+        A record in the time table stores the data as defined in the "time" complexType in the MusicXML schema.
+        A list of time records belongs to an attributes record in the music_data table, foreign key attributes_id.
+    </div>
+    <div class="table-info">
+        The time table is single-inheritance, with discriminator value field time_type.
+        The discriminator value depends on the choice employed in the xs:choice section of the "time" complexType.
+    </div>
+    <div class="table-info">
+        Discriminator values are:
+        <ul class="discriminator-values">
+            <li class="discriminator-value">time signature</li>
+            <li class="discriminator-value">senza misura</li>
+        </ul>
+    </div>
+    <div class="table-info">
+        For either disriminator value:
+        <ul>
+            <li>The "number" attribute is in field time_number</li>
+            <li>The "separator" attribute is in field time_separator</li>
+        </ul>
+    </div>
+    <div class="content-subsection">time signature</div>
+    <div class="table-info">
+        A time signature consists of a list of beats/beat-type elements in sequence,
+        followed by an optional interchangeable element.
+    </div>
+    <div class="table-info">
+        Each beats/beat-type element sequence is a record in the time_signature_type table.
+        The text of elements beats and beat-type is stored in fields beats and beat_type, respectively.
+        Foreign key for the record is time_signature_id.
+    </div>
+    <div class="content-subsection">interchangeable</div>
+    <div class="table-info">
+        The foreign key for a time signature's interchangeable record is interchangeable_id in the time table.
+    </div>
+    <div class="table-info">
+        Attribute "separator" value is in field time_separator.
+    </div>
+    <div class="table-info">
+        An interchangeable has itself a list of time_signature_type records.
+        The foreign key for this list in the time_signature_type table is interchangeable_id.
+    </div>
+    <div class="content-subsection">senza misura</div>
+    <div class="table-info">
+        The senza-misura element text is in time table field "value".
+    </div>
+</div>
+
+<div id="time_modification" class="table-content">
+    <div class="table-info">
+        A time_modification record belongs either to a note in the music_data table,
+        or a  metronome_tuplet record.
+        Foreign key in either case is time_modification_id.
+    </div>
+    <div class="table-info">
+        Field normal_dots contains the number of normal-dot subelements.
+    </div>
+</div>
+
+<div id="time_signature_type" class="table-content">
+    <div class="table-info">
+        A time_signature_type record holds the data for the xs:group time-signature in the MusicXML schema.
+    </div>
+    <div class="table-info">
+        A list of time_signature_type records belongs to a time table record when the time_type is "time signature".
+        The foreign key in time_signature_type is time_signature_id.
+    </div>
+    <div class="table-info">
+        An interchangeable type can also have a list of time_signature_type records.
+        The foreign key in time_signature_type is interchangeable_id.
+    </div>
+</div>
+
+<div id="transpose" class="table-content">
+    <div class="table-info">
+        transpose has a many-to-one relationship with an attributes record in the music_data table, foreign key attributes_id.
+    </div>
+    <div class="table-info">
+        The presence or absence of a "double" subelement is in boolean field "doubled".
+    </div>
+    <div class="table-info">
+        Attribute "number" value is in field staff_number.
+    </div>
+</div>
+
+<div id="trill_sound" class="table-content">
+    A trill_sound record belongs to the following types of ornaments, whose records are in the ornaments table, and joined using foreign key trill_sound_id:
+    <ul>
+        <li>wavy line</li>
+        <li>
+            placed trill sounds:
+            <ul>
+                <li>
+                    mordent types:
+                    <ul>
+                        <li>mordent</li>
+                        <li>inverted mordent</li>
+                    </ul>
+                </li>
+                <li>trill mark</li>
+                <li>vertical turn</li>
+                <li>inverted vertical turn</li>
+                <li>shake</li>
+                <li>haydn</li>
+            </ul>
+        </li>
+        <li>
+            horizontal turn types:
+            <ul>
+                <li>turn</li>
+                <li>delayed turn</li>
+                <li>inverted turn</li>
+                <li>delayed inverted turn</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div id="tuning" class="table-content">
+    <div class="table-info">
+        A tuning record belongs to either an accord or staff_tuning record, foreign key tuning_id.
+    </div>
+</div>
+
+<div id="tuplet_dot" class="table-content">
+    <div class="table-info">
+        tuplet_dot has a one-to-many relationship to tuplet_portion.
+    </div>
+    <div class="table-info">
+        The tuplet-dot element has its own display attributes, which necessitates moving the tuplet-dot data to its own table.
+    </div>
+</div>
+
+<div id="tuplet_number" class="table-content">
+    <div class="table-info">
+        A tuplet_number record belongs to a tuplet_portion.
+        The foreign key in tuplet_portion is tuplet_number_id.
+    </div>
+    <div class="table-info">
+        Element text is in field "value".
+    </div>
+</div>
+
+<div id="tuplet_portion" class="table-content">
+    <div class="table-info">
+        A "tuplet" notation table record has two tuplet_portion records, one each for tuplet-actual and tuplet-normal subelement data.
+        The foreign keys to these two records in the notation table are tuplet_actual_id and tuplet_normal_id, respectively.
+    </div>
+    <div class="table-info">
+        A tuplet_portion record has:
+        <ul>
+            <li>tuplet-number element data in table tuplet_number, foreign key tuplet_number_id</li>
+            <li>tuplet-type element data in table tuplet_type, foreign key tuplet_type_id</li>
+            <li>a list of tuplet-dot element data records in table tuplet_dot; foreign key in tuplet_dot is tuplet_portion_id</li>
+        </ul>
+    </div>
+</div>
+
+<div id="tuplet_type" class="table-content">
+    <div class="table-info">
+        Stores the data for complexType tuplet-type in the MusicXML schema.
+    </div>
+    <div class="table-info">
+        Belongs to a tuplet_portion record, foreign key tuplet_type_id.
+    </div>
+    <div class="table-info">
+        Element text is in field note_type_value.
+    </div>
+</div>
+
+<div id="virtual_instrument" class="table-content">
+    <div class="table-info">
+        Belongs to score instrument, which belongs to a score part.
+        Foreign key in score_instrument is virtual_instrument_id.
+    </div>
+</div>
+
+<div id="work" class="table-content">
+    <div class="table-info">
+        A work record belongs to a score header, foreign key work_id.
+    </div>
+    <div class="table-info">
+        The opus subelement data is in table link_attributes, foreign key opus_id.
+    </div>
+</div>
+
+<div id="xml_comment" class="table-content">
+    <div class="table-info">
+        One xml_comment record is created for each comment and processing instruction in a MusicXML file during a conversion from a MusicXML file to a database record
+        using the tasks interface.
+    </div>
+    <div class="table-info">
+        The xml_comment table is not part of the MusicXML schema definition.
+        Its an additional feature table that stores comment data so that when a user converts a database record back to a MusicXML file,
+        the content and placement of comments are preserved as in the original file.
+    </div>
+    <div class="table-info">
+        Users can optionally select to not include comments in a MusicXML file to database conversion.
+    </div>
+    <div class="content-subsection">data and target fields</div>
+    <div class="table-info">
+        data and target field values are taken from the Java DOM implementation.
+    </div>
+    <div class="table-info">
+        For an xml comment, the data field value is the comment string minus the leading &lt;!-- and trailing --&gt;
+    </div>
+    <div class="table-info">
+        For a processing instrucution the data and target values are as shown below:
+    </div>
+    <div class="table-info">
+        &lt;?target data?&gt;
+    </div>
+    <div class="content-subsection">parent and next_sibling fields</div>
+    <div class="table-info">
+        The parent and next_sibling field values are taken from XPath.
+    </div>
+    <div class="table-info">
+        Values are always a fully-specified path with predicates.
+    </div>
+    <div class="table-info">
+        Examples:
+    </div>
+    <div class="table-info">
+        For a comment in the score header's defaults section, and before the appearance element the parent and next_sibling field values are:
+        <ul>
+            <li>parent: /score-partwise[1]/defaults[1]</li>
+            <li>next_sibling: appearance[1]</li>
+        </ul>
+    </div>
+    <div class="table-info">
+        next_sibling is null when the comment appears after every subelement of the parent element.
+    </div>
+    <div class="table-info">
+        parent is an empty string when the comment appears before the first element in the file.
+    </div>
+</div>
+
 <script type="text/javascript">
     var includeSection = '${param.tableName}';
 </script>
