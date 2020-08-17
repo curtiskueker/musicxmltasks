@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Tables {
-    public static final List<String> TABLE_NAMES = Arrays.asList(
+    private static final List<String> TABLE_NAMES = Arrays.asList(
             "accidental",
             "accord",
             "articulation",
@@ -157,7 +157,8 @@ public class Tables {
     );
 
     public static MenuItem getTableReference() {
-        return new MenuItem("Table Reference", Tables.TABLE_NAMES.stream().map(Tables::getTableReferenceMenuItem).collect(Collectors.toList()));
+        return new MenuItem("Table Reference", "database/reference/tableReference.jsp",
+                Tables.TABLE_NAMES.stream().map(Tables::getTableReferenceMenuItem).collect(Collectors.toList()));
     }
 
     private static MenuItem getTableReferenceMenuItem(String tableName) {

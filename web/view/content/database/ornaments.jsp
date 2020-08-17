@@ -6,7 +6,7 @@ Individual ornament records are stored in the ornament table, and joined on its 
 </div>
 
 <div class="content">
-The "ornaments" record in the notation also has a one-to-many self-join on notation.ornaments_id for the list of accidental marks (which are a type of notation) belonging to the ornaments list.
+The "ornaments" record in the notation also has a one-to-many self-join on its ornaments_id field for the list of accidental marks (which are a type of notation) belonging to the ornaments list.
 </div>
 
 <img class="table-layout-image" src="images/table_layout/ornament.png" alt="ornament"/>

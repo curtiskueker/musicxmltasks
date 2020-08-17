@@ -1,7 +1,6 @@
 package org.curtis.content;
 
 public class TableReference {
-    private final String pageName = "database/reference/tableReference.jsp";
     private String tableName;
 
     public TableReference(String tableName) {
@@ -9,7 +8,7 @@ public class TableReference {
     }
 
     public String getPageName() {
-        return pageName;
+        return "database/reference/table.jsp";
     }
 
     public String getTableName() {

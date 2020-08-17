@@ -7,8 +7,9 @@ The score header contains metadata that is used by the score as a whole.
 <div class="content-section">Part list</div>
 
 <div class="content">
-The score's part list subelement data that define the score's parts and part groups are in table part_list_item whose discriminator value column is part_list_item_type,
-having discriminator values of "score part" or "part group".
+    The score's part list subelement data that define the score's parts and part groups are in table part_list_item,
+    a single-inheritance table whose discriminator column is part_list_item_type,
+    having discriminator values of "score part" or "part group".
 </div>
 
 <img class="table-layout-image" src="images/table_layout/part_list_item.png" alt="part list item"/>

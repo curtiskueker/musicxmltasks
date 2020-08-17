@@ -20,7 +20,7 @@
     An articulation record is one of a list of articulations.  The articulations list is in table notation, notation_type "articulations", to which the articulation record joins.
     </div>
     <div class="table-info">
-        Field articulation_type is the discriminator value that indicates the type of articulation.
+        Field articulation_type is the discriminator column that indicates the type of articulation.
         Values are:
         <ul class="discriminator-values">
             <li class="discriminator-value">accent</li>
@@ -152,7 +152,7 @@ The bend record is in the technical table, technical_type "bend".
         A credit has a list of credit display items, joined on field credit_id.
     </div>
     <div class="table-info">
-        The implemented classes of CreditDisplay, along with their credit_display_type field discriminator values, are:
+        The implemented classes of CreditDisplay, and their credit_display_type column values, are:
         <ul class="discriminator-values">
             <li class="discriminator-value">CreditImage: "credit image"</li>
             <li class="discriminator-value">CreditWords: "credit words"</li>
@@ -229,7 +229,7 @@ The bend record is in the technical table, technical_type "bend".
     </div>
     <div class="content-subsection">Discriminator values</div>
     <div class="table-info">
-        direction_type_type is the discriminator value field that distinguishes the type of direction type.
+        direction_type_type is the discriminator column that distinguishes the direction type.
         Values are:
         <ul class="discriminator-values">
             <li class="discriminator-value">rehearsal</li>
@@ -461,7 +461,7 @@ The bend record is in the technical table, technical_type "bend".
 
 <div id="encoding" class="table-content">
     <div class="table-info">
-        encoding is a single-table inheritance table with the discriminator value in field encoding_type.
+        encoding is a single-table inheritance table with discriminator column encoding_type.
         Each record corresponds to an "encoding" subelement.
     </div>
     <div class="table-info">
@@ -737,7 +737,7 @@ The bend record is in the technical table, technical_type "bend".
         A lyric_item record encapsulates the data definition of the xs:choice section of the lyric complexType in the MusicXML schema.
     </div>
     <div class="table-info">
-        The lyric_item table is single-inheritance, discriminator value field lyric_item_type.
+        The lyric_item table is single-inheritance, discriminator column lyric_item_type.
         Disciminator values are:
         <ul class="discriminator-values">
             <li class="discriminator-value">lyric text</li>
@@ -814,7 +814,7 @@ The bend record is in the technical table, technical_type "bend".
         The foreign key to music_data is attributes_id.
     </div>
     <div class="table-info">
-        The measure_style table is single-inheritance with discriminator value field measure_style_type.
+        The measure_style table is single-inheritance with discriminator column measure_style_type.
         Discriminator values are:
         <ul class="discriminator-values">
             <li class="discriminator-value">multiple rest</li>
@@ -956,7 +956,7 @@ The bend record is in the technical table, technical_type "bend".
 
 <div id="music_data" class="table-content">
     <div class="table-info">
-        The music_data table is single-inheritance with the discriminator value field "music_data_type".
+        The music_data table is single-inheritance with the discriminator column "music_data_type".
     </div>
     <div class="table-info">
         All music data types are stored in the music_data table, and given the number and variety of music data types, the table has a large number of columns,
@@ -1398,7 +1398,7 @@ The bend record is in the technical table, technical_type "bend".
         The chord element's presence or absence as defined in the "full-note" group is stored as a boolean value in the "chord" field of the note record in the music_data table.
     </div>
     <div class="table-info">
-        note_type is a single-inheritance table with discriminator value field note_type_type.
+        note_type is a single-inheritance table with discriminator column note_type_type.
         The discriminator values are:
         <ul class="discriminator-values">
             <li class="discriminator-value">pitch</li>
@@ -1417,7 +1417,7 @@ The bend record is in the technical table, technical_type "bend".
         A barline (music_data table, music_data_type "barline") also stores its wavy-line element data in this table.
     </div>
     <div class="table-info">
-        ornament is a single-inheritance table, discriminator value field ornament_type.
+        ornament is a single-inheritance table, discriminator column ornament_type.
     </div>
     <div class="table-info">
         ornament discriminator values are:
@@ -1501,7 +1501,7 @@ The bend record is in the technical table, technical_type "bend".
         The list as a whole belongs to a score_header record, foreign key score_header_id.
     </div>
     <div class="table-info">
-        Since the part_list_item table stores multiple data types, the table is single-inheritance.  Discriminator value field part_list_item_type.
+        Since the part_list_item table stores multiple data types, the table is single-inheritance.  Discriminator column part_list_item_type.
     </div>
     <div class="table-info">
         Discriminator values are:
@@ -1609,7 +1609,7 @@ The bend record is in the technical table, technical_type "bend".
         A play record has a list of play_type records, each of which join to the play table using foreign key play_id in the play_type table.
     </div>
     <div class="table-info">
-        play_type is a single-inheritance table, with discriminator value field play_type_type.
+        play_type is a single-inheritance table, with discriminator column play_type_type.
     </div>
     <div class="table-info">
         Disriminator values are:
@@ -1825,7 +1825,7 @@ The bend record is in the technical table, technical_type "bend".
         where the technicals list record is stored, notation_type "technicals".
     </div>
     <div class="table-info">
-        The technical table is single-inheritance with discriminator value field technical_type.
+        The technical table is single-inheritance with discriminator column technical_type.
     </div>
     <div class="table-info">
         Discriminator values are:
@@ -1901,7 +1901,7 @@ The bend record is in the technical table, technical_type "bend".
         A text_display record represents the display-text/accidental-text choice that appears in both the notehead-text and name-display complexType.
     </div>
     <div class="table-info">
-        text_display is a single-inheritance table with discriminator value field text_display_type.
+        text_display is a single-inheritance table with discriminator column text_display_type.
     </div>
     <div class="table-info">
         Discriminator values are;
@@ -1969,7 +1969,7 @@ The bend record is in the technical table, technical_type "bend".
         A list of time records belongs to an attributes record in the music_data table, foreign key attributes_id.
     </div>
     <div class="table-info">
-        The time table is single-inheritance, with discriminator value field time_type.
+        The time table is single-inheritance, with discriminator column time_type.
         The discriminator value depends on the choice employed in the xs:choice section of the "time" complexType.
     </div>
     <div class="table-info">

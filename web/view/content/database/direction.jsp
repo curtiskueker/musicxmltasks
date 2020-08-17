@@ -14,7 +14,7 @@ A direction consists of one or more direction type lists, each having its own di
 
 <div class="content">
     The direction types themselves are in table direction_type with each record joined to its list in the direction_type_list table.
-Table direction_type is a single-inheritance table with discriminator value column direction_type_type.
+Table direction_type is a single-inheritance table with discriminator column direction_type_type.
 </div>
 
 <div class="content-subsection">Direction type discriminator values</div>

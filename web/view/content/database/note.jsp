@@ -12,7 +12,7 @@ The basic data structure of a note is:
 </ul>
 
 <div class="content">
-When the notation type is a list of articulations, technicals, or ornaments, the notation.notation_type values are "articulations", "technicals", and "ornaments", respectively.
+When the notation type is a list of articulations, technicals, or ornaments, the notation table notation_type values are "articulations", "technicals", and "ornaments", respectively.
 These notation types are lists, with the individual articulations, technicals, and ornaments in the list stored as records in the joined articulation, technical, and ornament tables, respectively.
 </div>
 
@@ -31,7 +31,7 @@ The information specific to the type of lyric is stored in the joined lyric_item
 </div>
 
 <div class="content">
-Table lyric_item is a single-inheritance table with its discriminator value in the lyric_item_type field whose possible values are "extend", "laughing", "humming", and "lyric text".
+Table lyric_item is a single-inheritance table with discriminator column lyric_item_type whose values are "extend", "laughing", "humming", and "lyric text".
 A lyric text record may have its own extend value, which is a self-join on the lyric_item table whose record is an "extend" type.
 </div>
 
