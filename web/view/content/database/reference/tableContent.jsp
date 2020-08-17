@@ -632,8 +632,10 @@ The bend record is in the technical table, technical_type "bend".
 
 <div id="instrument_type" class="table-content">
     <div class="table-info">
-        instrument_type is a single-inheritance table with discriminator field instrument_type, and stores the solo or ensemble subelement data of element score-instrument.
-        Possible values of field instrument type are:
+        instrument_type is a single-inheritance table with discriminator column instrument_type, and stores the solo or ensemble subelement data of element score-instrument.
+    </div>
+    <div class="table-info">
+        Discriminator values are:
         <ul class="discriminator-values">
             <li class="discriminator-value">solo</li>
             <li class="discriminator-value">ensemble</li>
