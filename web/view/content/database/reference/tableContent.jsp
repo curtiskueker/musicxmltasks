@@ -1480,8 +1480,8 @@ The bend record is in the technical table, technical_type "bend".
         Many-to-one relation with table page_layout, foreign key page_layout_id.
     </div>
     <div class="table-info">
-        Field page_margin_key has identical value to field "type", which contains the value of the page-margins "type" attribute.
-        The key is used to construct odd, even, or both page margin types for alternate or fixed page layouts.
+        The "type" attribute values of the page-margin elements within a page-layout element must be unique.
+        If duplicate "type" values are found during conversion from a MusicXML file to a database record, a warning is issued, and only one of the page-margins type is persisted.
     </div>
 </div>
 
