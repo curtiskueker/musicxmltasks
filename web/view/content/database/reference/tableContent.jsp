@@ -1691,7 +1691,7 @@ The bend record is in the technical table, technical_type "bend".
 <div id="score_instrument" class="table-content">
     <div class="table-info">
         A list of score_instrument records belongs to a score part record stored in the part_list_item table.
-        Foreign key is part_list_item_id.
+        Foreign key is score_part_id.
     </div>
     <div class="table-info">
         Attribute "id" value is in field score_instrument_id.
@@ -1704,7 +1704,7 @@ The bend record is in the technical table, technical_type "bend".
     </div>
     <div class="table-info">
         A list of score_midi records belongs to a score part record in the part_list_item table.
-        The foreign key in score_midi is part_list_item_id.
+        The foreign key in score_midi is score_part_id.
     </div>
 </div>
 
@@ -1712,7 +1712,7 @@ The bend record is in the technical table, technical_type "bend".
     <div class="table-info">
         Stores the data of the "group" subelements of the score-part element.
         The score-part data is in table part_list_item.
-        Foreign key in score_part_group is part_list_item_id.
+        Foreign key in score_part_group is score_part_id.
     </div>
     <div class="table-info">
         The "group" element's text data is in field group_name.

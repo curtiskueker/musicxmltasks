@@ -71,7 +71,7 @@
 </div>
 
 <div class="content">
-    When the MusicXML schema defines an "id" attribute, the attribute value is stored in a field with another name ending in _id.
+    When the MusicXML schema defines an "id" attribute (other than optional-unique-id), the table field is named after the table and ends in _id.
 </div>
 
 <div class="content-subsection">Foreign keys</div>
