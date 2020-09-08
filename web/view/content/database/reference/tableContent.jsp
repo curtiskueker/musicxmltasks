@@ -1446,13 +1446,13 @@ The bend record is in the technical table, technical_type "bend".
         The foreign key to this record in ornament is ornaments_id.
     </div>
     <div class="table-info">
-        "other ornament" element text is in field "value".
+        other-ornament element text is in field "value".
     </div>
     <div class="table-info">
-        "tremolo" element "type" attribute value is in field tremolo_type.  Element text is in field tremolo_marks.
+        tremolo element text is in field tremolo_marks.
     </div>
     <div class="table-info">
-        "wavy line" element "type" attribute value is in field connection_type.  Attribute "number" is in field wavy_line_number.
+        wavy-line element attribute "number" is in field wavy_line_number.
     </div>
     <div class="table-info">
         Elements with trill-sound values have their data stored in table trill_sound, foreign key trill_sound_id.
