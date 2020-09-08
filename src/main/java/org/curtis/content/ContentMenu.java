@@ -15,7 +15,7 @@ public class ContentMenu {
         MENU = new MenuItem(
                 Arrays.asList(
                         new MenuItem("Outline", "outline.jsp"),
-                        new MenuItem("Tasks",
+                        new MenuItem("Tasks", "interface/tasks.jsp",
                                 Arrays.asList(
                                         new MenuItem("Convert", "interface/convert/convert.jsp",
                                                 Arrays.asList(
