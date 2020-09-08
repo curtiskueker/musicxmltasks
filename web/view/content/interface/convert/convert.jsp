@@ -5,15 +5,17 @@ Data conversion is the primary task of the MusicXML Tasks tool.  Conversion to a
 </div>
 
 <div class="content">
-Each conversion type converts data from one format to a central data structure, and from there to another format.
+    The layout of the Convert tab panes reflects the conversion process, with the from-conversion pane on the left and the to-conversion pane on the right.
 </div>
 
 <div class="content">
-The layout of the Convert tab panes reflects the conversion process, with the from-conversion pane on the left and the to-conversion pane on the right.  Select both a to- and from-conversion data type each select list to reveal the conversion pane where you enter the conversion information.  Press the "Select" button to perform the conversion.
+    Each conversion pane has its own select list of available data types.
+    Selecting a data type in one pane will dynamically change the available data types in the other select list.
+    Choosing a conversion data type in a select list will reveal the conversion pane where you enter the data conversion information.
 </div>
 
 <div class="content">
-To convert data, make a from-conversion selection, a to-conversion selection, enter the data for each pane, and then press the "Convert" button.
+To convert data, make a from-conversion selection, a to-conversion selection, enter the information in each pane, and then press the "Convert" button.
 </div>
 
 <div class="content">
@@ -22,14 +24,18 @@ The subpages of this page explain in more detail each from- and to-conversion pa
 
 <div class="content-section">Conversion process</div>
 
+<div class="content">
+    Every conversion (except LilyPond to PDF) first converts the input data to a central data structure, and then from there to the output format.
+</div>
+
 <div class="content-subsection">Java Beans</div>
 
 <div class="content">
-Java beans, as defined by the MusicXML schema, are at the center of the conversion process.  All conversions (except LilyPond to PDF) first convert the input data to beans, then operate on the beans to generate output.
+Java beans, as defined by the MusicXML schema, are at the center of the conversion process.
 </div>
 
 <div class="image">
-[image showing input (xml, database) -> java beans -> output (xml, database, lilypond)]
+    <img class="image" src="images/interface/beans_convert.png" alt="beans convert"/>
 </div>
 
 <div class="content-subsection">From XML</div>

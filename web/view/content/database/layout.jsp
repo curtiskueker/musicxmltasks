@@ -42,5 +42,5 @@ These classes all use Hibernate single-table inheritance where one field in the 
 <div class="content-section">Table reference</div>
 
 <div class="content">
-    Additional information about the tables themselves, including table and field names, datatypes, and data is available on the "Table Reference" page.
+    Additional information about the tables themselves, including table and field names, data types, and data is available on the "Table Reference" page.
 </div>

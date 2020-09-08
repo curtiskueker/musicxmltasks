@@ -61,7 +61,7 @@
     Generally speaking, element text is stored in a field named "value".
     Often, if the element text is defined as an enumeration in the MusicXML schema, some variation of "type" is used for the field name,
     especially if the schema uses "type" as part of its defined name.
-    Attribute "type" value is generally stored in field "type", unless there is a datatype conflict or ambiguity.
+    Attribute "type" value is generally stored in field "type", unless there is a data type conflict or ambiguity.
 </div>
 
 <div class="content-subsection">Primary key</div>
@@ -116,7 +116,7 @@
     When a MusicXML score is retrieved from the database, these records are retrieved ordered by the ordering column value.
 </div>
 
-<div class="content-section">Datatypes</div>
+<div class="content-section">Data Types</div>
 
 <div class="content-subsection">Enumerations</div>
 
