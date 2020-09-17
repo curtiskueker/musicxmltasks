@@ -1948,6 +1948,17 @@ The bend record is in the technical table, technical_type "bend".
         All attributes in the text-formatting attributeGroup in the MusicXML schema are stored in the text_format table,
         except for attributeGroup print-style-align which are display table fields.
     </div>
+    <div class="table-info">
+        Exceptions:
+    </div>
+    <div class="table-info">
+        Some database record types have a single scalar value found in attributeGroup text-formatting, and these single values are stored with the main record:
+        <ul>
+            <li>justify: metronome, lyric, part-name-text, and group-name-text</li>
+            <li>xml:lang: directive and lyric language</li>
+            <li>enclosure: percussion</li>
+        </ul>
+    </div>
     <div class="content-subsection">Direction types</div>
     <div class="table-info">
         Direction types dynamics, rehearsal, symbol, and words in the direction_type table have a text_format record, foreign key text_format_id.
