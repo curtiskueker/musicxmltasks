@@ -2,10 +2,13 @@
 
 <div id="accidental" class="table-content">
     <div class="table-info">
-    The accidental's note is in music_data, music_data_type "note".
+        Encapsulates an accidental belonging to a note.
     </div>
     <div class="table-info">
-        accidental_type field contains the XML element's accidental-type enumeration value (see enumerations on the main Database Layout page).
+        accidental_type field contains the accidental-value enumeration value.
+    </div>
+    <div class="table-info">
+    The accidental's note is in music_data, music_data_type "note".
     </div>
 </div>
 
@@ -58,13 +61,13 @@ The value field is used to store an "other articulation" value.
     Stores the MusicXML "ending" element data.
     </div>
     <div class="table-info">
-        Field barline_type is the "type" attribute enumeration.
+        Field ending_type is the "type" attribute enumeration value.
     </div>
     <div class="table-info">
         Field "value" contains the "ending" element's text value.
     </div>
     <div class="table-info">
-        The barline record is in music_data, music_data_type value "barline", joined on field barline_ending_id.
+        Corresponding barline record is in music_data, music_data_type value "barline", joined on field barline_ending_id.
     </div>
 </div>
 
@@ -79,10 +82,10 @@ The value field is used to store an "other articulation" value.
 
 <div id="beam" class="table-content">
     <div class="table-info">
-        The beam record joins to the note in music_data, music_data_type "note".
+        The beam record joins to its note in music_data, music_data_type "note".
     </div>
     <div class="table-info">
-        Field type contains the beam--type enumeration value.
+        Field "type" contains the beam-value enumeration value.
     </div>
 </div>
 
@@ -292,7 +295,7 @@ The bend record is in the technical table, technical_type "bend".
         Dynamics markings for dynamics are in table dynamics_marking, one-to-many foreign key join on dynamics_id.
     </div>
     <div class="table-info">
-        A beat metronome has two foreign keys to metronome_mark, metronome_mark_1_id and metronome_mark_2_id.
+        A beat metronome has two foreign keys to metronome_mark: metronome_mark_1_id and metronome_mark_2_id.
     </div>
     <div class="table-info">
         A note metronome has two lists of metronome_note records.  The foreign keys in metronome_note to distinguish these two lists are note_metronome_1_id and note_metronome_2_id.
@@ -1823,8 +1826,8 @@ The bend record is in the technical table, technical_type "bend".
         The technical table stores data for all subelements of the "technical" element.
     </div>
     <div class="table-info">
-        A technical list is a type of notation, so each record in technical joins to the notation table, foreign key technicals_id,
-        where the technicals list record is stored, notation_type "technicals".
+        A technical list is a type of notation, so each record in technical joins to the notation table where the technicals list record is stored,
+        foreign key technicals_id, notation_type "technicals".
     </div>
     <div class="table-info">
         The technical table is single-inheritance with discriminator column technical_type.
@@ -1871,13 +1874,13 @@ The bend record is in the technical table, technical_type "bend".
     <div class="table-info">
         technical table fields:
         <ul>
-            <li>harmonic_type: stores the subelement name, either "natural" or "artificial", as an enum value</li>
-            <li>harmonic_pitch: stores the subelement name, either "base-pitch", "touching-pitch", or "sounding-pitch", as an enum value</li>
+            <li>harmonic_type: stores the harmonic subelement name "natural" or "artificial"</li>
+            <li>harmonic_pitch: stores the subelement name "base-pitch", "touching-pitch", or "sounding-pitch"</li>
             <li>string_number: "string" element text</li>
             <li>value: fingering, pluck, fret, hammer-on, pull-off, tap, other-technical element text; harmon-mute element's harmon-closed subelement text</li>
             <li>notation_type: hammer-on, pull-off "type" attribute</li>
             <li>notation_number: hammer-on, pull-off "number" attribute</li>
-            <li>bend_type: stores the bend subelement name, either pre-bend or release, as an enum value</li>
+            <li>bend_type: bend subelement name "pre-bend" or "release"</li>
             <li>tap_hand: "hand" attribute value for a tap</li>
             <li>hole_closed_type: a hole's hole-closed subelement text</li>
             <li>hole_closed_location: a hole's hole-closed subelement's location attribute</li>
@@ -1888,8 +1891,8 @@ The bend record is in the technical table, technical_type "bend".
     <div class="table-info">
         techcnical table joins:
         <ul>
-            <li>bend_with_bar: stores the with-bar subelement data for a bend</li>
-            <li>bend_sound: stores the bend-sound attributeGroup data for a bend</li>
+            <li>bend_with_bar: with-bar subelement data for a bend</li>
+            <li>bend_sound: bend-sound attributeGroup data for a bend</li>
         </ul>
     </div>
     <div class="table-info">
@@ -1923,7 +1926,7 @@ The bend record is in the technical table, technical_type "bend".
     </div>
     <div class="content-subsection">accidental text</div>
     <div class="table-info">
-        Field accidental_type stores the accidental-text element value as an enum.
+        Field accidental_type stores the accidental-text element value.
     </div>
     <div class="content-subsection">Text display as data member</div>
     <div class="table-info">

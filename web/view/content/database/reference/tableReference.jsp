@@ -58,8 +58,8 @@
 </div>
 
 <div class="content">
-    Generally speaking, element text is stored in a field named "value".
-    Often, if the element text is defined as an enumeration in the MusicXML schema, some variation of "type" is used for the field name,
+    Generally speaking, element text is stored in a field named "value",
+    and when the element text is defined as an enumeration in the MusicXML schema, some variation of "type" is used for the field name,
     especially if the schema uses "type" as part of its defined name.
     Attribute "type" value is generally stored in field "type", unless there is a data type conflict or ambiguity.
 </div>
@@ -116,15 +116,7 @@
     When a MusicXML score is retrieved from the database, these records are retrieved ordered by the ordering column value.
 </div>
 
-<div class="content-section">Data Types</div>
-
-<div class="content-subsection">Enumerations</div>
-
-<div class="content">
-    Enumeration values in the MusicXML schema are stored as upper-case strings with dashes and spaces replaced by underscores.  Example "double-sharp" is stored as "DOUBLE_SHARP".
-</div>
-
-<div class="content-subsection">Booleans</div>
+<div class="content-section">Booleans</div>
 
 <div class="content">
     Boolean values are stored in char(1) fields with values 'Y' or 'N'.
@@ -135,5 +127,5 @@
 </div>
 
 <div class="content">
-    When a subelement is defined as an "empty" type, where the simple presence or absence of the element is checked, have have the presence or absence of the element stored as a boolean.
+    When a subelement is defined as an "empty" type, where the simple presence or absence of the element is checked, the presence or absence of the element is stored as a boolean.
 </div>
