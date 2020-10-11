@@ -91,7 +91,7 @@
 <div class="content-subsection">element_id field</div>
 
 <div class="content">
-    Many MusicXml elements are defined with the optional-unique-id attribute group that defines a unique "id" attribute for the element.
+    Many MusicXml elements have an optional-unique-id attribute group that defines a unique "id" attribute for the element.
     These values are stored in the associated table's element_id field.
 </div>
 
@@ -112,7 +112,8 @@
 
 <div class="content">
     When a MusicXML file is converted to a database record in the tasks application,
-    lists of same-name subelements are stored in tables that have an ordering column by incrementing a list index, and then storing the index value in the ordering column of the database record.
+    lists of same-name subelements are stored in tables that have an ordering column using an incrementing index with an initial value of 1,
+    and then storing the index value in the ordering column of the database record.
     When a MusicXML score is retrieved from the database, these records are retrieved ordered by the ordering column value.
 </div>
 
@@ -123,9 +124,9 @@
 </div>
 
 <div class="content">
-    MusicXML schema "yes-no" type fields are stored as a boolean.
+    MusicXML schema "yes-no" attribute types are stored as a boolean: 'Y' for "yes", 'N' for "no", and null when the attribute is not present.
 </div>
 
 <div class="content">
-    When a subelement is defined as an "empty" type, where the simple presence or absence of the element is checked, the presence or absence of the element is stored as a boolean.
+    When a subelement is defined as an "empty" type, the presence or absence of the element is stored as a boolean value 'Y' or 'N'.
 </div>
