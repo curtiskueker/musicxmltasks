@@ -49,10 +49,7 @@
         Lined articulations doit, falloff, plop, and scoop use the line table.
     </div>
     <div class="table-info">
-        breath_mark_value and caesura_value are enumeration values for the breath mark and caesura, respectively.
-    </div>
-    <div class="table-info">
-The value field is used to store an "other articulation" value.
+        Field "value": breath mark, caesura, and other articulation element text.
     </div>
     </div>
 
@@ -1874,18 +1871,26 @@ The bend record is in the technical table, technical_type "bend".
     <div class="table-info">
         technical table fields:
         <ul>
-            <li>harmonic_type: stores the harmonic subelement name "natural" or "artificial"</li>
+            <li>
+                type:
+                harmonic subelement name "natural" or "artificial";
+                hammer-on and  pull-off "type" attribute;
+                bend subelement name "pre-bend" or "release";
+                hole-type element text
+            </li>
             <li>harmonic_pitch: stores the subelement name "base-pitch", "touching-pitch", or "sounding-pitch"</li>
             <li>string_number: "string" element text</li>
             <li>value: fingering, pluck, fret, hammer-on, pull-off, tap, other-technical element text; harmon-mute element's harmon-closed subelement text</li>
-            <li>notation_type: hammer-on, pull-off "type" attribute</li>
             <li>notation_number: hammer-on, pull-off "number" attribute</li>
-            <li>bend_type: bend subelement name "pre-bend" or "release"</li>
             <li>tap_hand: "hand" attribute value for a tap</li>
-            <li>hole_closed_type: a hole's hole-closed subelement text</li>
-            <li>hole_closed_location: a hole's hole-closed subelement's location attribute</li>
+            <li>hole_closed: a hole's hole-closed subelement text</li>
+            <li>hole_closed_location: a </li>
             <li>handbell_type: handbell element text value</li>
-            <li>location: harmon-mute element's harmon-closed subelement's location attribute</li>
+            <li>
+                location:
+                hole-closed element's location attribute;
+                harmon-closed element's location attribute
+            </li>
         </ul>
     </div>
     <div class="table-info">
