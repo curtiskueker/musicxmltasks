@@ -61,6 +61,9 @@
     Generally speaking, element text is stored in a field named "value",
     and when the element text is defined as an enumeration in the MusicXML schema, some variation of "type" is used for the field name,
     especially if the schema uses "type" as part of its defined name.
+</div>
+
+<div class="content">
     Attribute "type" value is generally stored in field "type", unless there is a data type conflict or ambiguity.
 </div>
 

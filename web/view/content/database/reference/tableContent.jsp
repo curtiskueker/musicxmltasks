@@ -686,6 +686,12 @@ The bend record is in the technical table, technical_type "bend".
     </div>
 </div>
 
+<div id="kind" class="table-content">
+    <div class="table-info">
+        A kind object belongs to a harmony chord record, foreign key kind_id.
+    </div>
+</div>
+
 <div id="layout" class="table-content">
     <div class="table-info">
         A layout consists of a page_layout record, a system_layout record, and a list of staff_layout records.
@@ -1880,12 +1886,11 @@ The bend record is in the technical table, technical_type "bend".
             </li>
             <li>harmonic_pitch: stores the subelement name "base-pitch", "touching-pitch", or "sounding-pitch"</li>
             <li>string_number: "string" element text</li>
-            <li>value: fingering, pluck, fret, hammer-on, pull-off, tap, other-technical element text; harmon-mute element's harmon-closed subelement text</li>
+            <li>value: fingering, pluck, fret, hammer-on, pull-off, tap, handbell, other-technical element text; harmon-mute element's harmon-closed subelement text</li>
             <li>notation_number: hammer-on, pull-off "number" attribute</li>
             <li>tap_hand: "hand" attribute value for a tap</li>
             <li>hole_closed: a hole's hole-closed subelement text</li>
             <li>hole_closed_location: a </li>
-            <li>handbell_type: handbell element text value</li>
             <li>
                 location:
                 hole-closed element's location attribute;
