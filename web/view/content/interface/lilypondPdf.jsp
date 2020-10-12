@@ -19,11 +19,11 @@ These values are required for some conversion operations:
 </div>
 
 <ul class="arrowed-list">
-    <li class="padded-li"><span>LilyPond location: Required for converting to or from a LilyPond file.</span></li>
+    <li class="padded-li"><span>LilyPond location: Required for converting to PDF.</span></li>
 
-    <li class="padded-li"><span>PDF Reader location: Required for opening the PDF file upon completion of a conversion to a PDF file.</span></li>
+    <li class="padded-li"><span>PDF Reader location: Required for opening the PDF file upon completion of a conversion to PDF.</span></li>
 </ul>
 
 <div class="content">
-If these locations are not set, then, respectively, the LilyPond conversion options are not available in the tool, and the "Open PDF file on completion" option for PDF conversion are not shown.
+If these locations are not set, then, respectively, conversion to PDF is not available in the tool, and the "Open PDF file on completion" option for PDF conversion is not shown.
 </div>

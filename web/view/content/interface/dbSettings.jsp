@@ -21,7 +21,7 @@ The tasks tool is configured to use MySQL, PostgreSQL, and Oracle XE (Express Ed
 <div class="content-section">MusicXML Database Default Values</div>
 
 <div class="content">
-You can skip setting database connection values, and setup a databse with the default values below:
+If you don't set database connection values, the application will use the default values below:
 </div>
 
 <div class="content">

@@ -10,8 +10,7 @@ Data conversion is the primary task of the MusicXML Tasks tool.  Conversion to a
 
 <div class="content">
     Each conversion pane has its own select list of available data types.
-    Selecting a data type in one pane will dynamically change the available data types in the other select list.
-    Choosing a conversion data type in a select list will reveal the conversion pane where you enter the data conversion information.
+    Selecting a data type in one pane will dynamically change the available data types in the other select list and reveal the conversion pane where you enter the data conversion information.
 </div>
 
 <div class="content">
@@ -41,7 +40,7 @@ Java beans, as defined by the MusicXML schema, are at the center of the conversi
 <div class="content-subsection">From XML</div>
 
 <div class="content">
-To convert from MusicXML, the XML file is first converted to a Java XML Document using DOM (Docunent Object Model).  Java Handler classes in the tasks application then navigate the Document and create the Java beans.  Bean instantiations that are repetitive are handed off to Factory classes that return newly-created Java beans.
+To convert from MusicXML, the XML file is first converted to a Java XML Document using DOM (Document Object Model).  Java Handler classes in the tasks application then navigate the Document and create the Java beans.  Bean instantiations that are repetitive are handed off to Factory classes that return newly-created Java beans.
 </div>
 
 <div class="content-subsection">To XML and LilyPond</div>
@@ -51,7 +50,7 @@ Conversion to the text output of XML and LilyPond uses the tasks application's B
 </div>
 
 <div class="content">
-LilyPond output Builder classes use reflection to call the correct Builder class and method, according to a naming convention that the application expects, passing as an argument the Java bean that will be examined by the LilyPond Builder to generate LilyPond output.  If the LilyPond Builder generates a call to an unimplemented method, that means that that LilyPond output feature is unimplemented, and the method call is ignored and the unimplemented call is noted in console output.  This architecture makes it easy to add to LilyPond output features by simply adding and implementing the method in question for the output feature that needs to be added, while at the same avoiding adding any number of empty, unimplemented methods to the code.
+LilyPond output Builder classes use reflection to call the correct Builder class and method, according to a naming convention that the application expects, passing as an argument the Java bean that will be examined by the LilyPond Builder to generate LilyPond output.  If the LilyPond Builder generates a call to an unimplemented method, that means that that LilyPond output feature is unimplemented, and the method call is ignored and the unimplemented call is noted in console output.  This architecture makes it easy to add to LilyPond output features by simply adding and implementing the method in question for the output feature that needs to be added, while at the same time avoiding adding any number of empty, unimplemented methods to the code.
 </div>
 
 <div class="content-subsection">To and from relational database</div>

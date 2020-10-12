@@ -10,7 +10,7 @@ LilyPond must be installed on the local machine and its location set under the t
     </div>
 
     <div class="content">
-When converting from a MusicXML file or a datbase record, the file or record is first converted to a LilyPond file according to the process described above.
+        When converting from a MusicXML file or a database record, the file or record is first converted to a LilyPond file according to the process described elsewhere.
     </div>
 
     <ul class="arrowed-list">

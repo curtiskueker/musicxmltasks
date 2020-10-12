@@ -12,9 +12,9 @@ Only a MusicXML file can be converted to a MusicXML database record.
     <ul class="arrowed-list">
         <li class="padded-li"><span>Enter the score name that you want the database record to have in the "Score Name" text box.</span></li>
 
-    <div class="content">
-If no score name is entered in the text box, the filename will be the XML filename minus the file extension.
-    </div>
+        <div class="content">
+            If no score name is entered in the text box, the score name will be the XML filename minus the file extension.
+        </div>
 
     <div class="content">
 No two scores stored in the database can have the same score name.
@@ -22,9 +22,9 @@ No two scores stored in the database can have the same score name.
 
         <li class="padded-li"><span>Select the "Show SQL" checkbox to display the SQL queries that Hibernate executes.</span></li>
 
-    <div class="content">
-It's recommended that that SQL output be redirected to a file, or the amount of output may overwhelm the tool, requiring that it be restarted (do this under the "Output" tab in the tool).
-    </div>
+        <div class="content">
+            NOTE: It's recommended that that SQL output be redirected to a file, as the amount of output may overwhelm the tool, requiring that it be restarted (do this under the "Output" tab in the tool).
+        </div>
     </ul>
 </div>
 

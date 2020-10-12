@@ -15,24 +15,29 @@ public class ContentMenu {
         MENU = new MenuItem(
                 Arrays.asList(
                         new MenuItem("Outline", "outline.jsp"),
-                        new MenuItem("Tasks", "interface/tasks.jsp",
+                        new MenuItem("Tasks Interface", "interface/tasksInterface.jsp",
                                 Arrays.asList(
-                                        new MenuItem("Convert", "interface/convert/convert.jsp",
+                                        new MenuItem("Tasks Pages", "interface/tasksPages.jsp",
                                                 Arrays.asList(
-                                                        new MenuItem("From MusicXML", "interface/convert/fromMusicXml.jsp"),
-                                                        new MenuItem("From Database", "interface/convert/fromDb.jsp"),
-                                                        new MenuItem("From LilyPond", "interface/convert/fromLy.jsp"),
-                                                        new MenuItem("To MusicXML", "interface/convert/toMusicXml.jsp"),
-                                                        new MenuItem("To Database", "interface/convert/toDb.jsp"),
-                                                        new MenuItem("To LilyPond", "interface/convert/toLy.jsp"),
-                                                        new MenuItem("To PDF", "interface/convert/toPdf.jsp")
+                                                        new MenuItem("Convert", "interface/convert/convert.jsp",
+                                                                Arrays.asList(
+                                                                        new MenuItem("From MusicXML", "interface/convert/fromMusicXml.jsp"),
+                                                                        new MenuItem("From Database", "interface/convert/fromDb.jsp"),
+                                                                        new MenuItem("From LilyPond", "interface/convert/fromLy.jsp"),
+                                                                        new MenuItem("To MusicXML", "interface/convert/toMusicXml.jsp"),
+                                                                        new MenuItem("To Database", "interface/convert/toDb.jsp"),
+                                                                        new MenuItem("To LilyPond", "interface/convert/toLy.jsp"),
+                                                                        new MenuItem("To PDF", "interface/convert/toPdf.jsp")
+                                                                )
+                                                        ),
+                                                        new MenuItem("Validate XML", "interface/validate.jsp"),
+                                                        new MenuItem("DB Settings", "interface/dbSettings.jsp"),
+                                                        new MenuItem("LilyPond/PDF", "interface/lilypondPdf.jsp"),
+                                                        new MenuItem("Output", "interface/output.jsp"),
+                                                        new MenuItem("DB Actions", "interface/dbActions.jsp")
                                                 )
                                         ),
-                                        new MenuItem("Validate XML", "interface/validate.jsp"),
-                                        new MenuItem("DB Settings", "interface/dbSettings.jsp"),
-                                        new MenuItem("LilyPond/PDF", "interface/lilypondPdf.jsp"),
-                                        new MenuItem("Output", "interface/output.jsp"),
-                                        new MenuItem("DB Actions", "interface/dbActions.jsp")
+                                        new MenuItem("Tasks Output")
                                 )
                         ),
                         new MenuItem("Database Layout", "database/layout.jsp",
@@ -64,7 +69,9 @@ public class ContentMenu {
                                         new MenuItem("Formatted Display", "database/formattedDisplay.jsp"),
                                         Tables.getTableReference()
                                 )
-                        )
+                        ),
+                        new MenuItem("Database Setup"),
+                        new MenuItem("Using the Database")
                 )
         );
     }

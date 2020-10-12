@@ -10,7 +10,7 @@ Selecting this pane will convert a MusicXML file to Java beans which are then co
     </div>
 
     <div class="content">
-        Files can be compressed .mxl or uncompressed xml.
+        Files can be compressed .mxl or uncompressed .xml.
     </div>
 
     <div class="content">
