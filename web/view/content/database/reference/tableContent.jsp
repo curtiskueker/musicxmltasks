@@ -58,7 +58,7 @@
     Stores the MusicXML "ending" element data.
     </div>
     <div class="table-info">
-        Field ending_type is the "type" attribute enumeration value.
+        Field "type" is the "type" attribute enumeration value.
     </div>
     <div class="table-info">
         Field "value" contains the "ending" element's text value.
@@ -259,7 +259,7 @@ The bend record is in the technical table, technical_type "bend".
         </ul>
     </div>
     <div class="table-info">
-        Additionally, all percussion element subelements are treated as direction types.
+        Additionally, all percussion element subelements are direction types.
         Their discriminator values are:
         <ul class="discriminator-values">
             <li class="discriminator-value">glass</li>
@@ -283,7 +283,7 @@ The bend record is in the technical table, technical_type "bend".
         All direction types join to display, foreign key display_id.  Direction types with text values join to text_format, foreign key text_format_id.
     </div>
     <div class="table-info">
-        The "type" attribute value is stored in field direction_type.
+        The "type" attribute value is stored in field "type".
     </div>
     <div class="table-info">
         The "number" attribute value is stored in field direction_type_number.
@@ -307,7 +307,7 @@ The bend record is in the technical table, technical_type "bend".
         The text element value for the other-direction and other-percussion elements is stored in field "value".
     </div>
     <div class="table-info">
-        Percussion elements that have their text element value defined in the MusicXML schema as an enumeration value store that value in the direction_type field:
+        Percussion elements that have their text element value defined in the MusicXML schema as an enumeration value store that value in the "value" field:
         glass, metal, wood, pitched, membrane, effect, beater, and stick location.
     </div>
 </div>
@@ -414,7 +414,8 @@ The bend record is in the technical table, technical_type "bend".
 
 <div id="distance" class="table-content">
     <div class="table-info">
-        All subelements of the appearance element have a one-to-many relationship to the defaults table, foreign key defaults_id.
+        The distance element is a subelement of the appearance element, and has a direct many-to-one join to the defaults table, foreign key defaults_id.
+        There is no intermediate appearance table.
     </div>
 </div>
 
@@ -554,8 +555,8 @@ The bend record is in the technical table, technical_type "bend".
 
 <div id="glyph" class="table-content">
     <div class="table-info">
-        glyph is a subelement of appearance, part of the defaults structure.
-        All subelements of the appearance element have a one-to-many relationship to the defaults table, foreign key defaults_id.
+        The glyph element is a subelement of the appearance element, and has a direct many-to-one join to the defaults table, foreign key defaults_id.
+        There is no intermediate appearance table.
     </div>
 </div>
 
@@ -715,7 +716,8 @@ The bend record is in the technical table, technical_type "bend".
 
 <div id="line_width" class="table-content">
     <div class="table-info">
-        All subelements of the appearance element have a one-to-many relationship to the defaults table, foreign key defaults_id.
+        The line-width element is a subelement of the appearance element, and has a direct many-to-one join to the defaults table, foreign key defaults_id.
+        There is no intermediate appearance table.
     </div>
 </div>
 
@@ -1301,11 +1303,16 @@ The bend record is in the technical table, technical_type "bend".
         each notation type individually only use some fields to store their records.
         Notable data definitions are below:
     </div>
+    <div class="content-subsection">Notation types in general</div>
+    <div class="table-info">
+        <ul>
+            <li>Element text in field "value"</li>
+            <li>"type" attribute in field "type"</li>
+        </ul>
+    </div>
     <div class="content-subsection">tied and slur</div>
     <div class="table-info">
         <ul>
-            <li>tied record: "type" attribute in field tied_type</li>
-            <li>slur record "type" attribute in field connection_type</li>
             <li>"number" attribute in field notation_number</li>
             <li>Joins to a record each in tables dashed_formatting and bezier</li>
         </ul>
@@ -1314,22 +1321,17 @@ The bend record is in the technical table, technical_type "bend".
     <div class="table-info">
         <ul>
             <li>Has two tuplet_portion records, one for tuplet-actual and the other for tuplet-normal.  Foreign keys tuplet_actual_id and tuplet_normal_id</li>
-            <li>"type" attribute in field type_value</li>
         </ul>
     </div>
     <div class="content-subsection">glissando</div>
     <div class="table-info">
         <ul>
-            <li>Element text in field "value"</li>
-            <li>"type" attribute in field type_value</li>
             <li>Joins to a record in table dashed_formatting</li>
         </ul>
     </div>
     <div class="content-subsection">slide</div>
     <div class="table-info">
         <ul>
-            <li>Element text in field "value"</li>
-            <li>"type" attribute in field type_value</li>
             <li>Joins to a record each in tables dashed_formatting and bend_sound</li>
         </ul>
     </div>
@@ -1356,15 +1358,12 @@ The bend record is in the technical table, technical_type "bend".
     <div class="content-subsection">accidental mark</div>
     <div class="table-info">
         <ul>
-            <li>Element text value is in accidental_value field</li>
             <li>Joins to a record in table level_display</li>
         </ul>
     </div>
     <div class="content-subsection">other notation</div>
     <div class="table-info">
         <ul>
-            <li>Element text in field value</li>
-            <li>attribute "type" is in field type_value</li>
             <li>attribute "number" in field notation_number</li>
         </ul>
     </div>
@@ -1394,7 +1393,8 @@ The bend record is in the technical table, technical_type "bend".
 
 <div id="note_size" class="table-content">
     <div class="table-info">
-        All subelements of the appearance element have a one-to-many relationship to the defaults table, foreign key defaults_id.
+        The note-size element is a subelement of the appearance element, and has a direct many-to-one join to the defaults table, foreign key defaults_id.
+        There is no intermediate appearance table.
     </div>
 </div>
 
@@ -1470,7 +1470,8 @@ The bend record is in the technical table, technical_type "bend".
 
 <div id="other_appearance" class="table-content">
     <div class="table-info">
-        All subelements of the appearance element have a one-to-many relationship to the defaults table, foreign key defaults_id.
+        The other-appearance element is a subelement of the appearance element, and has a direct many-to-one join to the defaults table, foreign key defaults_id.
+        There is no intermediate appearance table.
     </div>
 </div>
 
@@ -2157,7 +2158,7 @@ The bend record is in the technical table, technical_type "bend".
         Belongs to a tuplet_portion record, foreign key tuplet_type_id.
     </div>
     <div class="table-info">
-        Element text is in field note_type_value.
+        Element text is in field "value".
     </div>
 </div>
 
