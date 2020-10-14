@@ -17,7 +17,7 @@ LilyPond must be installed on the local machine and its location set under the t
         <li class="padded-li"><span>Select the "Choose PDF Output Filename" link to navigate to the output file location, or enter the fully-specified location (location including folder/directory name) in the text box.</span></li>
 
     <div class="content">
-Don't add a file extension to the entered filename.  The application adds the file extension for you.
+        If the output filename doesn't have a .pdf file extension, the .pdf file extension will be added.
     </div>
 
         <li class="padded-li"><span>Select the "Open PDF file on completion" checkbox to automatically open the converted PDF file when the conversion is complete.</span></li>
