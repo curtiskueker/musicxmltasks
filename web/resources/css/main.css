@@ -124,3 +124,10 @@ li span {
     float: left;
     width: 65%;
 }
+
+textarea.console {
+    white-space: pre;
+    background-color: #ffffff;
+    width: 600px;
+    height: 100px;
+}

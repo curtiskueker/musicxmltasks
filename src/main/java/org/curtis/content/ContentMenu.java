@@ -37,7 +37,7 @@ public class ContentMenu {
                                                         new MenuItem("DB Actions", "interface/dbActions.jsp")
                                                 )
                                         ),
-                                        new MenuItem("Tasks Output")
+                                        new MenuItem("Tasks Output", "interface/tasksOutput.jsp")
                                 )
                         ),
                         new MenuItem("Database Layout", "database/layout.jsp",
