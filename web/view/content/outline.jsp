@@ -98,7 +98,7 @@ Task output is displayed in the console area at the bottom of the tool.  Users c
 <div class="content-section">LilyPond File Output</div>
 
 <div class="content">
-LilyPond is a computer program for creating engraved-quality music scores.  LilyPond files are stored in their own file format.
+LilyPond is a typesetting application for music scores.  LilyPond files are stored in their own file format.
 </div>
 
 <div class="content">

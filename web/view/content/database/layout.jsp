@@ -6,7 +6,7 @@ Each bean has a Hibernate annotation which maps the bean to a database table, an
 </div>
 
 <div class="content">
-These Hibernate annotations include one-to-one associations to tables that are used by more than one bean (display, for example),
+These Hibernate annotations include one-to-one associations to tables that are used by more than one bean (<code>display</code>, for example),
 and one-to-many associations for beans that contain lists of other beans (a part has a list of measures, for example) using Hibernate subselect annotations to make foreign-key associations.
 </div>
 

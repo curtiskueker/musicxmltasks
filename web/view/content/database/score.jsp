@@ -5,11 +5,11 @@
 </div>
 
 <ul class="arrowed-list">
-    <li class="padded-li"><span>A record in the score table</span></li>
-    <li class="padded-li"><span>A record in the score_header table joined to the score record</span></li>
-    <li class="padded-li"><span>A list of records in the part table joined to the score record</span></li>
-    <li class="padded-li"><span>A list of records in the measure table, each joined to a part record</span></li>
-    <li class="padded-li"><span>A list of records in the music_data table, each joined to a measure record</span></li>
+    <li class="padded-li">&nbsp;A record in the <code>score</code> table</li>
+    <li class="padded-li">&nbsp;A record in the <code>score_header</code> table joined to the <code>score</code> record</li>
+    <li class="padded-li">&nbsp;A list of records in the <code>part</code> table joined to the <code>score</code> record</li>
+    <li class="padded-li">&nbsp;A list of records in the <code>measure</code> table, each joined to a <code>part</code> record</li>
+    <li class="padded-li">&nbsp;A list of records in the <code>music_data</code> table, each joined to a <code>measure</code> record</li>
 </ul>
 
 <img class="table-layout-image" src="images/table_layout/score.png" alt="score"/>

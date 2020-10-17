@@ -3,7 +3,7 @@
 <div class="content-section">Link</div>
 
 <div class="content">
-Joins to the link attributes in the link_attributes table.
+Joins to the link attributes in the <code>link_attributes</code> table.
 </div>
 
 <img class="table-layout-image" src="images/table_layout/link.png" alt="link"/>
@@ -11,7 +11,7 @@ Joins to the link attributes in the link_attributes table.
 <div class="content-section">Bookmark</div>
 
 <div class="content">
-The bookmark_id field contains the id attribute value of the bookmark element.
+The <code>bookmark_id</code> field contains the <code>id</code> attribute value of the <code>bookmark</code> element.
 </div>
 
 <img class="table-layout-image" src="images/table_layout/bookmark.png" alt="bookmark"/>

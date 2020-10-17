@@ -1,39 +1,42 @@
 <div class="content-header">Attributes</div>
 
 <div class="content">
-An Attributes music data type record is stored in the music_data table with a discriminator value of "attributes".
+An Attributes music data type record is stored in the <code>music_data</code> table with a discriminator value of <code>attributes</code>.
 </div>
 
 <div class="content">
-The one-to-one part symbol association is stored in the part_symbol with the foreign key part_symbol_id in the music_data table.
+The one-to-one part symbol association is stored in the <code>part_symbol</code> with the foreign key
+    <code>part_symbol_id</code> in the <code>music_data</code> table.
 </div>
 
 <div class="content">
-One-to-many associations store lists of attributes subelements of the same type, each in their own table having the foreign key attributes_id that joins to the primary key column music_data.id.
+One-to-many associations store lists of attributes subelements of the same type, each in their own table having the foreign key
+    <code>attributes_id</code> that joins to the primary key column <code>music_data.id</code>.
 </div>
 
 <div class="content">
 The one-to-many tables are:
 </div>
 
-<ul class="arrowed-list">
-    <li class="padded-li"><span>key_signature</span></li>
-    <li class="padded-li"><span>time</span></li>
-    <li class="padded-li"><span>clef</span></li>
-    <li class="padded-li"><span>staff_details</span></li>
-    <li class="padded-li"><span>measure_style</span></li>
-    <li class="padded-li"><span>directive</span></li>
-    <li class="padded-li"><span>transpose</span></li>
+<ul class="discriminator-values">
+    <li class="discriminator-value">key_signature</li>
+    <li class="discriminator-value">time</li>
+    <li class="discriminator-value">clef</li>
+    <li class="discriminator-value">staff_details</li>
+    <li class="discriminator-value">measure_style</li>
+    <li class="discriminator-value">directive</li>
+    <li class="discriminator-value">transpose</li>
 </ul>
 
 <div class="content-section">Time</div>
 
 <div class="content">
-The time table has a discriminator value of "time signature" or "senza misura".
+The time table has a discriminator value of <code>time signature</code> or <code>senza misura</code>.
 </div>
 
 <div class="content">
-The "time signature" record joins to a list of time_signature_type records and an interchangeable record.  The interchangeable record has its own list of time_signature_type records.
+The <code>time signature</code> record joins to a list of <code>time_signature_type</code> records and an <code>interchangeable</code> record.  The
+    <code>interchangeable</code> record has its own list of <code>time_signature_type</code> records.
 </div>
 
 <img class="table-layout-image" src="images/table_layout/attributes.png" alt="attributes"/>
