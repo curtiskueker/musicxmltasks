@@ -8,6 +8,14 @@
     width: 35%;
 }
 
+.table-name {
+    font-weight: bold;
+    font-size: 16px;
+    font-family: monospace;
+    padding-top: 20px;
+    padding-bottom: var(--bottom-padding);
+}
+
 .table-info {
     font-size: 14px;
     padding-bottom: var(--cell-padding);

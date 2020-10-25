@@ -10,6 +10,18 @@
     There's also a high-level layout on the subpages of "Database Layout".
 </div>
 
+<div class="content-section">Table diagrams</div>
+
+<div class="content">
+    The table diagrams were made using MySQL Workbench.
+</div>
+
+<div class="content">
+    Many one-to-one foreign key relationships in the MusicXML schema are shown in the diagrams as one-to-many relationships which MySQL Workbench draws by default.
+    I haven't changed any of these relationships in the diagram, and instead have left the relationships as Workbench has drawn them.
+    Refer to the MusicXML schema definition for the correct relationships.
+</div>
+
 <div class="content-section">Table names</div>
 
 <div class="content">
@@ -35,7 +47,7 @@
 <div class="content-subsection">Discriminator column</div>
 
 <div class="content">
-    All discriminator columns have a column name beginning with the table name and ending in "_type".
+    All discriminator columns have a column name of the table name plus <code>_type</code>.
 </div>
 
 <div class="content">
@@ -45,63 +57,65 @@
 <div class="content-subsection">Music data</div>
 
 <div class="content">
-    A prominent discriminator column example is the music_data table whose music_data_type field has values such as "note", "direction", "barline" for elements note, direction, or barline, respectively.
+    A prominent discriminator column example is the <code>music_data</code> table whose <code>music_data_type</code> field has values
+    <code>note</code>, <code>direction</code>, <code>barline</code> for elements <code>note</code>, <code>direction</code>,
+    <code>barline</code>, respectively.
+</div>
+
+<div class="content">
     Tables with a discriminator column have fields that only one or some of the subclasses use, since all of the subclass definitions are combined into a single table.
-    For example, the duration field in the music_data table is used by the note, backup, forward, and figured bass records stored in the table, but not by direction and attribute records.
+    For example, the <code>duration</code> field in the <code>music_data</code> table is used by note, backup, forward, and figured bass records, but not by direction and attribute records.
 </div>
 
 <div class="content-section">Field names</div>
 
 <div class="content">
     Field names are taken from the attribute or element name the field represents, unless a field name would be an SQL reserved word.
-    Sometimes field names are renamed to avoid ambuguity.
+    Some field names are renamed to avoid ambiguity.
 </div>
 
 <div class="content">
-    Generally speaking, element text is stored in a field named "value",
-    and when the element text is defined as an enumeration in the MusicXML schema, some variation of "type" is used for the field name,
-    especially if the schema uses "type" as part of its defined name.
-</div>
-
-<div class="content">
-    Attribute "type" value is generally stored in field "type", unless there is a data type conflict or ambiguity.
+    Generally speaking, element text is stored in a field named <code>value</code>,
+    and an element's <code>type</code> attribute is in field <code>type</code>, unless there is a data type conflict or ambiguity.
 </div>
 
 <div class="content-subsection">Primary key</div>
 
 <div class="content">
-    All tables have a primary key column "id".
+    All tables have a primary key column <code>id</code>.
 </div>
 
 <div class="content">
-    When the MusicXML schema defines an "id" attribute (other than optional-unique-id), the table field is named after the table and ends in _id.
+    When the MusicXML schema defines an <code>id</code> attribute (except for the <code>optional-unique-id</code> attribute group), the field is the table name plus
+    <code>_id</code>.
 </div>
 
 <div class="content-subsection">Foreign keys</div>
 
 <div class="content">
-    The name of a foreign key (with the exception of a foreign key to a single-inheritance table), whether a one-to-one or one-to-many relationship,
-    is the table name followed by "_id".
+    The name of a foreign key (with the exception of a foreign key to a single-inheritance table)
+    is the table name plus <code>_id</code>.
 </div>
 
 <div class="content">
-    The name of a foreign key to a single-inheritance table uses the discriminator value of the joined record replacing spaces with underscores, followed by "_id".
+    The name of a foreign key to a single-inheritance table uses the discriminator value of the joined record, with underscores replacing spaces, plus
+    <code>_id</code>.
     Examples:
-    a foreign key to a note in the music_data table is note_id;
-    a foreign key to a figured bass in the music_data table is figured_bass_id.
+    a foreign key to a note in the <code>music_data</code> table is <code>note_id</code>;
+    a foreign key to a figured bass in the <code>music_data</code> table is <code>figured_bass_id</code>.
 </div>
 
 <div class="content-subsection">element_id field</div>
 
 <div class="content">
-    Many MusicXml elements have an optional-unique-id attribute group that defines a unique "id" attribute for the element.
-    These values are stored in the associated table's element_id field.
+    Many MusicXml elements include the <code>optional-unique-id</code> attribute group that defines a unique <code>id</code> attribute for the element.
+    These values are stored in the table's <code>element_id</code> field.
 </div>
 
 <div class="content-subsection">ordering</div>
 
 <div class="content">
-    Several tables have an "ordering" column.
+    Several tables have an <code>ordering</code> column.
 </div>
 
 <div class="content">
@@ -110,26 +124,29 @@
 </div>
 
 <div class="content">
-    The SQL standard does not guarantee a fetch order for a query unless one is given in an "order by" clause, hence the ordering column.
+    The SQL standard does not guarantee a fetch order for a query unless one is given in an "order by" clause, hence the
+    <code>ordering</code> column.
 </div>
 
 <div class="content">
     When a MusicXML file is converted to a database record in the tasks application,
-    lists of same-name subelements are stored in tables that have an ordering column using an incrementing index with an initial value of 1,
-    and then storing the index value in the ordering column of the database record.
-    When a MusicXML score is retrieved from the database, these records are retrieved ordered by the ordering column value.
+    lists of same-name subelements are stored in tables that have an <code>ordering</code> column using an incrementing index with an initial value of 1,
+    and then storing the index value in the <code>ordering</code> column of the database record.
+    When a MusicXML score is retrieved from the database, these records are retrieved ordered by the <code>ordering</code> column value.
 </div>
 
 <div class="content-section">Booleans</div>
 
 <div class="content">
-    Boolean values are stored in char(1) fields with values 'Y' or 'N'.
+    Boolean values are stored in char(1) fields with values <code>Y</code> or <code>N</code>.
 </div>
 
 <div class="content">
-    MusicXML schema "yes-no" attribute types are stored as a boolean: 'Y' for "yes", 'N' for "no", and null when the attribute is not present.
+    MusicXML schema <code>yes-no</code> attribute types are stored as a boolean: <code>Y</code> for <code>yes</code>,
+    <code>N</code> for <code>no</code>, and <code>null</code> when the attribute is not present in the element.
 </div>
 
 <div class="content">
-    When a subelement is defined as an "empty" type, the presence or absence of the element is stored as a boolean value 'Y' or 'N'.
+    When a subelement is defined as an <code>empty</code> type, the presence or absence of the element is stored as a boolean value
+    <code>Y</code> or <code>N</code>.
 </div>
