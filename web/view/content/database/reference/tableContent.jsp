@@ -434,7 +434,7 @@ The bend record is in the <code>technical</code> table, <code>technical_type</co
 <div id="dynamics_marking" class="table-content">
     <div class="table-info">
         All of the subelements of a <code>dynamics</code> element are stored in the <code>dynamics_marking</code> table, one record per subelement.
-        The element name (e.g., <code>p</code>, <code>ff</code>) is in the <code>dynamics_type</code> field.
+        The element name (for example, <code>p</code>, <code>ff</code>) is in the <code>dynamics_type</code> field.
     </div>
     <div class="table-info">
         The enclosing <code>dynamics</code> element data is in table <code>direction_type</code>, and its one-to-many foreign key is
@@ -1298,8 +1298,8 @@ The bend record is in the <code>technical</code> table, <code>technical_type</co
 
 <div id="name_display" class="table-content">
     <div class="table-info">
-        A name display contains a list of text display objects (i.e., the list of <code>display-text</code> and <code>accidental-text</code> elements defined in the xs:choice block in complexType
-        <code>name-display</code>).
+        A name display contains a list of text display objects: the list of <code>display-text</code> and <code>accidental-text</code> elements defined in the xs:choice block in complexType
+        <code>name-display</code>.
         Foreign key to <code>name_display</code> is <code>name_display_id</code>.
     </div>
     <div class="table-info">
@@ -1320,7 +1320,7 @@ The bend record is in the <code>technical</code> table, <code>technical_type</co
 
 <div id="non_traditional_key_type" class="table-content">
     <div class="table-info">
-        When a key signature is a non-traditional key type (i.e., <code>key_signature</code> record, <code>key_type</code> value
+        When a key signature is a non-traditional key type (<code>key_signature</code> record, <code>key_type</code> value
         <code>non-traditional key</code>),
         each iteration of the <code>non-traditional-key</code> group (as defined in the MusicXML schema) is stored as a record in the
         <code>non_traditional_key_type</code> table, foreign key <code>key_id</code>.

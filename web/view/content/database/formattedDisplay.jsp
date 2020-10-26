@@ -31,7 +31,7 @@ The <code>display</code> record is created if any of these values are present.
 <div class="content-section">Text formatting</div>
 
 <div class="content">
-Many elements are defined as having a text value and associated formatting information (e.g., dynamics, rehearsal, words).
+Many elements are defined as having a text value and associated formatting information (for example, dynamics, rehearsal, words).
 In these cases, the text value is stored in the <code>text_format</code> table's <code>value</code> field, joined by the foreign key
     <code>text_format_id</code>.
 The other fields in the formatting record are shown in the diagram below.

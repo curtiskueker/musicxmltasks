@@ -1,7 +1,7 @@
 <div class="content-header">LilyPond and PDF Reader Program Locations</div>
 
 <div class="content">
-Use this tab to set the locations of the LilyPond and PDF reader (e.g., Adobe Reader) programs that are installed locally on your computer.
+Use this tab to set the locations of the LilyPond and PDF reader (for example, Adobe Reader) programs that are installed locally on your computer.
 </div>
 
 <div class="content">

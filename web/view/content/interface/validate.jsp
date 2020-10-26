@@ -5,7 +5,7 @@ MusicXML Tasks validates any locally-stored MusicXML file against the MusicXML 3
 </div>
 
 <div class="content">
-XML validation verifies that an XML document is well-formed (i.e., it is syntactically correct), and that the document conforms to the rules defined in the MusicXML schema.
+XML validation verifies that an XML document is well-formed (syntactically correct), and that the document conforms to the rules defined in the MusicXML schema.
 </div>
 
 <div class="content">
@@ -31,7 +31,7 @@ Validation doesn't use the database, so no prior database setup is required to v
         <li class="padded-li"><span>Click on the "Choose MusicXML file" link, navigate to the MusicXML file you want to validate, and select it.</span></li>
 
         <div class="content">
-            You can also enter the XML file name directly in the text box.  The file name must be fully-specified (i.e., the file name must include the full directory path where the file is located).
+            You can also enter the XML file name directly in the text box.  The file name must be fully-specified (it includes the full directory path where the file is located).
         </div>
 
         <li class="padded-li"><span>Press "Validate".</span></li>
