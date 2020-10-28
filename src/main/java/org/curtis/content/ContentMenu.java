@@ -73,7 +73,11 @@ public class ContentMenu {
                         new MenuItem("Database Setup"),
                         new MenuItem("Using the Database"),
                         new MenuItem("LilyPond Output"),
-                        new MenuItem("Java Code", "java_code/overview.jsp")
+                        new MenuItem("Java Code", "java_code/overview.jsp",
+                                Arrays.asList(
+                                        new MenuItem("Java Beans", "java_code/beans.jsp")
+                                )
+                        )
                 )
         );
     }

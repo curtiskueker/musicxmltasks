@@ -131,3 +131,9 @@ textarea.console {
     width: 600px;
     height: 100px;
 }
+
+textarea.example {
+    white-space: pre;
+    background-color: #eeeeee;
+    width: 1000px;
+}
