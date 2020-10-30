@@ -11,28 +11,6 @@
     Javadoc showing the Java package and class layout is available via the Javadoc link in the left nav.
 </div>
 
-<div class="content-section">Hibernate annotations</div>
-
-<div class="content">
-    Entities
-</div>
-
-<div class="content">
-    Columns
-</div>
-
-<div class="content">
-    one-to-many subselects
-</div>
-
-<div class="content">
-    MusicData and MusicItem
-</div>
-
-<div class="content">
-    Enumerations
-</div>
-
 <div class="content-section">Builder and factory classes</div>
 
 <div class="content-subsection">MusicXML builders</div>
