@@ -80,7 +80,10 @@ public class ContentMenu {
                                         new MenuItem("Conversion Code", "java_code/conversionCode.jsp"),
                                         new MenuItem("Javadoc", "java_code/javadoc.jsp")
                                 )
-                        )
+                        ),
+                        new MenuItem("Command-line Scripts"),
+                        new MenuItem("Installation"),
+                        new MenuItem("Downloads")
                 )
         );
     }
