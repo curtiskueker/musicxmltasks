@@ -10,5 +10,3 @@
     </ul>
     Javadoc showing the Java package and class layout is available via the Javadoc link in the left nav.
 </div>
-
-<div class="content-section">Javadoc</div>

@@ -1,8 +1,8 @@
-<div class="content-header">Tasks Pages</div>
+<div class="content-header">Tasks Tabs</div>
 
 <div class="content">
-    Tasks pages are accessed by the six tabs at the top of the tasks interface.
-    Each tab, when selected, has its own page where the user can perform tasks or save application settings.
+    Task views are accessed by the six tabs at the top of the tasks interface.
+    Each tab, when selected, has its own view where the user can perform tasks or save application settings.
 </div>
 
 <img class="image" src="images/interface/tasks_pages.png" alt="tasks pages"/>

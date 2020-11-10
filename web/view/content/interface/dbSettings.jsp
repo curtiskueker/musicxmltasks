@@ -18,6 +18,10 @@ You can optionally test the database connection by selecting the "Test Database 
 The tasks tool is configured to use MySQL, PostgreSQL, and Oracle XE (Express Edition).  For information on installing a database, see the installation instructions for the database type you have chosen.  More infomation on the MusicXML database is provided in the "Database Setup" and "Using the Database" sections in this guide.
 </div>
 
+<div class="content">
+    Using the Oracle XE database on Linux may required the port number be included in the Server field.  For example, <code>localhost:1539</code>.
+</div>
+
 <div class="content-section">MusicXML Database Default Values</div>
 
 <div class="content">

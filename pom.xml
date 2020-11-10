@@ -53,9 +53,6 @@
                         </resource>
                         <resource>
                             <directory>${web.dir}/resources/</directory>
-                            <excludes>
-                                <exclude>bundle/**</exclude>
-                            </excludes>
                             <targetPath>resources</targetPath>
                         </resource>
                         <resource>

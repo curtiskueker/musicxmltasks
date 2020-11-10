@@ -137,3 +137,9 @@ textarea.example {
     background-color: #eeeeee;
     width: 1000px;
 }
+
+textarea.db-connection {
+    white-space: pre;
+    background-color: #eeeeee;
+    width: 500px;
+}

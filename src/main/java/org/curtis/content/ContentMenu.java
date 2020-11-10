@@ -17,7 +17,7 @@ public class ContentMenu {
                         new MenuItem("Outline", "outline.jsp"),
                         new MenuItem("Tasks Interface", "interface/tasksInterface.jsp",
                                 Arrays.asList(
-                                        new MenuItem("Tasks Pages", "interface/tasksPages.jsp",
+                                        new MenuItem("Tasks Tabs", "interface/tasksTabs.jsp",
                                                 Arrays.asList(
                                                         new MenuItem("Convert", "interface/convert/convert.jsp",
                                                                 Arrays.asList(
@@ -70,7 +70,7 @@ public class ContentMenu {
                                         Tables.getTableReference()
                                 )
                         ),
-                        new MenuItem("Database Setup"),
+                        new MenuItem("Database Setup", "db_setup/dbSetup.jsp"),
                         new MenuItem("Using the Database"),
                         new MenuItem("LilyPond Output"),
                         new MenuItem("Java Code", "java_code/codeOverview.jsp",
@@ -82,8 +82,7 @@ public class ContentMenu {
                                 )
                         ),
                         new MenuItem("Command-line Scripts"),
-                        new MenuItem("Installation"),
-                        new MenuItem("Downloads")
+                        new MenuItem("Download and Install")
                 )
         );
     }
