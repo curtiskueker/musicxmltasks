@@ -59,6 +59,10 @@
                             <targetPath>resources</targetPath>
                         </resource>
                         <resource>
+                            <directory>${web.dir}/javadoc/</directory>
+                            <targetPath>javadoc</targetPath>
+                        </resource>
+                        <resource>
                             <directory>${web.dir}/WEB-INF/</directory>
                             <targetPath>WEB-INF</targetPath>
                         </resource>

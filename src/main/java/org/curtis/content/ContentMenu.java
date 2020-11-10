@@ -77,7 +77,8 @@ public class ContentMenu {
                                 Arrays.asList(
                                         new MenuItem("Java Beans", "java_code/beans.jsp"),
                                         new MenuItem("Hibernate Annotations", "java_code/hibernate.jsp"),
-                                        new MenuItem("Conversion Code", "java_code/conversionCode.jsp")
+                                        new MenuItem("Conversion Code", "java_code/conversionCode.jsp"),
+                                        new MenuItem("Javadoc", "java_code/javadoc.jsp")
                                 )
                         )
                 )
