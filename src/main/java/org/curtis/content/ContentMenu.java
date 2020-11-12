@@ -71,7 +71,9 @@ public class ContentMenu {
                                 )
                         ),
                         new MenuItem("Database Setup", "db_setup/dbSetup.jsp"),
-                        new MenuItem("Using the Database", "db_use/scoreView.jsp"),
+                        new MenuItem("Using the Database", "db_use/scoreView.jsp",
+                                Arrays.asList(new MenuItem("Stored Procedures", "db_use/storedProcedures.jsp"))
+                        ),
                         new MenuItem("LilyPond Output"),
                         new MenuItem("Java Code", "java_code/codeOverview.jsp",
                                 Arrays.asList(
