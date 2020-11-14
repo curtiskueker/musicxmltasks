@@ -230,5 +230,5 @@ You can create the schema tables separately, or generate the sql file to create 
 
 <div class="content">
 The table creation scripts for MySQL, MySQL Inno DB, PostgreSQL, and Oracle XE are also available in a zip file
-<a href="/resources/scripts/database/schema/schema_files.zip">here</a>.
+<a href="/resources/scripts/schema_files.zip">here</a>.
 </div>

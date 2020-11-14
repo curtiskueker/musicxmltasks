@@ -17,7 +17,7 @@ With a bit more care, ingenuity, and attention to detail, we can expand on these
 </div>
 
 <div class="content">
-All of the MySQL procedure code used here is available in a zip file <a href="/scripts/database/procedure/stored_procedures.zip" target="_blank">here</a>.
+All of the MySQL procedure code used here is available in a zip file <a href="/scripts/stored_procedures.zip" target="_blank">here</a>.
 </div>
 
 <div class="content">
@@ -44,28 +44,6 @@ where
       s.id = p.score_id
       and p.id = m.part_id and m.id = md.measure_id
 order by p.ordering, m.ordering, md.ordering;
-</textarea>
-</div>
-
-<div class="content">
-The view's select clause includes a utility function char_to_boolean that translates 'Y' to true, and everything else to false,
-because this is how Hibernate annotations in the data structure's Java beans are mapped to the database:
-</div>
-
-<div class="content">
-<textarea class="example" readonly rows="13">
-drop function if exists char_to_boolean;
-
-delimiter //
-create function char_to_boolean (
-    boolean_value char(1)
-)
-returns boolean
-deterministic
-begin
-    return boolean_value is not null and boolean_value = 'Y';
-end //
-delimiter ;
 </textarea>
 </div>
 

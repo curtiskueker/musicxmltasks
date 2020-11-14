@@ -12,13 +12,14 @@ Here's the stored procedure <code>score_report</code>:
 </div>
 
 <div class="content">
-<textarea class="example" readonly rows="121">
+<textarea class="example" readonly rows="153">
 drop procedure if exists score_report;
 
 delimiter //
 create procedure score_report
 (in v_report_name varchar(255), in v_score_id int)
 proc: begin
+    declare v_procedure_name varchar(255) default null;
     declare is_end_of_data boolean default false;
     declare is_report_run boolean default false;
     declare v_current_transposition int;
@@ -32,6 +33,7 @@ proc: begin
     declare v_current_measure_duration int default 0;
     declare v_previous_duration int default 0;
     declare v_duration int;
+    declare is_new_measure boolean;
     declare v_octave int;
     declare v_previous_octave int;
     declare v_grace_id int;
@@ -55,6 +57,21 @@ proc: begin
         report_name varchar(255)
     );
 
+    create table if not exists report_current_music_data (
+        measure_number varchar(255),
+        music_data_type varchar(31),
+        transposition int,
+        note_type_type varchar(31),
+        octave int,
+        step varchar(255),
+        pitch_alter int,
+        previous_octave int,
+        previous_step varchar(255),
+        previous_pitch_alter int,
+        new_measure boolean,
+        grace_id int
+    );
+
     create table if not exists report_previous_note (
         voice varchar(255),
         octave int,
@@ -62,7 +79,13 @@ proc: begin
         pitch_alter int
     );
 
+    select procedure_name from report_procedure where report_name = v_report_name into v_procedure_name;
+    if v_procedure_name is null then leave proc; end if;
+
     if exists (select score_id from report_run where score_id = v_score_id and report_name = v_report_name) then leave proc; end if;
+
+    set @s_procedure_statement = concat('call ', v_procedure_name, '(', v_score_id, ')');
+    prepare s_procedure_statement from @s_procedure_statement;
 
     open c_score_items;
     score_items_loop: loop
@@ -80,6 +103,8 @@ proc: begin
             set v_current_measure_number = v_measure_number;
             set v_current_measure_duration = 0;
         end if;
+
+        -- process the music data type
         case v_music_data_type
             when 'attributes' then
                 if v_chromatic is not null then set v_current_transposition = v_chromatic; end if;
@@ -99,10 +124,6 @@ proc: begin
                             set v_previous_step = null;
                             set v_previous_pitch_alter = null;
                         end if;
-                        if v_report_name = 'interval count' then
-                            call interval_count_report(v_score_id, v_step, v_previous_step, v_pitch_alter, v_previous_pitch_alter, v_octave, v_previous_octave);
-                            set is_report_run = true;
-                        end if;
                         if exists (select voice from report_previous_note where voice = v_voice) then
                             update report_previous_note set octave = v_octave, step = v_step, pitch_alter = v_pitch_alter where voice = v_voice;
                         else
@@ -113,21 +134,32 @@ proc: begin
                     delete from report_previous_note where voice = v_voice;
                 end if;
                 if is_chord then set v_current_measure_duration = v_current_measure_duration - v_previous_duration; end if;
-                if v_report_name = 'measure notes' then
-                    if v_grace_id is null and v_current_measure_duration = 0 then
-                        call measure_notes_report(v_score_id, v_measure_number, v_step, v_pitch_alter, v_current_transposition);
-                        set is_report_run = true;
-                    end if;
-                elseif v_report_name = 'pitch count' then
-                    call pitch_count_report(v_score_id, v_step, v_pitch_alter, v_current_transposition);
-                    set is_report_run = true;
+                if v_current_measure_duration = 0 then
+                    set is_new_measure = true;
+                else
+                    set is_new_measure = false;
                 end if;
                 set v_current_measure_duration = v_current_measure_duration + v_duration;
                 set v_previous_duration = v_duration;
             else begin end;
             end case;
+
+        -- replace current state used by reports procedures
+        delete from report_current_music_data;
+        insert into report_current_music_data
+            (measure_number, music_data_type, transposition, note_type_type,
+             octave, step, pitch_alter, previous_octave, previous_step, previous_pitch_alter, new_measure, grace_id)
+            values
+            (v_measure_number, v_music_data_type, v_current_transposition, v_note_type_type,
+             v_octave, v_step, v_pitch_alter, v_previous_octave, v_previous_step, v_previous_pitch_alter, is_new_measure, v_grace_id);
+
+        -- run a report
+        execute s_procedure_statement;
+        set is_report_run = true;
+
     end loop;
     close c_score_items;
+    deallocate prepare s_procedure_statement;
 
     if is_report_run then insert into report_run (score_id, report_name) values (v_score_id, v_report_name); end if;
     drop table report_previous_note;
@@ -137,44 +169,7 @@ delimiter ;
 </div>
 
 <div class="content">
-The referenced utility function <code>is_tied_note</code> is defined as:
-</div>
-
-<div class="content">
-<textarea class="example" readonly rows="33">
-drop function if exists is_tied_note;
-
-delimiter //
-create function is_tied_note (
-    v_note_id int
-)
-returns boolean
-not deterministic
-begin
-    declare is_end_of_data boolean default false;
-    declare v_type varchar(255);
-    declare is_tied boolean default false;
-
-    declare c_note_ties cursor for
-        select type from tie where note_id = v_note_id;
-
-    declare continue handler for not found set is_end_of_data = true;
-
-    open c_note_ties;
-    ties_loop: loop
-        fetch c_note_ties into v_type;
-        if is_end_of_data then leave ties_loop; end if;
-        if v_type = 'stop' or v_type = 'continue' then
-            set is_tied = true;
-            leave ties_loop;
-        end if;
-    end loop;
-    close c_note_ties;
-
-    return is_tied;
-end //
-delimiter ;
-</textarea>
+All of the utility functions, such as <code>is_tied_note</code>, are listed on the Functions page.
 </div>
 
 <div class="content">
@@ -185,7 +180,8 @@ The <code>score_view</code> is then queried for that <code>score_id</code>.
 <div class="content">
 The view contains the score, part, and music data IDs, as well as the <code>music_data_type</code> (<code>attribute</code>,
     <code>note</code>, <code>backup</code>, <code>forward</code>, etc.),
-and for notes the <code>note_type_type</code> (<code>pitch</code>, <code>rest</code>, <code>unpitched</code>), step, alter, and octave.
+and for notes the <code>note_type_type</code> (<code>pitch</code>, <code>rest</code>, <code>unpitched</code>), step, alter, and octave
+    in the order that they appear in the score.
 We then iterate the view, and perform any processing as necessary.
 </div>
 
@@ -195,10 +191,45 @@ The loop's iteration logic:
     <li>Keeps track of the current part and measure</li>
     <li>Keeps track of the current duration value within the current measure</li>
     <li>Keeps track of the current transposition value (only one transposition value at a time is handled)</li>
-    <li>Stores the previous note's data in temporary table <code>report_previous_note</code> for reference (using a temp table saves
+    <li>Stores the previous note's data for that voice in temporary table <code>report_previous_note</code> for reference (using a temp table saves
         state and simplifies data typing within the stored procedure)</li>
-    <li>Calls a reports stored procedure under eligible conditions</li>
+    <li>Calls a reports stored procedure</li>
 </ul>
+</div>
+
+<div class="content">
+    The report procedure that generates the data is called with a single <code>score_id</code> argument,
+    and the mapping from the mapped report name to the report procedure is in the <code>report_calls</code> table
+    which is created and populated with these sql statements:
+</div>
+
+<div class="content">
+<textarea class="example" readonly rows="9">
+create table report_calls (
+    report_name varchar(255),
+    report_call varchar(255)
+);
+
+insert into report_calls (report_name, report_call) values ('pitch count', 'pitch_count_report');
+insert into report_calls (report_name, report_call) values ('interval count', 'interval_count_report');
+insert into report_calls (report_name, report_call) values ('measure notes', 'measure_notes_report');
+</textarea>
+</div>
+
+<div class="content">
+    With this approach, when a new report procedure is implemented, you only need to add a record to the
+    <code>report_calls</code> table to reference the new procedure call.
+
+</div>
+
+<div class="content">
+    The processing code in the <code>score_report</code> procedure will only need to be changed when the method of processing of scores changes.
+    Score processing and data generation are thus decoupled; <code>score_report</code> processes the score, the reports procedures generate the score data.
+</div>
+
+<div class="content">
+    On each iteration of the score view, the current data state is stored in temp table <code>report_current_music_data</code>,
+    which the called procedure then queries.  I've chosen this approach because MySQL stored procedures don't have a hash map structure for passing data as an argument.
 </div>
 
 <div class="content">
@@ -239,5 +270,6 @@ Variable naming conventions for the procedures prevent name clash with select li
     <li>Variable: <code>v_</code></li>
     <li>Boolean: <code>is_</code></li>
     <li>Cursor: <code>c_</code></li>
+    <li>Statement: <code>s_</code></li>
 </ul>
 </div>
