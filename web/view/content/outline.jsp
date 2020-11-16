@@ -89,6 +89,17 @@ On the first successful database connection test or successful database conversi
 A local LilyPond installation is required to convert to PDF, and a PDF reader installation is required if the user wants to open the PDF file when a conversion to PDF is completed.
 </div>
 
+<div class="content-subsection">Using the Database</div>
+
+<div class="content">
+    I've included a section in the guide called "Using the Database" that gives an example of how the MusicXML relational database can be used
+    with reporting software to give a visual representation of score data.
+</div>
+
+<div class="content">
+    Of course, any number of applications that use relational data can be plugged into the MusicXML data set.
+</div>
+
 <div class="content-section">Task Output</div>
 
 <div class="content">

@@ -17,6 +17,11 @@ With a bit more care, ingenuity, and attention to detail, we can expand on these
 </div>
 
 <div class="content">
+    I'm using the MySQL database in the examples here, but each of the database flavors handled by the application have their own versions of stored procedures,
+    so the approach here is translatable.
+</div>
+
+<div class="content">
 All of the MySQL procedure code used here is available in a zip file <a href="/scripts/stored_procedures.zip" target="_blank">here</a>.
 </div>
 

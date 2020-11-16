@@ -12,14 +12,14 @@ Here's the stored procedure <code>score_report</code>:
 </div>
 
 <div class="content">
-<textarea class="example" readonly rows="153">
+<textarea class="example" readonly rows="160">
 drop procedure if exists score_report;
 
 delimiter //
 create procedure score_report
-(in v_report_name varchar(255), in v_score_id int)
+(in v_procedure_name varchar(255), in v_score_name varchar(255))
 proc: begin
-    declare v_procedure_name varchar(255) default null;
+    declare v_score_id int;
     declare is_end_of_data boolean default false;
     declare is_report_run boolean default false;
     declare v_current_transposition int;
@@ -54,10 +54,10 @@ proc: begin
 
     create table if not exists report_run (
         score_id int,
-        report_name varchar(255)
+        procedure_name varchar(255)
     );
 
-    create table if not exists report_current_music_data (
+    create temporary table if not exists report_current_music_data (
         measure_number varchar(255),
         music_data_type varchar(31),
         transposition int,
@@ -72,17 +72,23 @@ proc: begin
         grace_id int
     );
 
-    create table if not exists report_previous_note (
+    create temporary table if not exists report_previous_voice_note (
         voice varchar(255),
         octave int,
         step varchar(255),
         pitch_alter int
     );
 
-    select procedure_name from report_procedure where report_name = v_report_name into v_procedure_name;
-    if v_procedure_name is null then leave proc; end if;
+    select id into v_score_id from score where score_name = v_score_name;
+    if is_end_of_data then
+        select concat('Score ', v_score_name, ' not found') as error_message;
+        leave proc;
+    end if;
 
-    if exists (select score_id from report_run where score_id = v_score_id and report_name = v_report_name) then leave proc; end if;
+    if exists (select score_id from report_run where score_id = v_score_id and procedure_name = v_procedure_name) then
+        select concat('Report ', v_procedure_name, ' already run for score ', v_score_name) as error_message;
+        leave proc;
+    end if;
 
     set @s_procedure_statement = concat('call ', v_procedure_name, '(', v_score_id, ')');
     prepare s_procedure_statement from @s_procedure_statement;
@@ -97,7 +103,7 @@ proc: begin
         if v_part_id != v_current_part_id then
             set v_current_transposition = null;
             set v_current_part_id = v_part_id;
-            delete from report_previous_note;
+            delete from report_previous_voice_note;
         end if;
         if v_measure_number != v_current_measure_number then
             set v_current_measure_number = v_measure_number;
@@ -116,22 +122,22 @@ proc: begin
                 if is_tied_note(v_music_data_id) then iterate score_items_loop; end if;
                 if v_note_type_type = 'pitch' then
                     if not is_chord then
-                        if exists (select voice from report_previous_note where voice = v_voice) then
+                        if exists (select voice from report_previous_voice_note where voice = v_voice) then
                             select octave, step, pitch_alter into v_previous_octave, v_previous_step, v_previous_pitch_alter
-                            from report_previous_note where voice = v_voice;
+                            from report_previous_voice_note where voice = v_voice;
                         else
                             set v_previous_octave = null;
                             set v_previous_step = null;
                             set v_previous_pitch_alter = null;
                         end if;
-                        if exists (select voice from report_previous_note where voice = v_voice) then
-                            update report_previous_note set octave = v_octave, step = v_step, pitch_alter = v_pitch_alter where voice = v_voice;
+                        if exists (select voice from report_previous_voice_note where voice = v_voice) then
+                            update report_previous_voice_note set octave = v_octave, step = v_step, pitch_alter = v_pitch_alter where voice = v_voice;
                         else
-                            insert into report_previous_note (voice, octave, step, pitch_alter) values (v_voice, v_octave, v_step, v_pitch_alter);
+                            insert into report_previous_voice_note (voice, octave, step, pitch_alter) values (v_voice, v_octave, v_step, v_pitch_alter);
                         end if;
                     end if;
                 elseif v_note_type_type = 'rest' then
-                    delete from report_previous_note where voice = v_voice;
+                    delete from report_previous_voice_note where voice = v_voice;
                 end if;
                 if is_chord then set v_current_measure_duration = v_current_measure_duration - v_previous_duration; end if;
                 if v_current_measure_duration = 0 then
@@ -161,8 +167,9 @@ proc: begin
     close c_score_items;
     deallocate prepare s_procedure_statement;
 
-    if is_report_run then insert into report_run (score_id, report_name) values (v_score_id, v_report_name); end if;
-    drop table report_previous_note;
+    if is_report_run then insert into report_run (score_id, procedure_name) values (v_score_id, v_procedure_name); end if;
+    drop temporary table if exists report_previous_voice_note;
+    drop temporary table if exists report_current_music_data;
 end //
 delimiter ;
 </textarea>
@@ -173,8 +180,15 @@ All of the utility functions, such as <code>is_tied_note</code>, are listed on t
 </div>
 
 <div class="content">
-The report name and score id are passed in as arguments.
-The <code>score_view</code> is then queried for that <code>score_id</code>.
+The report procedure name and score name are passed in as arguments.
+    The call at the MySQL command-line prompt is called at the mysql command line prompt with <code>call score_report('report_procedure_name', 'score name')</code>.
+    The <code>score_view</code> is then queried for that score's <code>score_id</code>.
+</div>
+
+<div class="content">
+    I've kept things simple by selecting an error message and returning when a score name is not found or the report has already been run,
+    instead of using proper error handling.
+    That works well enough for my purposes here.
 </div>
 
 <div class="content">
@@ -198,27 +212,12 @@ The loop's iteration logic:
 </div>
 
 <div class="content">
-    The report procedure that generates the data is called with a single <code>score_id</code> argument,
-    and the mapping from the mapped report name to the report procedure is in the <code>report_calls</code> table
-    which is created and populated with these sql statements:
+    The called report procedure that generates the data has a single <code>score_id</code> argument.
 </div>
 
 <div class="content">
-<textarea class="example" readonly rows="9">
-create table report_calls (
-    report_name varchar(255),
-    report_call varchar(255)
-);
-
-insert into report_calls (report_name, report_call) values ('pitch count', 'pitch_count_report');
-insert into report_calls (report_name, report_call) values ('interval count', 'interval_count_report');
-insert into report_calls (report_name, report_call) values ('measure notes', 'measure_notes_report');
-</textarea>
-</div>
-
-<div class="content">
-    With this approach, when a new report procedure is implemented, you only need to add a record to the
-    <code>report_calls</code> table to reference the new procedure call.
+    With this approach, when a new report procedure is implemented, you only need store the report procedure
+    and call <code>score_report</code> with the report procedure as the first argument.
 
 </div>
 
