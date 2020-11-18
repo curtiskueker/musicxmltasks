@@ -17,9 +17,8 @@ drop procedure if exists score_report;
 
 delimiter //
 create procedure score_report
-(in v_procedure_name varchar(255), in v_score_name varchar(255))
+(in v_procedure_name varchar(255), in v_score_id int)
 proc: begin
-    declare v_score_id int;
     declare is_end_of_data boolean default false;
     declare is_report_run boolean default false;
     declare v_current_transposition int;
@@ -79,16 +78,17 @@ proc: begin
         pitch_alter int
     );
 
-    select id into v_score_id from score where score_name = v_score_name;
-    if is_end_of_data then
-        select concat('Score ', v_score_name, ' not found') as error_message;
+    if not exists(select id from score where id = v_score_id) then
+        select concat('Score ID ', v_score_id, ' not found') as error_message;
         leave proc;
     end if;
 
-    if exists (select score_id from report_run where score_id = v_score_id and procedure_name = v_procedure_name) then
+    if exists(select score_id from report_run where score_id = v_score_id and procedure_name = v_procedure_name) then
         select concat('Report ', v_procedure_name, ' already run for score ', v_score_name) as error_message;
         leave proc;
     end if;
+
+    select concat('Running report ', v_procedure_name, ' for score id ', v_score_id) as message;
 
     set @s_procedure_statement = concat('call ', v_procedure_name, '(', v_score_id, ')');
     prepare s_procedure_statement from @s_procedure_statement;
@@ -180,13 +180,14 @@ All of the utility functions, such as <code>is_tied_note</code>, are listed on t
 </div>
 
 <div class="content">
-The report procedure name and score name are passed in as arguments.
-    The call at the MySQL command-line prompt is called at the mysql command line prompt with <code>call score_report('report_procedure_name', 'score name')</code>.
+The report procedure name and score ID are passed in as arguments.
+    A score's ID value is the <code>id</code> field in the <code>score</code> table.
+    The call at the MySQL command-line prompt is called at the mysql command line prompt with <code>call score_report('report_procedure_name', 'score ID')</code>.
     The <code>score_view</code> is then queried for that score's <code>score_id</code>.
 </div>
 
 <div class="content">
-    I've kept things simple by selecting an error message and returning when a score name is not found or the report has already been run,
+    I've kept things simple by selecting an error message and returning when a score ID is not found or the report has already been run,
     instead of using proper error handling.
     That works well enough for my purposes here.
 </div>

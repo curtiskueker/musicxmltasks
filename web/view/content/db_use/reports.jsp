@@ -19,6 +19,11 @@ where the specifics of each report will be laid out.
 </div>
 
 <div class="content">
+    Each report is run against the database records of Beethoven Symphony No. 4, 1st movement
+    and J. S. Bach's Brandenburg Concerto No. 6, 1st movement
+</div>
+
+<div class="content">
 The reports examples are:
     <ul>
         <li>Pitch count report: demonstrates a simple loop and count</li>
@@ -71,7 +76,6 @@ Individual reports consist of two parts:
 <div class="content">
     <ul>
         <li>The stored procedure takes a single score id argument</li>
-        <li>The <code>score_report</code> procedure that calls the reports stored procedure gets the score id value from the score name passed in as an argument</li>
         <li>Selects the current state from the temporary <code>report_current_music_data</code> table</li>
         <li>Tests whether the current <code>music_data</code> item in the score is eligible to generate data for this report</li>
         <li>Creates the data table for the report</li>
@@ -80,7 +84,7 @@ Individual reports consist of two parts:
 </div>
 
 <div class="content">
-The reports procedure is then called at the mysql command line as <code>call score_report('reports_procedure_name', 'score name')</code>
+The reports procedure is then called at the mysql command line as <code>call score_report('reports_procedure_name', score ID)</code>
 </div>
 
 <div class="content-subsection">The report visualization</div>
