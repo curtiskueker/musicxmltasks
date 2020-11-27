@@ -22,7 +22,7 @@ With a bit more care, ingenuity, and attention to detail, we can expand on these
 </div>
 
 <div class="content">
-All of the MySQL procedure code used here is available in a zip file <a href="/scripts/stored_procedures.zip" target="_blank">here</a>.
+All of the MySQL code used here is available in a zip file <a href="/scripts/stored_procedures.zip" target="_blank">here</a>.
 </div>
 
 <div class="content">
@@ -63,4 +63,30 @@ We can then later query and display this generated data using the reports softwa
 
 <div class="content">
 The processing of the results from the score view above and the generation of reports table output is done by stored procedures.
+</div>
+
+<div class="content-section">Subpage content</div>
+
+<div class="content">
+The subpages of this page have the following content:
+</div>
+
+<div class="content-subsection">Stored Procedures</div>
+
+<div class="content">
+    Introduces the <code>score_report</code> stored procedure that calls all of the individual reports described in this section.
+</div>
+
+<div class="content-subsection">Functions</div>
+
+<div class="content">
+    Lists the code for all of the stored utility functions used by the reports procedures in this section.
+</div>
+
+<div class="content-subsection">Reports</div>
+
+<div class="content">
+    Outlines how to set up reports in BIRT,
+    and how to set up and run the individual reports examples in this section.
+    Shows the generated visualization charts.
 </div>

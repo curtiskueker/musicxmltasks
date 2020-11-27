@@ -12,7 +12,7 @@ Here's the stored procedure <code>score_report</code>:
 </div>
 
 <div class="content">
-<textarea class="example" readonly rows="160">
+<textarea class="example" readonly rows="158">
 drop procedure if exists score_report;
 
 delimiter //
@@ -61,6 +61,7 @@ proc: begin
         music_data_type varchar(31),
         transposition int,
         note_type_type varchar(31),
+        chord boolean,
         octave int,
         step varchar(255),
         pitch_alter int,
@@ -84,7 +85,7 @@ proc: begin
     end if;
 
     if exists(select score_id from report_run where score_id = v_score_id and procedure_name = v_procedure_name) then
-        select concat('Report ', v_procedure_name, ' already run for score ', v_score_name) as error_message;
+        select concat('Report ', v_procedure_name, ' already run for score ', v_score_id) as error_message;
         leave proc;
     end if;
 
@@ -120,24 +121,21 @@ proc: begin
                 set v_current_measure_duration = v_current_measure_duration + v_duration;
             when 'note' then
                 if is_tied_note(v_music_data_id) then iterate score_items_loop; end if;
-                if v_note_type_type = 'pitch' then
+                if v_note_type_type = 'rest' then
+                    delete from report_previous_voice_note where voice = v_voice;
+                elseif v_note_type_type = 'pitch' then
                     if not is_chord then
                         if exists (select voice from report_previous_voice_note where voice = v_voice) then
                             select octave, step, pitch_alter into v_previous_octave, v_previous_step, v_previous_pitch_alter
                             from report_previous_voice_note where voice = v_voice;
+                            update report_previous_voice_note set octave = v_octave, step = v_step, pitch_alter = v_pitch_alter where voice = v_voice;
                         else
                             set v_previous_octave = null;
                             set v_previous_step = null;
                             set v_previous_pitch_alter = null;
-                        end if;
-                        if exists (select voice from report_previous_voice_note where voice = v_voice) then
-                            update report_previous_voice_note set octave = v_octave, step = v_step, pitch_alter = v_pitch_alter where voice = v_voice;
-                        else
                             insert into report_previous_voice_note (voice, octave, step, pitch_alter) values (v_voice, v_octave, v_step, v_pitch_alter);
                         end if;
                     end if;
-                elseif v_note_type_type = 'rest' then
-                    delete from report_previous_voice_note where voice = v_voice;
                 end if;
                 if is_chord then set v_current_measure_duration = v_current_measure_duration - v_previous_duration; end if;
                 if v_current_measure_duration = 0 then
@@ -153,10 +151,10 @@ proc: begin
         -- replace current state used by reports procedures
         delete from report_current_music_data;
         insert into report_current_music_data
-            (measure_number, music_data_type, transposition, note_type_type,
+            (measure_number, music_data_type, transposition, note_type_type, chord,
              octave, step, pitch_alter, previous_octave, previous_step, previous_pitch_alter, new_measure, grace_id)
             values
-            (v_measure_number, v_music_data_type, v_current_transposition, v_note_type_type,
+            (v_measure_number, v_music_data_type, v_current_transposition, v_note_type_type, is_chord,
              v_octave, v_step, v_pitch_alter, v_previous_octave, v_previous_step, v_previous_pitch_alter, is_new_measure, v_grace_id);
 
         -- run a report
@@ -180,10 +178,18 @@ All of the utility functions, such as <code>is_tied_note</code>, are listed on t
 </div>
 
 <div class="content">
-The report procedure name and score ID are passed in as arguments.
-    A score's ID value is the <code>id</code> field in the <code>score</code> table.
-    The call at the MySQL command-line prompt is called at the mysql command line prompt with <code>call score_report('report_procedure_name', 'score ID')</code>.
-    The <code>score_view</code> is then queried for that score's <code>score_id</code>.
+    Key points on the <code>score_report</code> procedure above:
+    <ul>
+        <li>The report procedure name and score ID are passed in as arguments.</li>
+        <li>A score's ID value is the <code>id</code> field in the <code>score</code> table.</li>
+        <li>
+            The call at the MySQL command-line prompt is called at the mysql command line prompt with <code>call
+            score_report('report_procedure_name', score_id)</code>.
+            Example: <code>score_report('pitch_count_report', 6)</code>
+        </li>
+        <li>The <code>score_view</code> is then queried for that score's <code>score_id</code>
+            and the passed in report procedure is processed for each <code>music_data</code> row in the view.</li>
+    </ul>
 </div>
 
 <div class="content">

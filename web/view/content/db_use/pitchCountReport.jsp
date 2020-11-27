@@ -12,7 +12,7 @@
 </div>
 
 <div class="content">
-    <img src="images/reports/pitch_class_beethoven.png" alt="pitch class beethoven">
+    <img src="images/reports/pitch_count_beethoven.png" alt="pitch class beethoven">
 </div>
 
 <div class="content">
@@ -20,7 +20,7 @@
 </div>
 
 <div class="content">
-    <img src="images/reports/pitch_class_bach.png" alt="pitch class bach">
+    <img src="images/reports/pitch_count_bach.png" alt="pitch class bach">
 </div>
 
 <div class="content-section">Procedure <code>pitch_count_report</code></div>
@@ -67,11 +67,25 @@ delimiter ;
 
 <div class="content">
 The procedure queries the current <code>music_data</code> state in table <code>report_current_music_data</code>,
-and if it's a note, obtains the note's pitch class number from the method <code>pitch_number</code>.
+and if it's a note, obtains the note's pitch class number from the function <code>pitch_number</code>.
 </div>
 
 <div class="content">
-The data table <code>pitch_count_number</code> is updated with the pitch count for the score.
+The data table <code>report_pitch_counts</code> is updated with the pitch count for the score.
+</div>
+
+<div class="content">
+    Before setting up reports in the next section, run the <code>pitch_count_report</code> procedure at least once,
+    because the <code>report_pitch_counts</code> table's existence is required by the reports application.
+</div>
+
+<div class="content">
+    To run the report:
+    <ul>
+        <li>At the mysql prompt, call the pitch count report; example <code>call score_report('pitch_count_report', 6)</code></li>
+        <li>Select the report in the Navigator pane</li>
+        <li>In the menu, select Run -> View Report -> In Web Viewer</li>
+    </ul>
 </div>
 
 <div class="content-section">Report visualization</div>
@@ -106,7 +120,7 @@ The visualization report is web-based and will have a prompt to enter the score 
 To add the score ID prompt:
     <ul>
         <li>Right select Report Parameters in the Data Explorer pane, and select New Parameter</li>
-        <li>Enter the name as <code>score_id</code>, the Prompt Text as <code>Score ID</code>, and the Data Type as Integer</li>
+        <li>Enter the name as <code>score_id</code>, the Prompt Text as <code>Score ID:</code>, and the Data Type as Integer</li>
         <li>Make sure Is Required is selected</li>
     </ul>
 </div>
@@ -144,19 +158,10 @@ The query string contains a <code>?</code> which is a query parameter.
 <div class="content">
 To create the layout:
     <ul>
-        <li>In the menu, select Insert -> Chart</li>
+        <li>Click the empty layout in the layout area.  In the menu, select Insert -> Chart</li>
         <li>Select Chart Type: Pie</li>
         <li>Select Data: Slice Size Definition: <code>row["pitch_count"]</code>, Category Definition: <code>row["pitch_label"]</code>, Use Data
             From: the Data Set you've created</li>
         <li>Format Chart: Chart Area: set the Title</li>
-    </ul>
-</div>
-
-<div class="content">
-To run the report:
-    <ul>
-        <li>At the mysql prompt, call the pitch count report; example <code>call score_report('pitch_count_report', 6)</code></li>
-        <li>Select the report in the Navigator pane</li>
-        <li>In the menu, select Run -> View Report -> In Web Viewer</li>
     </ul>
 </div>

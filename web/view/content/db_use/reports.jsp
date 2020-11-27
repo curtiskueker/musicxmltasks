@@ -20,7 +20,8 @@ where the specifics of each report will be laid out.
 
 <div class="content">
     Each report is run against the database records of Beethoven Symphony No. 4, 1st movement
-    and J. S. Bach's Brandenburg Concerto No. 6, 1st movement
+    and J. S. Bach's Brandenburg Concerto No. 6, 1st movement.
+    These two works are in the same key, and have approximately the same number of notes.
 </div>
 
 <div class="content">

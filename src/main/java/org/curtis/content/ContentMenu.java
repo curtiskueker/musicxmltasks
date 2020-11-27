@@ -77,7 +77,8 @@ public class ContentMenu {
                                         new MenuItem("Functions", "db_use/functions.jsp"),
                                         new MenuItem("Reports", "db_use/reports.jsp",
                                                 Arrays.asList(
-                                                        new MenuItem("Pitch Count Report", "db_use/pitchCountReport.jsp")
+                                                        new MenuItem("Pitch Count Report", "db_use/pitchCountReport.jsp"),
+                                                        new MenuItem("Interval Count Report", "db_use/intervalCountReport.jsp")
                                                 )
                                         )
                                 )
