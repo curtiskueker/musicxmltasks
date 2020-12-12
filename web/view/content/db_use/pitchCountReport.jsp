@@ -2,7 +2,11 @@
 
 <div class="content">
     The pitch count report demonstrates working with a simple loop through the list of <code>music_data</code> records in a score.
-    It counts the number of occurrences of each unique pitch (pitch class) in a piece.
+</div>
+
+<div class="content">
+    The report procedure counts the number of occurrences of each unique pitch (pitch class) in a piece.
+    The report visualization displays the count for each pitch.
 </div>
 
 <div class="content-section">Reports output</div>
@@ -36,7 +40,7 @@ proc: begin
 	declare v_pitch_count int;
 	declare v_pitch_number int;
 	declare v_music_data_type varchar(255);
-    declare v_step varchar(255);
+	declare v_step varchar(255);
 	declare v_pitch_alter int;
 	declare v_transposition int;
 
@@ -62,6 +66,7 @@ proc: begin
     end if;
 end //
 delimiter ;
+
     </textarea>
 </div>
 
@@ -76,15 +81,13 @@ The data table <code>report_pitch_counts</code> is updated with the pitch count 
 
 <div class="content">
     Before setting up reports in the next section, run the <code>pitch_count_report</code> procedure at least once,
-    because the <code>report_pitch_counts</code> table's existence is required by the reports application.
+    because the <code>report_pitch_counts</code> table's existence is required by the reports application setup.
 </div>
 
 <div class="content">
-    To run the report:
+    To run the stored procedure:
     <ul>
         <li>At the mysql prompt, call the pitch count report; example <code>call score_report('pitch_count_report', 6)</code></li>
-        <li>Select the report in the Navigator pane</li>
-        <li>In the menu, select Run -> View Report -> In Web Viewer</li>
     </ul>
 </div>
 
@@ -163,5 +166,13 @@ To create the layout:
         <li>Select Data: Slice Size Definition: <code>row["pitch_count"]</code>, Category Definition: <code>row["pitch_label"]</code>, Use Data
             From: the Data Set you've created</li>
         <li>Format Chart: Chart Area: set the Title</li>
+    </ul>
+</div>
+
+<div class="content">
+    To run the report:
+    <ul>
+        <li>Select the report in the Navigator pane</li>
+        <li>In the menu, select Run -> View Report -> In Web Viewer</li>
     </ul>
 </div>

@@ -12,7 +12,7 @@ Here's the stored procedure <code>score_report</code>:
 </div>
 
 <div class="content">
-<textarea class="example" readonly rows="158">
+<textarea class="example" readonly rows="183">
 drop procedure if exists score_report;
 
 delimiter //
@@ -36,6 +36,7 @@ proc: begin
     declare v_octave int;
     declare v_previous_octave int;
     declare v_grace_id int;
+    declare is_tied boolean;
     declare is_chord boolean;
     declare v_note_type_type varchar(255);
     declare v_chromatic int;
@@ -43,6 +44,10 @@ proc: begin
     declare v_previous_step varchar(255);
     declare v_pitch_alter int;
     declare v_previous_pitch_alter int;
+    declare is_measures_handled boolean;
+    declare is_first_part boolean;
+    declare v_report_measure_id int;
+    declare v_ordering int;
 
     declare c_score_items cursor for
         select part_id, measure_number, music_data_id, music_data_type, voice, duration, grace_id, chord, note_type_type, step, pitch_alter, octave, chromatic
@@ -53,7 +58,16 @@ proc: begin
 
     create table if not exists report_run (
         score_id int,
-        procedure_name varchar(255)
+        procedure_name varchar(255),
+        unique (score_id, procedure_name)
+    );
+
+    create table if not exists report_measure (
+        id int,
+        score_id int,
+        measure_number varchar(255),
+        ordering int,
+        unique (score_id, measure_number)
     );
 
     create temporary table if not exists report_current_music_data (
@@ -61,6 +75,7 @@ proc: begin
         music_data_type varchar(31),
         transposition int,
         note_type_type varchar(31),
+        tied boolean,
         chord boolean,
         octave int,
         step varchar(255),
@@ -94,6 +109,8 @@ proc: begin
     set @s_procedure_statement = concat('call ', v_procedure_name, '(', v_score_id, ')');
     prepare s_procedure_statement from @s_procedure_statement;
 
+    set is_measures_handled = exists(select score_id from report_measure where score_id = v_score_id);
+
     open c_score_items;
     score_items_loop: loop
         fetch c_score_items into
@@ -102,11 +119,20 @@ proc: begin
             v_step, v_pitch_alter, v_octave, v_chromatic;
         if is_end_of_data then leave score_items_loop; end if;
         if v_part_id != v_current_part_id then
+            if v_current_part_id = 0 then
+                set is_first_part = true;
+            else set is_first_part = false;
+            end if;
             set v_current_transposition = null;
             set v_current_part_id = v_part_id;
             delete from report_previous_voice_note;
         end if;
         if v_measure_number != v_current_measure_number then
+            if is_first_part and not is_measures_handled then
+                select coalesce(max(id) + 1, 1) from report_measure into v_report_measure_id;
+                select coalesce(max(ordering) + 1, 1) from report_measure where score_id = v_score_id into v_ordering;
+                insert into report_measure (id, score_id, measure_number, ordering) values (v_report_measure_id, v_score_id, v_measure_number, v_ordering);
+            end if;
             set v_current_measure_number = v_measure_number;
             set v_current_measure_duration = 0;
         end if;
@@ -120,7 +146,6 @@ proc: begin
             when 'forward' then
                 set v_current_measure_duration = v_current_measure_duration + v_duration;
             when 'note' then
-                if is_tied_note(v_music_data_id) then iterate score_items_loop; end if;
                 if v_note_type_type = 'rest' then
                     delete from report_previous_voice_note where voice = v_voice;
                 elseif v_note_type_type = 'pitch' then
@@ -151,10 +176,10 @@ proc: begin
         -- replace current state used by reports procedures
         delete from report_current_music_data;
         insert into report_current_music_data
-            (measure_number, music_data_type, transposition, note_type_type, chord,
+            (measure_number, music_data_type, transposition, note_type_type, tied, chord,
              octave, step, pitch_alter, previous_octave, previous_step, previous_pitch_alter, new_measure, grace_id)
             values
-            (v_measure_number, v_music_data_type, v_current_transposition, v_note_type_type, is_chord,
+            (v_measure_number, v_music_data_type, v_current_transposition, v_note_type_type, is_tied_note(v_music_data_id), is_chord,
              v_octave, v_step, v_pitch_alter, v_previous_octave, v_previous_step, v_previous_pitch_alter, is_new_measure, v_grace_id);
 
         -- run a report

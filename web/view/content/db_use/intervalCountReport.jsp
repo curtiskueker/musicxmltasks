@@ -3,9 +3,13 @@
 <div class="content">
     The interval count report demonstrates looping through the list of <code>music_data</code> records in a score,
     while saving state to make comparisons between notes.
+</div>
+
+<div class="content">
     Only the first note of each chord, as it appears in the MusicXML file, is compared.
-    The report counts the number of each interval in a piece, where positive numbers are upward intervals,
-    and negative numbers are downward intevals.
+    The report procedure counts the number of each interval in a piece, where positive numbers are upward intervals,
+    and negative numbers are downward intervals.
+    The report visualization displays each interval and its count, from the highest count to the lowest.
 </div>
 
 <div class="content-section">Reports output</div>
@@ -29,7 +33,7 @@
 <div class="content-section">Procedure <code>interval_count_report</code></div>
 
 <div class="content">
-    <textarea class="example" readonly rows="47">
+    <textarea class="example" readonly rows="46">
 drop procedure if exists interval_count_report;
 
 delimiter //
@@ -55,9 +59,9 @@ proc: begin
     if is_chord then leave proc; end if;
 
     create table if not exists report_interval_counts (
-                                                   score_id int,
-                                                   pitch_interval int,
-                                                   interval_count int
+        score_id int,
+        pitch_interval int,
+        interval_count int
     );
 
     if v_step is null or v_previous_step is null then leave proc; end if;
@@ -75,7 +79,6 @@ proc: begin
     end if;
 end //
 delimiter ;
-
     </textarea>
 </div>
 
@@ -91,15 +94,13 @@ delimiter ;
 
 <div class="content">
     Before setting up reports in the next section, run the <code>interval_count_report</code> procedure at least once,
-    because the <code>report_interval_counts</code> table's existence is required by the reports application.
+    because the <code>report_interval_counts</code> table's existence is required by the reports application setup.
 </div>
 
 <div class="content">
-    To run the report:
+    To run the stored procedure:
     <ul>
         <li>At the mysql prompt, call the pitch count report; example <code>call score_report('pitch_count_report', 6)</code></li>
-        <li>Select the report in the Navigator pane</li>
-        <li>In the menu, select Run -> View Report -> In Web Viewer</li>
     </ul>
 </div>
 
@@ -153,13 +154,13 @@ delimiter ;
 <div class="content">
     <textarea class="example" readonly rows="9">
 select
-    cast(pitch_interval as char(5)) as interval_name, interval_count
+    pitch_interval, cast(pitch_interval as char(5)) as interval_name, interval_count
 from
     report_interval_counts
 where
     score_id = ?
 order by
-	pitch_interval
+	interval_count desc
     </textarea>
 </div>
 
@@ -188,5 +189,13 @@ order by
         <li>Select Data: Slice Size Definition: <code>row["interval_count"]</code>, Category Definition: <code>row["pitch_interval"]</code>, Use Data
             From: the Data Set you've created</li>
         <li>Format Chart: Chart Area: set the Title</li>
+    </ul>
+</div>
+
+<div class="content">
+    To run the report:
+    <ul>
+        <li>Select the report in the Navigator pane</li>
+        <li>In the menu, select Run -> View Report -> In Web Viewer</li>
     </ul>
 </div>
