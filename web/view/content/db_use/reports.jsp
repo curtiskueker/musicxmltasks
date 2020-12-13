@@ -99,3 +99,14 @@ The reports procedure is then called at the mysql command line as <code>call sco
         <li>Translates the result set from the query to visual representation</li>
     </ul>
 </div>
+
+<div class="content-subsection">Deleting a report run</div>
+
+<div class="content">
+    A report run will need to be deleted manually.
+</div>
+
+<div class="content">
+    To delete a report run, delete the report run record in table <code>report_run</code> for that <code>score_id</code>,
+    and then delete any records for that report in the individual report's output table for that <code>score_id</code>.
+</div>
