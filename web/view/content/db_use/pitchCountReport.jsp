@@ -20,7 +20,7 @@
 </div>
 
 <div class="content">
-    J. S. Bach Brandenburg Concerto No. 6, 1st movement:
+    J. S. Bach Brandenburg Concerto No. 6:
 </div>
 
 <div class="content">
@@ -30,7 +30,17 @@
 <div class="content-section">Procedure <code>pitch_count_report</code></div>
 
 <div class="content">
-    <textarea class="example" readonly rows="37">
+    <textarea class="example" readonly rows="6">
+create table if not exists report_pitch_counts (
+    score_id int,
+    pitch int,
+    pitch_count int
+);
+    </textarea>
+</div>
+
+<div class="content">
+    <textarea class="example" readonly rows="32">
 drop procedure if exists pitch_count_report;
 
 delimiter //
@@ -43,16 +53,12 @@ proc: begin
 	declare v_step varchar(255);
 	declare v_pitch_alter int;
 	declare v_transposition int;
+	declare is_tied boolean;
 
-	select music_data_type, step, pitch_alter, transposition from report_current_music_data into v_music_data_type, v_step, v_pitch_alter, v_transposition;
+	select music_data_type, step, pitch_alter, transposition, tied from report_current_music_data into v_music_data_type, v_step, v_pitch_alter, v_transposition, is_tied;
 
 	if v_music_data_type != 'note' then leave proc; end if;
-
-	create table if not exists report_pitch_counts (
-	    score_id int,
-	    pitch int,
-	    pitch_count int
-    );
+	if is_tied then leave proc; end if;
 
     set v_pitch_number = pitch_number(v_step, v_pitch_alter, v_transposition);
     if v_pitch_number is null then leave proc; end if;
@@ -66,7 +72,6 @@ proc: begin
     end if;
 end //
 delimiter ;
-
     </textarea>
 </div>
 
@@ -77,11 +82,6 @@ and if it's a note, obtains the note's pitch class number from the function <cod
 
 <div class="content">
 The data table <code>report_pitch_counts</code> is updated with the pitch count for the score.
-</div>
-
-<div class="content">
-    Before setting up reports in the next section, run the <code>pitch_count_report</code> procedure at least once,
-    because the <code>report_pitch_counts</code> table's existence is required by the reports application setup.
 </div>
 
 <div class="content">

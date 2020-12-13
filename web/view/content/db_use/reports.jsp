@@ -20,7 +20,7 @@ where the specifics of each report will be laid out.
 
 <div class="content">
     Each report is run against the database records of Beethoven Symphony No. 4, 1st movement
-    and J. S. Bach's Brandenburg Concerto No. 6, 1st movement.
+    and J. S. Bach's Brandenburg Concerto No. 6.
     These two works are in the same key, and have approximately the same number of notes.
 </div>
 
@@ -79,9 +79,12 @@ Individual reports consist of two parts:
         <li>The stored procedure takes a single score id argument</li>
         <li>Selects the current state from the temporary <code>report_current_music_data</code> table</li>
         <li>Tests whether the current <code>music_data</code> item in the score is eligible to generate data for this report</li>
-        <li>Creates the data table for the report</li>
         <li>Processes the <code>music_data</code> and stores data in the reports table</li>
     </ul>
+</div>
+
+<div class="content">
+    Any data tables for the reports procedure output are created separately.
 </div>
 
 <div class="content">

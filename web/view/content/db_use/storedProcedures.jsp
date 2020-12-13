@@ -12,7 +12,7 @@ Here's the stored procedure <code>score_report</code>:
 </div>
 
 <div class="content">
-<textarea class="example" readonly rows="183">
+<textarea class="example" readonly rows="199">
 drop procedure if exists score_report;
 
 delimiter //
@@ -21,6 +21,7 @@ create procedure score_report
 proc: begin
     declare is_end_of_data boolean default false;
     declare is_report_run boolean default false;
+    declare v_score_name varchar(255);
     declare v_current_transposition int;
     declare v_current_part_id int default 0;
     declare v_part_id int default 0;
@@ -36,7 +37,6 @@ proc: begin
     declare v_octave int;
     declare v_previous_octave int;
     declare v_grace_id int;
-    declare is_tied boolean;
     declare is_chord boolean;
     declare v_note_type_type varchar(255);
     declare v_chromatic int;
@@ -55,6 +55,13 @@ proc: begin
         where score_id = v_score_id;
 
     declare continue handler for not found set is_end_of_data = true;
+
+    declare exit handler for sqlexception
+        begin
+            get diagnostics condition 1 @error_message = message_text;
+            select @error_message as error_message;
+            rollback to report_run;
+        end;
 
     create table if not exists report_run (
         score_id int,
@@ -95,16 +102,21 @@ proc: begin
     );
 
     if not exists(select id from score where id = v_score_id) then
-        select concat('Score ID ', v_score_id, ' not found') as error_message;
-        leave proc;
+        set @message_text = concat('Score ID ', v_score_id, ' not found');
+        signal sqlstate '45000' set message_text = @message_text;
     end if;
 
     if exists(select score_id from report_run where score_id = v_score_id and procedure_name = v_procedure_name) then
-        select concat('Report ', v_procedure_name, ' already run for score ', v_score_id) as error_message;
-        leave proc;
+        set @message_text = concat('Report ', v_procedure_name, ' already run for score ', v_score_id);
+        signal sqlstate '45000' set message_text = @message_text;
     end if;
 
-    select concat('Running report ', v_procedure_name, ' for score id ', v_score_id) as message;
+    select score_name from score where id = v_score_id into v_score_name;
+
+    select concat('Running report ', v_procedure_name, ' for score id ', v_score_id, ', score name ', v_score_name) as message;
+
+    start transaction;
+    savepoint report_run;
 
     set @s_procedure_statement = concat('call ', v_procedure_name, '(', v_score_id, ')');
     prepare s_procedure_statement from @s_procedure_statement;
@@ -193,6 +205,10 @@ proc: begin
     if is_report_run then insert into report_run (score_id, procedure_name) values (v_score_id, v_procedure_name); end if;
     drop temporary table if exists report_previous_voice_note;
     drop temporary table if exists report_current_music_data;
+
+    commit;
+
+    select 'Report run complete' as message;
 end //
 delimiter ;
 </textarea>
@@ -208,27 +224,23 @@ All of the utility functions, such as <code>is_tied_note</code>, are listed on t
         <li>The report procedure name and score ID are passed in as arguments.</li>
         <li>A score's ID value is the <code>id</code> field in the <code>score</code> table.</li>
         <li>
-            The call at the MySQL command-line prompt is called at the mysql command line prompt with <code>call
+            The <code>score_report</code> is called at the MySQL command-line prompt with <code>call
             score_report('report_procedure_name', score_id)</code>.
             Example: <code>score_report('pitch_count_report', 6)</code>
         </li>
         <li>The <code>score_view</code> is then queried for that score's <code>score_id</code>
             and the passed in report procedure is processed for each <code>music_data</code> row in the view.</li>
+        <li>The <code>savepoint</code> and <code>rollback</code> statements are recognized in a MySQL InnoDB database but not in a MyISAM database</li>
     </ul>
 </div>
 
 <div class="content">
-    I've kept things simple by selecting an error message and returning when a score ID is not found or the report has already been run,
-    instead of using proper error handling.
-    That works well enough for my purposes here.
-</div>
-
-<div class="content">
-The view contains the score, part, and music data IDs, as well as the <code>music_data_type</code> (<code>attribute</code>,
+The score view contains the score, part, and music data IDs, as well as the <code>music_data_type</code> (<code>attribute</code>,
     <code>note</code>, <code>backup</code>, <code>forward</code>, etc.),
-and for notes the <code>note_type_type</code> (<code>pitch</code>, <code>rest</code>, <code>unpitched</code>), step, alter, and octave
+and for notes the <code>note_type_type</code> (<code>pitch</code>, <code>rest</code>, <code>unpitched</code>),
+    <code>step</code>, <code>pitch_alter</code>, and <code>octave</code>
     in the order that they appear in the score.
-We then iterate the view, and perform any processing as necessary.
+We then iterate the view, and perform any processing as desired.
 </div>
 
 <div class="content">
@@ -241,6 +253,11 @@ The loop's iteration logic:
         state and simplifies data typing within the stored procedure)</li>
     <li>Calls a reports stored procedure</li>
 </ul>
+</div>
+
+<div class="content">
+    On each iteration of the score view, the current data state is stored in temp table <code>report_current_music_data</code>,
+    which the called procedure then queries.  I've chosen this approach because MySQL stored procedures don't have a hash map structure for passing data as an argument.
 </div>
 
 <div class="content">
@@ -259,18 +276,12 @@ The loop's iteration logic:
 </div>
 
 <div class="content">
-    On each iteration of the score view, the current data state is stored in temp table <code>report_current_music_data</code>,
-    which the called procedure then queries.  I've chosen this approach because MySQL stored procedures don't have a hash map structure for passing data as an argument.
-</div>
-
-<div class="content">
 Having all calls to individual reports made from within the <code>score_report</code> procedure keeps all common calculations like determining the note, transposition, and duration in one place in the
 calling <code>score_report</code> procedure, rather than having these duplicated within the individual reports.
 </div>
 
 <div class="content">
 If you want to improve how a score is processed, you can make all the improvements in the <code>score_report</code> procedure loop.
-The sky's the limit.
 </div>
 
 <div class="content-section">Individual reports stored procedures</div>

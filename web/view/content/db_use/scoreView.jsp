@@ -5,7 +5,8 @@ A relational database allows us to query data quickly and easily.
 </div>
 
 <div class="content">
-When used in combination with business reports software, for example, we can obtain a visual representation of music data with a relatively small amount of additional programming.
+To take an example, we can use a relational database in combination with business reports software,
+    and obtain a visual representation of music data with a relatively small amount of additional programming.
 The authors of the reports software will do the majority of work for us.
 </div>
 
@@ -22,13 +23,13 @@ With a bit more care, ingenuity, and attention to detail, we can expand on these
 </div>
 
 <div class="content">
-All of the MySQL code used here is available in a zip file <a href="/scripts/stored_procedures.zip" target="_blank">here</a>.
+All of the MySQL procedure, function, and view code used in this section is available in a zip file <a href="/resources/scripts/stored_procedures.zip" target="_blank">here</a>.
 </div>
 
 <div class="content">
 As a starting point, the basic structure of a score stored in the MusicXML schema is a partwise score with a list of parts each containing a list of measures,
 with each measure having a list of music data records.
-We start, then, with a view that will obtain the music data list in part, measure, and music_data order:
+We start, then, with a view that will obtain the music data list in <code>part</code>, <code>measure</code>, and <code>music_data</code> order:
 </div>
 
 <div class="content">
@@ -62,7 +63,7 @@ We can then later query and display this generated data using the reports softwa
 </div>
 
 <div class="content">
-The processing of the results from the score view above and the generation of reports table output is done by stored procedures.
+The processing of the results from the score view above and the generation of reports table output is done via stored procedures and functions.
 </div>
 
 <div class="content-section">Subpage content</div>

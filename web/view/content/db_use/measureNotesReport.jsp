@@ -22,7 +22,7 @@
 </div>
 
 <div class="content">
-    J. S. Bach Brandenburg Concerto No. 6, 1st movement:
+    J. S. Bach Brandenburg Concerto No. 6:
 </div>
 
 <div class="content">
@@ -32,7 +32,18 @@
 <div class="content-section">Procedure <code>measure_notes_report</code></div>
 
 <div class="content">
-    <textarea class="example" readonly rows="40">
+    <textarea class="example" readonly rows="7">
+create table if not exists report_measure_notes (
+    report_measure_id int,
+    step varchar(255),
+    pitch_alter int,
+    transpose int
+);
+    </textarea>
+</div>
+
+<div class="content">
+    <textarea class="example" readonly rows="33">
 drop procedure if exists measure_notes_report;
 
 delimiter //
@@ -47,13 +58,6 @@ proc: begin
 	declare v_step varchar(255);
 	declare v_pitch_alter int;
 	declare v_current_transposition int;
-
-    create table if not exists report_measure_notes (
-        report_measure_id int,
-        step varchar(255),
-        pitch_alter int,
-        transpose int
-    );
 
     select music_data_type, grace_id, new_measure, measure_number, step, pitch_alter, transposition from report_current_music_data
     into v_music_data_type, v_grace_id, is_new_measure, v_measure_number, v_step, v_pitch_alter, v_current_transposition;
@@ -81,11 +85,6 @@ delimiter ;
     whether that note is the first note in a new measure, and whether the note is a grace note.
     If it's a non-grace note at the beginning of a measure, and a valid pitch class number is obtained from the function <code>pitch_number</code>,
     the pitch, alter, and transposition data is stored in table <code>report_measure_notes</code>.
-</div>
-
-<div class="content">
-    Before setting up reports in the next section, run the <code>measure_notes_report</code> procedure at least once,
-    because the existence of tables <code>report_measure</code> and <code>report_measure_notes</code> are required by the reports application setup.
 </div>
 
 <div class="content">

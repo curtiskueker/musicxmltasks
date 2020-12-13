@@ -23,7 +23,7 @@
 </div>
 
 <div class="content">
-    J. S. Bach Brandenburg Concerto No. 6, 1st movement:
+    J. S. Bach Brandenburg Concerto No. 6:
 </div>
 
 <div class="content">
@@ -33,7 +33,17 @@
 <div class="content-section">Procedure <code>interval_count_report</code></div>
 
 <div class="content">
-    <textarea class="example" readonly rows="46">
+    <textarea class="example" readonly rows="6">
+create table if not exists report_interval_counts (
+    score_id int,
+    pitch_interval int,
+    interval_count int
+);
+    </textarea>
+</div>
+
+<div class="content">
+    <textarea class="example" readonly rows="42">
 drop procedure if exists interval_count_report;
 
 delimiter //
@@ -44,6 +54,7 @@ proc: begin
     declare v_interval_number int;
     declare v_music_data_type varchar(255);
     declare v_note_type_type varchar(255);
+    declare is_tied boolean;
     declare is_chord boolean;
     declare v_step varchar(255);
     declare v_previous_step varchar(255);
@@ -52,17 +63,12 @@ proc: begin
     declare v_octave int;
     declare v_previous_octave int;
 
-    select music_data_type, note_type_type, chord, step, previous_step, pitch_alter, previous_pitch_alter, octave, previous_octave from report_current_music_data
-    into v_music_data_type, v_note_type_type, is_chord, v_step, v_previous_step, v_pitch_alter, v_previous_pitch_alter, v_octave, v_previous_octave;
+    select music_data_type, note_type_type, tied, chord, step, previous_step, pitch_alter, previous_pitch_alter, octave, previous_octave from report_current_music_data
+    into v_music_data_type, v_note_type_type, is_tied, is_chord, v_step, v_previous_step, v_pitch_alter, v_previous_pitch_alter, v_octave, v_previous_octave;
 
     if v_music_data_type != 'note' and v_note_type_type != 'pitch' then leave proc; end if;
+    if is_tied then leave proc; end if;
     if is_chord then leave proc; end if;
-
-    create table if not exists report_interval_counts (
-        score_id int,
-        pitch_interval int,
-        interval_count int
-    );
 
     if v_step is null or v_previous_step is null then leave proc; end if;
 
@@ -90,11 +96,6 @@ delimiter ;
 
 <div class="content">
     The data table <code>report_interval_counts</code> is updated with the interval count for the score.
-</div>
-
-<div class="content">
-    Before setting up reports in the next section, run the <code>interval_count_report</code> procedure at least once,
-    because the <code>report_interval_counts</code> table's existence is required by the reports application setup.
 </div>
 
 <div class="content">
