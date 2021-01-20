@@ -93,7 +93,23 @@ public class ContentMenu {
                                         new MenuItem("Javadoc", "java_code/javadoc.jsp")
                                 )
                         ),
-                        new MenuItem("Command-line Scripts"),
+                        new MenuItem("Command-line Scripts", "scripts/scripts.jsp",
+                                Arrays.asList(
+                                        new MenuItem("Conversion Scripts",
+                                                Arrays.asList(
+                                                        new MenuItem("musicXml2Db"),
+                                                        new MenuItem("db2MusicXml"),
+                                                        new MenuItem("musicXml2Ly"),
+                                                        new MenuItem("db2Ly"),
+                                                        new MenuItem("musicXml2Pdf"),
+                                                        new MenuItem("db2Pdf")
+                                                )
+                                        ),
+                                        new MenuItem("setProperties"),
+                                        new MenuItem("databaseExec"),
+                                        new MenuItem("Data Load Script")
+                                )
+                        ),
                         new MenuItem("Download and Install")
                 )
         );
