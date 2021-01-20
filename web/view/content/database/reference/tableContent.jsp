@@ -1734,7 +1734,31 @@ The bend record is in the <code>technical</code> table, <code>technical_type</co
         The <code>xml_comment</code> table holds comment and processing instruction data found within a MusicXML file.
         Records are created when a MusicXML file is converted to a database record using the tasks interface.
         When converting from a database record to a MusicXML file in the tasks interface, the comments and processing instructions are re-inserted into the output file in their original locations.
-        The <code>xml_comment</code> table is not part of the MusicXML definition.
+    </div>
+    <div class="table-info">
+        The <code>score_declaration</code> tables holds the XML and DOCTYPE declarations data as found in the original MusicXML document when converted to a MusicXML database.
+        When converting from the database to a MusicXML file, this information is included in the MusicXML output.
+    </div>
+    <div class="table-info">
+        The <code>xml_comment</code> and <code>score_declaration</code> tables are not part of the MusicXML definition.
+    </div>
+</div>
+
+<div id="score_declaration" class="table-content">
+    <div class="table-info">
+        A <code>score_declaration</code> record references the xml declaration and doctype information of a MusicXML score document file.
+    </div>
+    <div class="table-info">
+        These values are saved from the original MusicXML file when converted to a MusicXML database.
+    </div>
+</div>
+
+<div id="score_doctype" class="table-content">
+    <div class="table-info">
+        A <code>score_doctype</code> record references the doctype information of a MusicXML score document file.
+    </div>
+    <div class="table-info">
+        These values are saved from the original MusicXML file when converted to a MusicXML database.
     </div>
 </div>
 
@@ -1782,6 +1806,15 @@ The bend record is in the <code>technical</code> table, <code>technical_type</co
         Stores the data of the <code>group</code> subelements of the <code>score-part</code> element.
         The <code>score-part</code> data is in table <code>part_list_item</code>.
         Foreign key in <code>score_part_group</code> is <code>score_part_id</code>.
+    </div>
+</div>
+
+<div id="score_xml_declaration" class="table-content">
+    <div class="table-info">
+        A <code>score_xml_declaration</code> record contains the xml declaration information of a MusicXML score document file.
+    </div>
+    <div class="table-info">
+        These values are saved from the original MusicXML file when converted to a MusicXML database.
     </div>
 </div>
 
