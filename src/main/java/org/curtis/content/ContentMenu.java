@@ -110,7 +110,12 @@ public class ContentMenu {
                                         new MenuItem("Data Load Script")
                                 )
                         ),
-                        new MenuItem("Download and Install")
+                        new MenuItem("Download and Install", "download/download.jsp",
+                                Arrays.asList(
+                                        new MenuItem("Windows"),
+                                        new MenuItem("Linux", "download/linux.jsp")
+                                )
+                        )
                 )
         );
     }
