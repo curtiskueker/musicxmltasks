@@ -6,7 +6,7 @@
 
 <div class="content">
     The download includes an <code>install.sh</code> installation script.
-    Run this script as root to install.
+    Change to the directory containing <code>install.sh</code>, and run <code>./install.sh</code> as root to install.
 </div>
 
 <div class="content">
