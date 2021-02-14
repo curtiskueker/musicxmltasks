@@ -1727,8 +1727,12 @@ The bend record is in the <code>technical</code> table, <code>technical_type</co
         The foreign key from <code>part</code> to <code>score</code> is <code>score_id</code>.
     </div>
     <div class="table-info">
-        The <code>score_name</code> field is not part of the MusicXML definition.
-        The field has a unique constraint, and is assigned when a score is converted from a MusicXML file to a database record using the tasks interface.
+        The <code>score_name</code> field value is assigned by the user or from the filename when a score is converted from a MusicXML file to a database record using the tasks interface.
+        The field has a unique constraint, and is not part of the MusicXML definition.
+    </div>
+    <div class="table-info">
+        The <code>score_type</code> field value indicates whether the original MusicXML source file is in partwise or timewise format.
+        Valid values are <code>PARTWISE</code> or <code>TIMEWISE</code>.
     </div>
     <div class="table-info">
         The <code>xml_comment</code> table holds comment and processing instruction data found within a MusicXML file.
@@ -2294,7 +2298,7 @@ The bend record is in the <code>technical</code> table, <code>technical_type</co
 
 <div id="xml_comment" class="table-content">
     <div class="table-info">
-        One <code>xml_comment</code> record is created for each comment and processing instruction in a MusicXML file during a conversion from a MusicXML file to a database record
+        One <code>xml_comment</code> record is created for each comment or processing instruction in a MusicXML file during a conversion from a MusicXML file to a database record
         using the tasks interface.
     </div>
     <div class="table-info">
@@ -2303,7 +2307,7 @@ The bend record is in the <code>technical</code> table, <code>technical_type</co
         the content and placement of comments are preserved as in the original file.
     </div>
     <div class="table-info">
-        Users can optionally select to not include comments in a MusicXML file to database conversion.
+        Users can optionally select not to include comments in a MusicXML file to database conversion.
     </div>
     <div class="content-subsection"><code>data</code> and <code>target</code> fields</div>
     <div class="table-info">
@@ -2338,7 +2342,7 @@ The bend record is in the <code>technical</code> table, <code>technical_type</co
         </ul>
     </div>
     <div class="table-info">
-        <code>next_sibling</code> is null when the comment appears after every subelement of the parent element.
+        <code>next_sibling</code> is null when the comment appears after the last subelement of the parent element.
     </div>
     <div class="table-info">
         parent is an empty string when the comment appears before the first element in the file.
