@@ -14,6 +14,12 @@ Selecting this pane will convert a MusicXML file to Java beans which are then co
     </div>
 
     <div class="content">
+        Files can be in either partwise or timewise format.
+        When converting to a database record, the score record will store the format of the uploaded the MusicXML file,
+        and when converted back to a MusicXML file, the result will be in the uploaded format.
+    </div>
+
+    <div class="content">
 Comments and processing instructions are included in the conversion.
     </div>
 
