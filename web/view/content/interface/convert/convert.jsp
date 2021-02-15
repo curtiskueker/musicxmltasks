@@ -41,9 +41,19 @@ Java beans, as defined by the MusicXML schema, are at the center of the conversi
 
 <div class="content">
     To convert from MusicXML, the XML file is converted to a Java XML Document using DOM (Document Object Model).
+</div>
+
+<div class="content">
     MusicXML timewise files are first transformed to a partwise document before conversion to Java.
-    Java Handler classes in the tasks application then navigate the Document and create the Java beans.
+</div>
+
+<div class="content">
+    Java Handler classes in the tasks application navigate the Document and create the Java beans.
     Bean instantiations that are repetitive are handed off to Factory classes that return newly-created Java beans.
+</div>
+
+<div class="content">
+    The bean structure preserves document declarations, comments and processing instructions, and whether XML input is in partwise or timewise format.
 </div>
 
 <div class="content-subsection">To XML and LilyPond</div>

@@ -20,7 +20,7 @@ Selecting this pane will convert a MusicXML file to Java beans which are then co
     </div>
 
     <div class="content">
-Comments and processing instructions are included in the conversion.
+        Comments, processing instructions, and document declarations are included in the conversion.
     </div>
 
     <ul class="arrowed-list">
