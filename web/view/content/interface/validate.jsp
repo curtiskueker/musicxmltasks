@@ -13,6 +13,10 @@ XML validation verifies that an XML document is well-formed (syntactically corre
 </div>
 
 <div class="content">
+    Validation can be performed on compressed (.mxl) and uncompressed (.xml, .musicxml) files.
+</div>
+
+<div class="content">
 When validation is performed, the XML file is first read and then loaded as an XML document.  The document is then validated using a SAX (Simple API for XML) parser.
 </div>
 
