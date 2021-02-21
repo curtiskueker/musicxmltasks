@@ -30,7 +30,7 @@ public class ContentMenu {
                                                                         new MenuItem("To PDF", "interface/convert/toPdf.jsp")
                                                                 )
                                                         ),
-                                                        new MenuItem("Validate XML", "interface/validate.jsp"),
+                                                        new MenuItem("Validate/Compress XML", "interface/validate.jsp"),
                                                         new MenuItem("DB Settings", "interface/dbSettings.jsp"),
                                                         new MenuItem("LilyPond/PDF", "interface/lilypondPdf.jsp"),
                                                         new MenuItem("Output", "interface/output.jsp"),

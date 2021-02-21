@@ -12,7 +12,7 @@
 
     <ul>
         <li><b>Convert</b>: Convert data from one format to another: MusicXML, database, LilyPond, PDF.</li>
-        <li><b>Validate XML</b>: Validate a MusicXML file against the MusicXML 3.1 schema.</li>
+        <li><b>Validate/Compress XML</b>: Validate a MusicXML file against the MusicXML 3.1 schema, or compress a MusicXML file to a .mxl file.</li>
         <li><b>DB Settings</b>: Set the username, password, etc. of the database you are using with the tasks application.</li>
         <li><b>LilyPond/PDF</b>: Set the LilyPond and PDF reader locations on your computer.</li>
         <li><b>Output</b>: Optionally redirect task and/or SQL output to file.</li>
