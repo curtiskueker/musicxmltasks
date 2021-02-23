@@ -4,16 +4,14 @@
     Most of the tasks interface can be run at the command line.
     The scripts included here include the following functionality:
     <ul>
-        <li>Setting properties, including database connection properties</li>
-        <li>Creating the database tables and generating the database schema file</li>
         <li>Data conversion</li>
+        <li>MusicXML validation</li>
+        <li>MusicXML file compression</li>
+        <li>Displaying diff between MusicXML files</li>
+        <li>Bulk processing of files</li>
     </ul>
 </div>
 
 <div class="content">
-    I've also included a script for performing multiple data converions, like loading multiple MusicXML files into the database.
-</div>
-
-<div class="content">
-    The scripts are available in a zip file <a href="/resources/scripts/command_line_scripts.zip">here</a>.
+    The scripts are installed as part of the installation process, and are also available separately in a zip file <a href="/resources/scripts/command_line_scripts.zip">here</a>.
 </div>
