@@ -5,7 +5,7 @@ NAME
        db2MusicXml - manual page for db2MusicXml 1.0
 
 SYNOPSIS
-       db2MusicXml [OPTION] SCORE_ID|SCORE_NAME [OUTPUT_FILE]
+       db2MusicXml [OPTIONS] SCORE_ID|SCORE_NAME [OUTPUT_FILE]
 
 DESCRIPTION
        Converts a MusicXML database record to MusicXML.
@@ -21,9 +21,9 @@ OPTIONS
               don't include XML comments and processing instructions in the XML output
 
        -v, --verbose
-              verbose output while processing
+              displays processing output
 
-       -z, --zipped-file
+       -z ZIPPED_FILE_NAME, --zipped-file=ZIPPED_FILE_NAME
               name of XML file included in zipped .mxl output file
 
 SEE ALSO
@@ -33,5 +33,6 @@ SEE ALSO
 
        should give you access to the complete manual.
 
-db2MusicXml 1.0                                                                                                       February 2021                                                                                                       DB2MUSICXML(1)
+db2MusicXml 1.0                                                                                                        March 2021                                                                                                         DB2MUSICXML(1)
 </pre>
+

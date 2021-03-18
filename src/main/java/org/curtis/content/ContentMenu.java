@@ -95,16 +95,16 @@ public class ContentMenu {
                         ),
                         new MenuItem("Command-line Scripts", "scripts/scripts.jsp",
                                 Arrays.asList(
-                                        new MenuItem("db2Ly"),
+                                        new MenuItem("db2Ly", "scripts/db2Ly.jsp"),
                                         new MenuItem("db2MusicXml", "scripts/db2MusicXml.jsp"),
-                                        new MenuItem("db2Pdf"),
-                                        new MenuItem("musicXml2Db"),
-                                        new MenuItem("musicXml2Ly"),
-                                        new MenuItem("musicXml2Pdf"),
-                                        new MenuItem("musicXmlCompress"),
-                                        new MenuItem("musicXmlDiff"),
-                                        new MenuItem("musicXmlProcess"),
-                                        new MenuItem("musicXmlValidate")
+                                        new MenuItem("db2Pdf", "scripts/db2Pdf.jsp"),
+                                        new MenuItem("musicXml2Db", "scripts/musicXml2Db.jsp"),
+                                        new MenuItem("musicXml2Ly", "scripts/musicXml2Ly.jsp"),
+                                        new MenuItem("musicXml2Pdf", "scripts/musicXml2Pdf.jsp"),
+                                        new MenuItem("musicXmlCompress", "scripts/musicXmlCompress.jsp"),
+                                        new MenuItem("musicXmlDiff", "scripts/musicXmlDiff.jsp"),
+                                        new MenuItem("musicXmlProcess", "scripts/musicXmlProcess.jsp"),
+                                        new MenuItem("musicXmlValidate", "scripts/musicXmlValidate.jsp")
                                 )
                         ),
                         new MenuItem("Download and Install", "download/download.jsp",
