@@ -10,7 +10,9 @@ SYNOPSIS
 DESCRIPTION
        Validates a MusicXML file against the MusicXML 3.1 schema.
 
-       INPUT_FILE: the MusicXML input filename.  MusicXML input can be from stdin in place of an INPUT_FILE argument.
+       INPUT_FILE: the MusicXML input filename.
+
+       MusicXML input can be from stdin in place of an INPUT_FILE argument.
 
 SEE ALSO
        The full documentation for musicXmlValidate is maintained as a Texinfo manual.  If the info and musicXmlValidate programs are properly installed at your site, the command

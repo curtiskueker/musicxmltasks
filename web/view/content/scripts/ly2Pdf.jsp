@@ -10,7 +10,9 @@ SYNOPSIS
 DESCRIPTION
        Converts LilyPond to a PDF file.
 
-       INPUT_FILE: the LilyPond input filename.  LilyPond input can be from stdin in place of an INPUT_FILE argument.
+       INPUT_FILE: the LilyPond input filename.
+
+       LilyPond input can be from stdin in place of an INPUT_FILE argument.
 
        OUTPUT_FILE: the PDF output filename.
 

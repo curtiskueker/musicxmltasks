@@ -10,9 +10,13 @@ SYNOPSIS
 DESCRIPTION
        Converts MusicXML to a MusicXML database record.
 
-       INPUT_FILE: the MusicXML input filename.  MusicXML input can be from stdin in place of an INPUT_FILE argument.
+       INPUT_FILE: the MusicXML input filename.
 
-       SCORE_NAME: the database record score name.  The score name must be unique in the database.
+       MusicXML input can be from stdin in place of an INPUT_FILE argument.
+
+       SCORE_NAME: the database record score name.
+
+       The score name must be unique in the database.
 
 OPTIONS
        -v, --verbose

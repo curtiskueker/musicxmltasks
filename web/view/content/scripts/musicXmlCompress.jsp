@@ -10,7 +10,9 @@ SYNOPSIS
 DESCRIPTION
        Compresses a MusicXML file as a .mxl file.
 
-       INPUT_FILE: the MusicXML input filename.  MusicXML input can be from stdin in place of an INPUT_FILE argument.
+       INPUT_FILE: the MusicXML input filename.
+
+       MusicXML input can be from stdin in place of an INPUT_FILE argument.
 
        OUTPUT_FILE: the compressed MusicXML output filename.
 

@@ -10,9 +10,13 @@ SYNOPSIS
 DESCRIPTION
        Converts MusicXML to LilyPond.
 
-       INPUT_FILE: the MusicXML input filename.  MusicXML input can be from stdin in place of an INPUT_FILE argument.
+       INPUT_FILE: the MusicXML input filename.
 
-       OUTPUT_FILE: the LilyPond output filename.  If no OUTPUT_FILE argument is given, output is to stdout.
+       MusicXML input can be from stdin in place of an INPUT_FILE argument.
+
+       OUTPUT_FILE: the LilyPond output filename.
+
+       If no OUTPUT_FILE argument is given, output is to stdout.
 
 OPTIONS
        -b, --include-breaks

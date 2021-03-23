@@ -14,7 +14,11 @@ DESCRIPTION
 
        SCORE_NAME: the database record value in the score table, field score_name.
 
-       OUTPUT_FILE: the XML output filename.  If filename has .mxl extension, output file is zipped, and the -z|--zipped-file option is required.  If no OUTPUT_FILE argument is given, output is to stdout.
+       OUTPUT_FILE: the XML output filename.
+
+       If filename has .mxl extension, output file is zipped, and the -z|--zipped-file option is required.
+
+       If no OUTPUT_FILE argument is given, output is to stdout.
 
 OPTIONS
        -c, --skip-comments

@@ -14,7 +14,9 @@ DESCRIPTION
 
        SCORE_NAME: the database record value in the score table, field score_name.
 
-       OUTPUT_FILE: the LilyPond output filename.  If no OUTPUT_FILE argument is given, output is to stdout.
+       OUTPUT_FILE: the LilyPond output filename.
+
+       If no OUTPUT_FILE argument is given, output is to stdout.
 
 OPTIONS
        -b, --include-breaks
