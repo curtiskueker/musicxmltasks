@@ -98,6 +98,7 @@ public class ContentMenu {
                                         new MenuItem("db2Ly", "scripts/db2Ly.jsp"),
                                         new MenuItem("db2MusicXml", "scripts/db2MusicXml.jsp"),
                                         new MenuItem("db2Pdf", "scripts/db2Pdf.jsp"),
+                                        new MenuItem("ly2Pdf", "scripts/ly2Pdf.jsp"),
                                         new MenuItem("musicXml2Db", "scripts/musicXml2Db.jsp"),
                                         new MenuItem("musicXml2Ly", "scripts/musicXml2Ly.jsp"),
                                         new MenuItem("musicXml2Pdf", "scripts/musicXml2Pdf.jsp"),
