@@ -110,7 +110,8 @@ public class ContentMenu {
                                                         new MenuItem("musicXmlValidate", "scripts/linux/musicXmlValidate.jsp")
                                                 )
                                         ),
-                                        new MenuItem("Windows")
+                                        new MenuItem("Windows"),
+                                        new MenuItem("Other")
                                 )
                         ),
                         new MenuItem("Download and Install", "download/download.jsp",
