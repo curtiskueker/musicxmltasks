@@ -95,17 +95,22 @@ public class ContentMenu {
                         ),
                         new MenuItem("Command-line Scripts", "scripts/scripts.jsp",
                                 Arrays.asList(
-                                        new MenuItem("db2Ly", "scripts/db2Ly.jsp"),
-                                        new MenuItem("db2MusicXml", "scripts/db2MusicXml.jsp"),
-                                        new MenuItem("db2Pdf", "scripts/db2Pdf.jsp"),
-                                        new MenuItem("ly2Pdf", "scripts/ly2Pdf.jsp"),
-                                        new MenuItem("musicXml2Db", "scripts/musicXml2Db.jsp"),
-                                        new MenuItem("musicXml2Ly", "scripts/musicXml2Ly.jsp"),
-                                        new MenuItem("musicXml2Pdf", "scripts/musicXml2Pdf.jsp"),
-                                        new MenuItem("musicXmlCompress", "scripts/musicXmlCompress.jsp"),
-                                        new MenuItem("musicXmlDiff", "scripts/musicXmlDiff.jsp"),
-                                        new MenuItem("musicXmlProcess", "scripts/musicXmlProcess.jsp"),
-                                        new MenuItem("musicXmlValidate", "scripts/musicXmlValidate.jsp")
+                                        new MenuItem("Linux",
+                                                Arrays.asList(
+                                                        new MenuItem("db2Ly", "scripts/linux/db2Ly.jsp"),
+                                                        new MenuItem("db2MusicXml", "scripts/linux/db2MusicXml.jsp"),
+                                                        new MenuItem("db2Pdf", "scripts/linux/db2Pdf.jsp"),
+                                                        new MenuItem("ly2Pdf", "scripts/linux/ly2Pdf.jsp"),
+                                                        new MenuItem("musicXml2Db", "scripts/linux/musicXml2Db.jsp"),
+                                                        new MenuItem("musicXml2Ly", "scripts/linux/musicXml2Ly.jsp"),
+                                                        new MenuItem("musicXml2Pdf", "scripts/linux/musicXml2Pdf.jsp"),
+                                                        new MenuItem("musicXmlCompress", "scripts/linux/musicXmlCompress.jsp"),
+                                                        new MenuItem("musicXmlDiff", "scripts/linux/musicXmlDiff.jsp"),
+                                                        new MenuItem("musicXmlProcess", "scripts/linux/musicXmlProcess.jsp"),
+                                                        new MenuItem("musicXmlValidate", "scripts/linux/musicXmlValidate.jsp")
+                                                )
+                                        ),
+                                        new MenuItem("Windows")
                                 )
                         ),
                         new MenuItem("Download and Install", "download/download.jsp",
