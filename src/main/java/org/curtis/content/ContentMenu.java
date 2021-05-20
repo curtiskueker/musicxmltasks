@@ -110,7 +110,21 @@ public class ContentMenu {
                                                         new MenuItem("musicXmlValidate", "scripts/linux/musicXmlValidate.jsp")
                                                 )
                                         ),
-                                        new MenuItem("Windows")
+                                        new MenuItem("Windows",
+                                                Arrays.asList(
+                                                        new MenuItem("db2Ly", "scripts/windows/db2Ly.jsp"),
+                                                        new MenuItem("db2MusicXml", "scripts/windows/db2MusicXml.jsp"),
+                                                        new MenuItem("db2Pdf", "scripts/windows/db2Pdf.jsp"),
+                                                        new MenuItem("ly2Pdf", "scripts/windows/ly2Pdf.jsp"),
+                                                        new MenuItem("musicXml2Db", "scripts/windows/musicXml2Db.jsp"),
+                                                        new MenuItem("musicXml2Ly", "scripts/windows/musicXml2Ly.jsp"),
+                                                        new MenuItem("musicXml2Pdf", "scripts/windows/musicXml2Pdf.jsp"),
+                                                        new MenuItem("musicXmlCompress", "scripts/windows/musicXmlCompress.jsp"),
+                                                        new MenuItem("musicXmlDiff", "scripts/windows/musicXmlDiff.jsp"),
+                                                        new MenuItem("musicXmlProcess", "scripts/windows/musicXmlProcess.jsp"),
+                                                        new MenuItem("musicXmlValidate", "scripts/windows/musicXmlValidate.jsp")
+                                                )
+                                        )
                                 )
                         ),
                         new MenuItem("Download and Install", "download/download.jsp",

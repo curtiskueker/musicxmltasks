@@ -16,6 +16,10 @@ DESCRIPTION
 
        OUTPUT_FILE: the PDF output filename.
 
+OPTIONS
+       -v, --verbose
+              displays processing output
+
 SEE ALSO
        The full documentation for ly2Pdf is maintained as a Texinfo manual.  If the info and ly2Pdf programs are properly installed at your site, the command
 

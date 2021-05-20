@@ -1,9 +1,4 @@
 <pre>
-MUSICXMLPROCESS(1)                                                                                                    User Commands                                                                                                   MUSICXMLPROCESS(1)
-
-NAME
-       musicXmlProcess - manual page for musicXmlProcess 1.0
-
 SYNOPSIS
        musicXmlProcess [OPTIONS] SCRIPT_NAME [OUTPUT_DIRECTORY] INPUT_LIST
 
@@ -39,7 +34,7 @@ DESCRIPTION
        INPUT_LIST: For scripts that take file input (scripts musicXml* and ly2Pdf), the input list is a space-separated list of file names and directories, including wildcards.
 
 OPTIONS
-       -v, --verbose
+       /v, --verbose
               displays processing output
 
 EXAMPLES
@@ -51,9 +46,9 @@ EXAMPLES
 
        All files in a directory: /tmp/jsbach/*
 
-       Database record input (scripts db2*): the input list is a space-separated list of score names, score IDs, and score ID ranges.
+       Database record input (scripts db2*): the input list is a space- or comma-separated list of score names, score IDs, and score ID ranges.
 
-       Comma-separated score name lists are not processed as lists of score names because score names may contain commas.
+       Score names that contain commas or spaces need to be placed within quotes.
 
        Score ID lists and ranges can be comma-separated lists of ID numbers with dashes indicating score ranges.
 
@@ -61,25 +56,18 @@ EXAMPLES
 
        musicXmlProcess script call examples:
 
-       Output Score ID database records 1 to 50 as MusicXML to directory /tmp/output:
+       Output Score ID database records 1 to 50 as MusicXML to directory \output:
 
-       musicXmlProcess db2MusicXml /tmp/output 1-50
+       musicXmlProcess db2MusicXml \output 1-50
 
-       Output database records with score names "movement 1", "movement 2", "movement 3", and "movement 4" as LilyPond files to directory /tmp/output:
+       Output database records with score names "movement 1", "movement 2", "movement 3", and "movement 4" as LilyPond files to directory \output:
 
-       musicXmlProcess db2Ly /tmp/output "movement 1" "movement 2" "movement 3" "movement 4"
+       musicXmlProcess db2Ly \ "movement 1","movement 2","movement 3","movement 4"
+       or
+       musicXmlProcess db2Ly \ "movement 1" "movement 2" "movement 3" "movement 4"
 
-       Load all MusicXML files in directory /tmp/jsbach into the database with verbose output:
+       Load all MusicXML files in directory \jsbach into the database with verbose output:
 
-       musicXmlProcess -v musicXml2Db /tmp/jsbach/*
-
-SEE ALSO
-       The full documentation for musicXmlProcess is maintained as a Texinfo manual.  If the info and musicXmlProcess programs are properly installed at your site, the command
-
-              info musicXmlProcess
-
-       should give you access to the complete manual.
-
-musicXmlProcess 1.0                                                                                                    March 2021                                                                                                     MUSICXMLPROCESS(1)
+       musicXmlProcess /v musicXml2Db |jsbach/*
 </pre>
 
