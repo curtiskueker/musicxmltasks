@@ -40,11 +40,11 @@ OPTIONS
 EXAMPLES
        Input list examples:
 
-       Single file input: /tmo/jsbach/Invention_1.xml
+       Single file input: files\jsbach\Invention_1.xml
 
-       A list of files matching a pattern: /tmp/jsbach/Invention_*.xml
+       A list of files matching a pattern: files\jsbach\Invention_*.xml
 
-       All files in a directory: /tmp/jsbach/*
+       All files in a directory: files\jsbach\*
 
        Database record input (scripts db2*): the input list is a space- or comma-separated list of score names, score IDs, and score ID ranges.
 
@@ -56,18 +56,18 @@ EXAMPLES
 
        musicXmlProcess script call examples:
 
-       Output Score ID database records 1 to 50 as MusicXML to directory \output:
+       Output Score ID database records 1 to 50 as MusicXML to directory files\output:
 
-       musicXmlProcess db2MusicXml \output 1-50
+       musicXmlProcess db2MusicXml files\output 1-50
 
-       Output database records with score names "movement 1", "movement 2", "movement 3", and "movement 4" as LilyPond files to directory \output:
+       Output database records with score names "movement 1", "movement 2", "movement 3", and "movement 4" as LilyPond files to directory files\output:
 
-       musicXmlProcess db2Ly \ "movement 1","movement 2","movement 3","movement 4"
+       musicXmlProcess db2Ly files\output "movement 1","movement 2","movement 3","movement 4"
        or
-       musicXmlProcess db2Ly \ "movement 1" "movement 2" "movement 3" "movement 4"
+       musicXmlProcess db2Ly files\output "movement 1" "movement 2" "movement 3" "movement 4"
 
-       Load all MusicXML files in directory \jsbach into the database with verbose output:
+       Load all MusicXML files in directory files\jsbach into the database with verbose output:
 
-       musicXmlProcess /v musicXml2Db |jsbach/*
+       musicXmlProcess /v musicXml2Db files\jsbach\*
 </pre>
 

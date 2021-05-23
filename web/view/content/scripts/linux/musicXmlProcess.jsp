@@ -45,11 +45,11 @@ OPTIONS
 EXAMPLES
        Input list examples:
 
-       Single file input: /tmo/jsbach/Invention_1.xml
+       Single file input: files/jsbach/Invention_1.xml
 
-       A list of files matching a pattern: /tmp/jsbach/Invention_*.xml
+       A list of files matching a pattern: files/jsbach/Invention_*.xml
 
-       All files in a directory: /tmp/jsbach/*
+       All files in a directory: files/jsbach/*
 
        Database record input (scripts db2*): the input list is a space-separated list of score names, score IDs, and score ID ranges.
 
@@ -61,17 +61,17 @@ EXAMPLES
 
        musicXmlProcess script call examples:
 
-       Output Score ID database records 1 to 50 as MusicXML to directory /tmp/output:
+       Output Score ID database records 1 to 50 as MusicXML to directory files/output:
 
-       musicXmlProcess db2MusicXml /tmp/output 1-50
+       musicXmlProcess db2MusicXml files/output 1-50
 
-       Output database records with score names "movement 1", "movement 2", "movement 3", and "movement 4" as LilyPond files to directory /tmp/output:
+       Output database records with score names "movement 1", "movement 2", "movement 3", and "movement 4" as LilyPond files to directory files/output:
 
-       musicXmlProcess db2Ly /tmp/output "movement 1" "movement 2" "movement 3" "movement 4"
+       musicXmlProcess db2Ly files/output "movement 1" "movement 2" "movement 3" "movement 4"
 
-       Load all MusicXML files in directory /tmp/jsbach into the database with verbose output:
+       Load all MusicXML files in directory files/jsbach into the database with verbose output:
 
-       musicXmlProcess -v musicXml2Db /tmp/jsbach/*
+       musicXmlProcess -v musicXml2Db files/jsbach/*
 
 SEE ALSO
        The full documentation for musicXmlProcess is maintained as a Texinfo manual.  If the info and musicXmlProcess programs are properly installed at your site, the command
