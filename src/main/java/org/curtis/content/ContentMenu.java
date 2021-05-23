@@ -129,7 +129,7 @@ public class ContentMenu {
                         ),
                         new MenuItem("Download and Install", "download/download.jsp",
                                 Arrays.asList(
-                                        new MenuItem("Windows"),
+                                        new MenuItem("Windows", "download/windows.jsp"),
                                         new MenuItem("Linux", "download/linux.jsp")
                                 )
                         )
