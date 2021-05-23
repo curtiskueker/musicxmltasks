@@ -8,3 +8,7 @@
     <li><code>/h</code> and <code>--help</code> options</li>
   </ul>
 </div>
+
+<div class="content">
+  The scripts are part of the installation, and are also available separately in a zip file <a href="/resources/scripts/windows_scripts.zip">here</a>.
+</div>

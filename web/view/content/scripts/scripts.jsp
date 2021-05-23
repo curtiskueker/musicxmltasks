@@ -46,7 +46,3 @@
         and so requires both a LilyPond installation, and setting the LilyPond location in the tasks interface under the "LilyPond/PDF" tab.</span></li>
     </ul>
 </div>
-
-<div class="content">
-    The scripts are installed as part of the installation process, and are also available separately in a zip file <a href="/resources/scripts/command_line_scripts.zip">here</a>.
-</div>
