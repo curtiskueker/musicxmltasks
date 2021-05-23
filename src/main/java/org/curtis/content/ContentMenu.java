@@ -95,7 +95,7 @@ public class ContentMenu {
                         ),
                         new MenuItem("Command-line Scripts", "scripts/scripts.jsp",
                                 Arrays.asList(
-                                        new MenuItem("Linux",
+                                        new MenuItem("Linux", "scripts/linux/linuxScripts.jsp",
                                                 Arrays.asList(
                                                         new MenuItem("db2Ly", "scripts/linux/db2Ly.jsp"),
                                                         new MenuItem("db2MusicXml", "scripts/linux/db2MusicXml.jsp"),
@@ -110,7 +110,7 @@ public class ContentMenu {
                                                         new MenuItem("musicXmlValidate", "scripts/linux/musicXmlValidate.jsp")
                                                 )
                                         ),
-                                        new MenuItem("Windows",
+                                        new MenuItem("Windows", "scripts/windows/windowsScripts.jsp",
                                                 Arrays.asList(
                                                         new MenuItem("db2Ly", "scripts/windows/db2Ly.jsp"),
                                                         new MenuItem("db2MusicXml", "scripts/windows/db2MusicXml.jsp"),
