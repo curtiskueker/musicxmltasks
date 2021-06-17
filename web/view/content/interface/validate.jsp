@@ -36,6 +36,25 @@ When validation is performed, the XML file is first read and then loaded as an X
 The XML parser is included in the application, and validation error messages are those of the parser.
 </div>
 
+<div class="content-subsection">XML Validation on Windows</div>
+
+<div class="content">
+    Validation uses the encoding indicated by the encoding attribute of the XML declaration, by default <code>UTF-8</code>.
+</div>
+
+<div class="content">
+    In some cases, validation will fail when the encoding is given as <code>UTF-8</code>,
+    and issue an error of this type:
+</div>
+
+<div class="content">
+    <code>Invalid byte 2 of 3-byte UTF-8 sequence</code>
+</div>
+
+<div class="content">
+    Usually, manually changing the encoding attribute value to <code>ISO-8859-1</code> will result in a successful validation.
+</div>
+
 <div class="content-subsection">Validation Steps</div>
 
 <div class="content">
