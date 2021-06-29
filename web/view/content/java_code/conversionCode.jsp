@@ -275,17 +275,53 @@ public class DisplayFactory {
     </textarea>
 </div>
 
-<div class="content-section">Java Beans to Text Output</div>
+<div class="content-section">Java Beans to MusicXml and LilyPond Output</div>
 
 <div class="content">
-Java beans are converted to text output by iterating the beans hierarchical structure
-in a similar manner to XML document iteration.
+Java beans are converted to MusicXml or LilyPond text output by iterating the beans hierarchical structure.
 </div>
 
-<div class="content-subsection">MusicXML Builders</div>
+<div class="content-subsection">MusicXML Builder Output</div>
 
 <div class="content">
 Iteration begins with a ScoreBuilder and continues through the score parts:
+</div>
+
+<div class="content">
+    <textarea class="example" readonly rows="27">
+public class ScoreBuilder extends MusicDataBuilder {
+    private Score score;
+
+    public ScoreBuilder(Score score) {
+        this.score = score;
+    }
+
+    public StringBuilder build() {
+        buildDocumentDeclaration();
+
+        buildOpenElement("score-partwise");
+        buildAttribute("version", score.getVersion());
+        buildCloseElement();
+
+        ScoreHeaderBuilder scoreHeaderBuilder = new ScoreHeaderBuilder(score.getScoreHeader());
+        append(scoreHeaderBuilder.build().toString());
+
+        for (Part part : score.getParts()) {
+            PartBuilder partBuilder = new PartBuilder(part);
+            append(partBuilder.build().toString());
+        }
+
+        buildEndElement("score-partwise");
+
+        return stringBuilder;
+    }
+    </textarea>
+</div>
+
+<div class="content-subsection">LilyPond Builder Output</div>
+
+<div class="content">
+Likewise, LilyPond iteration begins with a ScoreBuilder and continues through the score parts:
 </div>
 
 <div class="content">
@@ -352,14 +388,8 @@ public class ScoreBuilder extends LilypondBuilder {
     </textarea>
 </div>
 
-<div class="content-subsection">LilyPond Builders</div>
-
 <div class="content">
-Likewise, LilyPond iteration begins with a ScoreBuilder and continues through the score parts.
-</div>
-
-<div class="content">
-The LilyPond conversion code, however, only implements a fraction of a MusicXML document into LilyPond features,
+The LilyPond conversion code, however, only implements a fraction of MusicXML document conversion to LilyPond features,
 due to the richness of the MusicXML and LilyPond definitions.
 The user is expected to adjust the output once the conversion is complete
     if features are noted as unimplemented, or if the conversion produces any anomalies.
@@ -463,8 +493,8 @@ public class MusicDataBuilder extends LilypondBuilder {
 </div>
 
 <div class="content">
-In this way, LilyPond output implementations can be added individually as desired,
-and there's no need to add any number of empty builder methods corresponding to every possible MusicXML element.
+LilyPond output implementations can then be added individually as desired,
+    in the form of <code>buildXXX</code> methods that correspond to bean class names.
 </div>
 
 <div class="content">
@@ -522,143 +552,5 @@ public class DirectiontypeBuilder extends MusicDataBuilder {
         }
     }
     [additional methods ...]
-    </textarea>
-</div>
-
-<div class="content-section">UI and Executables</div>
-
-<div class="content">
-The UI is built using JavaFX Scene Builder.
-</div>
-
-<div class="content">
-Scene Builder creates the musicxmltasks.fxml file that describes the component parts, and maps interface widgets to method calls.
-</div>
-
-<div class="content">
-Invoked methods are in class TasksController.
-On button press, method buttonPressed() is invoked which sets up the TaskExecutor in a new thread.
-</div>
-
-<div class="content">
-    <textarea class="example" readonly rows="13">
-    @FXML
-    private void buttonPressed(ActionEvent actionEvent) {
-        taskForm.clearOutput();
-
-        Button button = (Button)actionEvent.getSource();
-
-        // Run task in thread
-        TaskExecutor taskExecutor = new TaskExecutor(button.getId(), taskForm);
-        Runnable taskRunnable = taskExecutor::execute;
-        Thread formThread = new Thread(taskRunnable);
-        formThread.start();
-    }
-    </textarea>
-</div>
-
-<div class="content">
-TaskExecutor resolves which button is pressed, handles the input, calls the executable, and handles state updates in a separate thread.
-</div>
-
-<div class="content">
-    <textarea class="example" readonly rows="98">
-    public void execute() {
-        InputHandler inputHandler = null;
-        JavafxTaskInitializer taskInitializer = null;
-        boolean isPropertiesSettingsUpdate = false;
-        boolean isLyPdfPropertiesUpdate = false;
-        boolean isDbUpdate = false;
-        boolean isOutputSettingsUpdate = false;
-        switch (controlId) {
-            case FormNode.SAVE_DB_SETTINGS_BUTTON:
-                taskInitializer = new SaveDbSettingsInitializer(taskForm);
-                inputHandler = new SetDbPropertiesHandler();
-                isPropertiesSettingsUpdate = true;
-                break;
-            case FormNode.SAVE_LY_PDF_SETTINGS_BUTTON:
-                taskInitializer = new LyPdfSettingsInitializer(taskForm);
-                inputHandler = new SetLyPdfPropertiesHandler();
-                isPropertiesSettingsUpdate = true;
-                isLyPdfPropertiesUpdate = true;
-                break;
-            case FormNode.SAVE_OUTPUT_SETTINGS_BUTTON:
-                taskInitializer = new OutputSettingsInitializer(taskForm);
-                inputHandler = new SetOutputPropertiesHandler();
-                isPropertiesSettingsUpdate = true;
-                isOutputSettingsUpdate = true;
-                break;
-            case FormNode.EXECUTE_DB_ACTIONS_BUTTON:
-                taskInitializer = new DbTablesInitializer(taskForm);
-                inputHandler = new DatabaseHandler();
-                break;
-            case FormNode.EXECUTE_VALIDATE_BUTTON:
-                taskInitializer = new ValidateXmlInitializer(taskForm);
-                inputHandler = new ValidateXmlHandler();
-                break;
-            case FormNode.EXECUTE_CONVERT_BUTTON:
-                taskInitializer = new ConvertInitializer(taskForm);
-                switch (taskForm.getFromSelection()) {
-                    case TaskConstants.CONVERSION_TYPE_MUSICXML:
-                        switch (taskForm.getToSelection()) {
-                            case TaskConstants.CONVERSION_TYPE_DATABASE:
-                                inputHandler = new MusicXml2DbHandler();
-                                isDbUpdate = true;
-                                break;
-                            case TaskConstants.CONVERSION_TYPE_LILYPOND:
-                                inputHandler = new MusicXml2LyHandler();
-                                break;
-                            case TaskConstants.CONVERSION_TYPE_PDF:
-                                inputHandler = new MusicXml2PdfHandler();
-                                break;
-                        }
-                        break;
-                    case TaskConstants.CONVERSION_TYPE_DATABASE:
-                        switch (taskForm.getToSelection()) {
-                            case TaskConstants.CONVERSION_TYPE_MUSICXML:
-                                inputHandler = new Db2MusicXmlHandler();
-                                break;
-                            case TaskConstants.CONVERSION_TYPE_LILYPOND:
-                                inputHandler = new Db2LyHandler();
-                                break;
-                            case TaskConstants.CONVERSION_TYPE_PDF:
-                                inputHandler = new Db2PdfHandler();
-                                break;
-                        }
-                        break;
-                    case TaskConstants.CONVERSION_TYPE_LILYPOND:
-                        if (TaskConstants.CONVERSION_TYPE_PDF.equals(taskForm.getToSelection())) {
-                            inputHandler = new Ly2PdfHandler();
-                        }
-                        break;
-                }
-                break;
-            case FormNode.EXECUTE_DELETE_BUTTON:
-                taskInitializer = new DeleteScoreInitializer(taskForm);
-                inputHandler = new DeleteScoreHandler();
-                isDbUpdate = true;
-                break;
-        }
-
-        try {
-            if (taskInitializer != null && inputHandler != null) {
-                taskForm.disableNodes(true);
-                taskInitializer.initializeNodeMap();
-                MusicXmlTask musicXmlTask = new MusicXmlTask(taskInitializer, inputHandler);
-                musicXmlTask.execute();
-
-                if (isPropertiesSettingsUpdate) Platform.runLater(PropertiesHandler::addLocalPropertiesBundle);
-                if (isLyPdfPropertiesUpdate) Platform.runLater(() -> taskForm.handleLyPdfUpdates());
-                if (isDbUpdate) Platform.runLater(() -> {taskForm.handleDisplayUpdates();});
-                if (isOutputSettingsUpdate) Platform.runLater(() -> taskForm.resetOutputStream());
-            }
-            System.err.println("Task finished successfully");
-        } catch (TaskException e) {
-            System.err.println("Task exited with exception");
-            System.err.println(e.getMessage());
-        } finally {
-            taskForm.disableNodes(false);
-        }
-    }
     </textarea>
 </div>
